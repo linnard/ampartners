@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//'middleware' => ['auth:api', 'role:admin']
+
+Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
+
+    Route::get('/companies', 'CompaniesController@index')->name('companies.index');
+
+    Route::put('/users/{user}')
+        ->uses('UsersController@update')
+        ->name('api.user.update')
+        ->where('user', '[0-9]+');
 });
+

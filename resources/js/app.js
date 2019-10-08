@@ -8,6 +8,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,7 +23,65 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+//Vue.component('companies', require('./components/Companies.vue').default);
+//Vue.component('vacancies', require('./components/Vacancies.vue').default);
+Vue.component('component-header', require('./components/Header.vue').default);
+
+import Companies from './pages/Companies';
+import Vacancies from './pages/Vacancies';
+import Users from './pages/Users';
+
+
+const routes = [
+        {
+            path: '/adminpanel/companies',
+            name: 'Компанії',
+            component: Companies,
+            children:
+                [{
+                    name: 'Заявки',
+                    path: 'new',
+                    component: {
+                        template: '<div>Заявки</div>'
+                    }
+                }, {
+                    name: 'Активні',
+                    path: 'approved',
+                    component: {
+                        template: '<div>Активні</div>'
+                    }
+                }, {
+                    name: 'Відхилені',
+                    path: 'cancelled',
+                    component: {
+                        template: '<div>Відхилені</div>'
+                    }
+                }]
+        },
+        {
+            path: '/adminpanel/vacancies',
+            name:
+                'Вакансії',
+            component:
+            Vacancies
+        }
+        ,
+        {
+            path: '/adminpanel/users',
+            name:
+                'Користувачі',
+            component:
+            Users
+        }
+        ,
+    ]
+;
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +89,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+new Vue({
     el: '#app',
+    router
 });

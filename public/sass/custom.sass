@@ -1,0 +1,891 @@
+@import mixins
+
+html
+	scroll-behavior: smooth
+
+.SvgIco
+	display: inline-block
+	vertical-align: middle
+
+	&_path, &_line, &_g
+		fill: currentColor
+
+	&_stroke
+		stroke: currentColor
+
+.Link
+	font-size: 14px
+
+// Custom styles
+.Wrapper
+	width: 1900px
+
+	&-infoPage
+		width: auto
+
+.Main
+	background: #FAFAFA
+
+	&-infoPage
+		padding-bottom: 30px
+
+// Sitename
+.SiteName
+	font-size: 26px
+
+	&_first
+		font-size: 34px
+
+	&-cherry
+		color: #A41710
+
+		.SiteName_first
+			color: #A41710
+
+// Logo
+.Logo
+	&_img
+		display: block
+
+// Welcome
+.Welcome
+	font-size: 14px
+
+	&_userPhoto
+		margin-right: 6px
+
+		& > img
+			width: 20px
+
+	&_userName
+		letter-spacing: 0.015em
+
+.open-burg
+	width: 45px
+	cursor: pointer
+
+.not_works
+	margin-right: 23px
+
+	img
+		height: 25px
+
+// Notifications block
+.NotificationsBlock
+	position: relative
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 48px
+	height: 48px
+	cursor: pointer
+
+	&_icon
+		height: 25px
+		margin-top: -3px
+		opacity: 0.5
+
+	&_number
+		position: absolute
+		top: 0
+		right: -12px
+
+	&-new
+		border-radius: 50%
+		background: #F1DCDB
+
+// Finance Block
+.FinanceBlock
+	padding-right: 71px
+	padding-bottom: 14px
+
+	&_sum
+		margin-bottom: 0
+
+// Heder
+.Header
+	display: flex
+	align-items: center
+	padding: 18px 13px 18px 26px
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4)
+	background: #FAFAFA
+
+	&_menu
+		flex-grow: 1
+		margin-right: 100px
+
+	&-infoPage
+		flex-direction: column
+		padding-top: 36px
+		padding-bottom: 47px
+		border-bottom: none
+
+		.Header_logo
+			margin-bottom: 40px
+
+		.Header_menu
+			margin-right: 0
+
+// Main menu
+.MainMenu
+	&_list
+		display: flex
+		justify-content: center
+
+	&_item
+		margin: 0 16px
+		font-size: 18px
+
+		&-active
+			.MainMenu_link:after
+				width: 100%
+
+	&_link
+		position: relative
+		display: inline-block
+		padding: 6px 10px
+		color: #4F4F4F
+
+		&:after
+			content: ''
+			position: absolute
+			top: 100%
+			left: 50%
+			width: 0
+			height: 2px
+			background-color: #81be1f
+			transform: translate(-50%, 0)
+			transition: width 0.3s
+
+		&:hover:after
+			width: 100%
+
+	&-infoPage
+		.MainMenu_item
+			margin: 0 24px
+
+// Top
+.Top
+	padding: 11px 13px 12px 26px
+
+	.open-burg
+		margin-top: 2px
+		margin-right: 9px
+
+	.not_works
+		margin-top: -3px
+
+	&_notificationsBlock
+		margin: -6px 25px 0 0
+
+	&_siteName
+		margin-top: -6px
+		margin-left: 2px
+
+	&_welcome
+		margin-top: 4px
+		margin-right: 29px
+
+	&_logout
+		margin-top: 5px
+
+	&_popupLinks
+		margin-left: 50px
+
+	&_popupLink
+		margin-right: 10px
+
+		&:last-child
+			margin-right: 0
+
+	&_secondaryMenu
+		margin-left: 60px
+
+	&_financeBlock
+		margin-top: -4px
+		margin-right: 0
+
+// Secondary menu
+.SecondaryMenu
+	&_list
+		display: flex
+
+	&_item
+		margin-right: 70px
+		font-size: 17px
+
+		&:last-child
+			margin-right: 0
+
+	&_number
+		position: relative
+		bottom: 9px
+
+// Main
+.Main
+	.FilterBlock
+		padding-right: 10px
+
+// Checkbox
+.Checkbox
+	&_input:checked
+		& + .Checkbox_label:before
+			background: #81be1f url('../img/svg/check_marker.svg') center center / 11px auto no-repeat
+
+	&_label
+		padding-left: 31px
+		font-size: 13.6px
+
+		&:before
+			top: -3px
+			width: 20px
+			height: 20px
+			border-color: #EDEDED
+			border-radius: 3px
+			transition: all .3s
+
+// Select
+.Select
+	border-color: #f0f0f0
+	height: 30px
+	padding-right: 25px
+	padding-left: 7px
+	background: #fff url("../img/svg/select_arrow.svg") calc(100% - 9px) center / 5px auto no-repeat
+	font-size: 17px
+	// color: #CECECE
+
+	&:focus
+		outline-color: #c0de8f
+
+	&-date
+		height: 36px
+		padding: 0 57px 0 14px
+		background: url('../img/svg/date_arrow.svg') calc(100% - 15px) center / 10px auto no-repeat, url('../img/line_grey.jpg') calc(100% - 40px) 0 no-repeat #fff
+		color: #4F4F4F
+
+// FilterBlock
+.FilterBlock
+	padding-right: 30px
+	padding-left: 30px
+
+	&_selectMonth
+		margin-right: 88px
+
+	&_checkbox
+		&:not(:last-child)
+			margin-right: 51px
+
+	&_search
+		margin-top: 3px
+		// margin-left: 110px
+		margin-left: 400px
+
+	&_buttons
+		display: flex
+
+	&_quickCreationBtn
+		margin-right: 12px
+
+// FormText
+.FormText
+	height: 30px
+	padding-right: 8px
+	padding-left: 8px
+	border-color: #EDEDED
+	border-radius: 3px
+	font-size: 17px
+
+	&:focus
+		outline-color: #c0de8f
+
+	&-search
+		height: 36px
+		padding-right: 60px
+		padding-left: 14px
+		background: #FFF
+
+	&-large
+		height: 32px
+
+.FormTextarea
+	height: 71px
+	border-radius: 3px
+	border-color: #EDEDED
+
+	&:focus
+		outline-color: #c0de8f
+
+.FormLabel
+	font-size: 11px
+	color: rgba(0, 0, 0, 0.84)
+
+
+// Search
+.Search
+	position: relative
+
+	&_text
+		width: 586px
+		margin-right: 0
+		border-radius: 3px
+		font-size: 13.6px
+
+		+placeholder()
+			color: #CECECE
+
+	&_btn
+		position: absolute
+		z-index: 1
+		top: 0
+		right: 0
+		bottom: 0
+		width: 56px
+		height: 36px
+		margin: auto
+		background: url('../img/svg/search.svg') center center / 16px auto no-repeat
+
+// Blue button
+.BtnBlue
+	display: inline-block
+	padding: 16px 36px 18px 40px
+	border-radius: 3px
+	font-size: 20px
+	background: #22a5c3
+	color: #fff
+	transition: all .3s ease-in
+
+	&:hover
+		opacity: .8
+
+// Green button
+.BtnGreen, .BtnBlue
+	&-addContact
+		padding: 12px 9px 11px 13px
+		font-size: 13.6px
+
+		& > .SvgIco
+			width: 16px
+
+// Receipt
+.Receipt
+	&_basicInfo
+		flex-basis: 210px
+		flex-shrink: 0
+		min-height: 205px
+		padding-top: 10px
+		background: #FBFAF7
+
+	&_form
+		padding-top: 10px
+
+	&_basicInfoGroup
+		padding-right: 30px
+		padding-left: 30px
+		border-bottom: 1px solid #ededed
+
+		.Receipt_basicInfoItem
+			padding-right: 0
+			padding-left: 0
+
+	&_basicInfoItem
+		padding: 13px 25px
+		font-size: 15.5px
+		color: #4F4F4F
+
+		&-id
+			padding-top: 19px
+			padding-left: 29px
+			font-size: 13px
+			color: #CBCBCB
+			background: #FBFAF7
+
+		&-recipient
+			padding-top: 8px
+			padding-bottom: 4px
+
+		&-created
+			padding-top: 4px
+			padding-bottom: 9px
+
+		&-noBorder:not(:last-child)
+			border-bottom: none
+
+	&_events
+		padding: 17px 0
+		font-size: 11px
+
+	&_basicItemLabel
+		display: block
+		margin-bottom: 9px
+		font-size: 10px
+
+	&_selectCompany
+		width: 100%
+
+	&_reminder
+		margin-top: 3px
+
+.Receipts
+	&_item
+		padding-top: 0
+
+// Receipt Form
+.ReceiptForm
+	&_column
+		&:not(:last-child)
+			border-right: none
+
+		&-fio
+			flex-basis: 435px
+			flex-shrink: 0
+			padding: 0 15px 4px 30px
+
+		&-contacts
+			flex-basis: 420px
+			padding: 0 15px 4px
+
+			.ReceiptForm_item
+				&:first-child
+					margin-bottom: 13px
+
+		&-vacancyInfo
+			flex-basis: 633px
+			padding: 0 18px 4px 15px
+
+		&-additionalForm
+			padding-top: 0
+
+			.ReceiptForm_item
+				margin-bottom: 34px
+
+		&-statusBlock
+			display: flex
+			justify-content: center
+			align-items: center
+			flex-basis: 230px
+			margin-top: -55px
+			padding-right: 5px
+			padding-left: 5px
+			background: #FAF6DB
+
+		&-statusBlockCompleted
+			background: #edf6df
+
+		&-transparent
+			background: transparent
+
+		&-buttons
+			display: flex
+			flex-direction: column
+			justify-content: center
+			flex-basis: 207px
+			margin-top: -55px
+			padding: 0 5px
+
+	&_label
+		margin-bottom: 9px
+		margin-left: 0
+
+	&_itemGroup
+		.ReceiptForm_item
+			margin-right: 10px
+
+			&-name
+				flex-grow: 0
+				flex-basis: 100px
+
+			&:last-child
+				margin-right: 0
+
+		&-communicationTypes
+			.ReceiptForm_item
+				&:first-child
+					margin-right: 30px
+
+				&:not(:last-child)
+					margin-bottom: 14px
+
+		&-serviceType
+			.ReceiptForm_item:first-child
+				flex-basis: 0
+				flex-grow: 1
+				margin-right: 30px
+
+		&-paymentType
+			margin-bottom: 20px
+
+	&_item
+		&-btnAndStatement
+			flex-direction: row
+			align-items: flex-start
+
+	&_selectPaid
+		margin-right: 11px
+
+	&_electronicStatement
+		flex-grow: 1
+
+	&_confirmBtn
+		margin-bottom: 10px
+
+// Electronic Statement
+.ElectronicStatement
+	min-height: 105px
+	padding: 10px 9px
+	color: #4F4F4F
+	font-size: 14px
+
+	&_price
+		margin-right: 20px
+		font-size: 18px
+
+	&_date, &_time
+		margin-top: 2px
+
+	&_date
+		margin-right: 16px
+
+	&_comment
+		margin-top: 12px
+		font-size: 15px
+		line-height: normal
+
+// Group control
+.group_controll .Receipt_basicInfoItem
+	flex-basis: 210px
+
+.group_body_list
+	-webkit-align-items: center
+	align-items: center
+	padding-top: 5px
+	padding-left: 30px
+
+.group_body_item
+	margin-right: 24px
+
+.ActionLink
+	position: relative
+	display: inline-flex
+	-webkit-align-items: flex-end
+	align-items: flex-end
+	font-size: 11.5px
+	color: #81BE1F
+
+	& > .SvgIco
+		width: 14px
+		margin-right: 4px
+
+	&:after
+		content: ''
+		position: absolute
+		right: 0
+		bottom: -2px
+		left: 18px
+		height: 1px
+		background: url('../img/line_green.png') 0 0 repeat-x
+		transition: all .35s
+
+	&:hover
+		&:after
+			opacity: 0
+
+// Button outline
+.BtnOutline
+	display: inline-flex
+	padding: 7px 10px
+	border: 1px solid #81be1f
+	border-radius: 3px
+	background: transparent
+	outline: none
+	font-size: 11.5px
+	color: #4F4F4F
+	transition: all .3s
+
+	& > .SvgIco
+		width: 14px
+		margin-right: 3px
+
+	&:hover
+		background: #81BE1F
+		color: #FFF
+
+	&-changeVacancy
+		padding: 4px 16px 5px 12px
+		font-size: 15px
+
+	&-transfer
+		width: 100%
+		justify-content: center
+		padding-top: 6px
+		padding-bottom: 8px
+		font-size: 16px
+
+	&-red
+		border-color: #A41710
+		color: #A41710
+
+		&:hover
+			background: #A41710
+
+.doc_count
+	font-size: 11.5px
+
+
+.ReceiptForm_docsNumber
+	display: flex
+	-webkit-align-items: flex-start
+	align-items: flex-start
+	margin: 11px 0 21px 2px
+
+	.doc_count
+		margin-top: 5px
+		margin-left: 6px
+
+.bg_gray
+	background: #fbfaf7
+
+.bg_processed
+	background: #f4faee
+
+// Status block
+.StatusBlock
+	text-align: center
+
+	&_titleIcon
+		display: flex
+		justify-content: center
+		align-items: center
+		margin-bottom: 20px
+
+	&_icon
+		width: 70px
+		margin-bottom: 5px
+		color: #CEB841
+
+		&-titleIcon
+			margin-right: 10px
+			margin-bottom: 0
+
+	&_title
+		margin-bottom: 15px
+
+		&-titleIcon
+			margin-bottom: 0
+			flex-basis: 0
+			font-size: 15px
+			text-align: left
+
+	&_btn
+		margin-bottom: 40px
+
+	&_text
+		font-size: 14px
+		line-height: normal
+
+	&-uploadTicketPhoto
+		.StatusBlock_icon
+			margin-bottom: 15px
+
+	&-ticketLoaded
+		padding-top: 40px
+
+	&-completed
+		.StatusBlock_icon
+			width: 24px
+			color: #84b84d
+
+// Popup
+.Popup
+	&_form
+		margin-bottom: 5px
+
+	&-left
+		.Popup_wrap
+			text-align: left
+
+	&-large
+		.Popup_wrap
+			width: 90vw
+			min-height: 90vh
+
+		.Popup_title
+			margin-bottom: 0
+			font-size: 1.5rem
+
+	&-jobReservation
+		padding-top: 30px
+		padding-bottom: 30px
+
+		.Popup_wrap
+			transform: none
+			top: 0
+			background: #FAFAFA
+
+		.Popup_header
+			padding: 31px 32px 20px
+			background: #FFF
+
+		.Popup_body
+			padding: 18px
+
+		.Popup_vacancyInfo
+			&:not(:last-child)
+				margin-bottom: 18px
+
+		.Popup_footer
+			display: flex
+			justify-content: center
+			padding: 30px 10px
+			background: #FFF
+
+.PopupState:checked + .Popup.Popup-jobReservation .Popup_wrap
+	padding: 0
+
+// Number
+.Number
+	display: inline-flex
+	justify-content: center
+	align-items: center
+	width: 22px
+	font-size: 15px
+	line-height: 22px
+	border-radius: 50%
+	background: #c56b00
+	color: #FFF
+
+// Textarea
+.Textarea
+	box-sizing: border-box
+	width: 100%
+	height: 105px
+	padding: 12px
+	border: 1px solid #ABABAB
+	outline: none
+	resize: none
+	transition: border .3s
+	font-size: 14px
+	+placeholder()
+		color: #ABABAB
+
+	&:focus
+		border: 1px solid #4f4f4f
+
+// Container
+.Container
+	width: 1130px
+	max-width: 100%
+	margin: 0 auto
+
+// White block
+.WhiteBlock
+	border: 1px solid #f2f2f2
+	background-color: #fff
+	color: #4f4f4f
+
+// Vacancy information
+.VacancyInfo
+	padding: 0 34px
+
+	&_header
+		display: flex
+		align-items: center
+		padding: 26px 0
+		border-bottom: 1px solid #f2f2f2
+
+	&_title
+		font-size: 20px
+		letter-spacing: 0.2px
+		text-transform: uppercase
+
+	&_label
+		display: inline-block
+		margin-left: 35px
+		padding: 10px 11px
+		border-radius: 4px
+		background-color: #81be1f
+		color: #FFF
+
+	&_text
+		padding: 19px 0 30px
+		border-top: 1px solid #f2f2f2
+		font-size: 22px
+		line-height: 1.7
+
+// Information page
+// Bordered title
+.BorderedTitle
+	font-size: 25px
+	line-height: normal
+	text-align: center
+
+	&:after
+		content: ""
+		display: block
+		width: 160px
+		height: 2px
+		margin: 21px auto 0
+		background: #81B136
+
+// Article
+.Article
+	padding: 52px 70px 34px 32px
+
+	&_text, p, ul, ol
+		font-size: 17px
+		line-height: 21px
+
+	p, li, ul, ol
+		margin-bottom: 20px
+
+		&:last-child
+			margin-bottom: 0
+
+	ul, ol
+		list-style-position: inside
+
+	a
+		color: #3389bb
+
+	&_subTitle
+		margin-top: 47px
+		margin-bottom: 50px
+
+		&:first-child
+			margin-top: 0
+			margin-bottom: 56px
+
+	&_img
+		&-right
+			float: right
+
+		&-outside
+			margin-right: -65px
+
+.PageTop
+	padding: 35px 0
+	color: #007b9f
+	font-size: 20px
+	line-height: 18px
+	text-align: center
+
+	&_link
+		position: relative
+		transition: opacity 0.2s
+
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			left: 0
+			top: 100%
+			width: 100%
+			height: 1px
+			background-color: #007b9f
+
+		&:hover
+			opacity: 0.8
+
+.form-group.required label
+	&:after
+		content: "*"
+		color: #ff0000

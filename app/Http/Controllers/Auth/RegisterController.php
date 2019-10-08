@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -71,17 +75,40 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array  $fields
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $fields)
     {
+        $fields['user']['password'] = bcrypt($fields['password']);
 
-        dd($data);
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = DB::transaction(function () use ($fields) {
+
+            /* @var $user User */
+            $user = User::create($fields['user']);
+
+            $fields['company']['creator_id'] = $user->id;
+
+            $user->companies()->create($fields['company']);
+
+            $user->assignRole(User::ROLE_PARTNER);
+
+            return $user;
+        });
+
+        return $user;
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user) ?:
+            redirect()->back()->with('success', __('register.success'));
+    }
+
 }

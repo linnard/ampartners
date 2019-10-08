@@ -3,7 +3,7 @@
 return [
     'user' => [
         'login' => 'Логін',
-        'password' => 'Придумайте пароль',
+        'password' => 'Пароль',
         'password_confirmation' => 'Повторіть пароль',
         'firstname' => 'Ім’я',
         'lastname' => 'Прізвище',

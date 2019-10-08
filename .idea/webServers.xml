@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7d8e36e3-8074-4137-9ae5-df7a07c739fb" name="ampartners DEV" url="http://iv323887.ftp.tools">
+        <fileTransfer host="iv323887.ftp.tools" port="21" rootFolder="/www">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="73fe11a0-ce12-4888-9b0d-6c69f4b0b994" name="ampartners SSH" url="http://iv323887.ftp.tools">
+        <fileTransfer host="iv323887.ftp.tools" port="22" rootFolder="/home/iv323887/ampartners.top/www" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

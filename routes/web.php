@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'adminpanel', 'namespace' => 'Adminpanel', 'middleware' => ['role:admin'] ], function () {
+    Route::get('/{any?}', 'AdminpanelController@index')->name('adminpanel.index');
+
+});
+
