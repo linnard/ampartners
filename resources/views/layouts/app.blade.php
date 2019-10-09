@@ -21,6 +21,10 @@
     @yield('content')
 </div>
 
-
+<script>
+    window.user = @json([
+            'roles'=>auth()->user()->getRoleNames()
+        ]);
+</script>
 </body>
 </html>

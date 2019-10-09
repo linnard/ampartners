@@ -87,7 +87,7 @@
         },
         mounted() {
             this.getCompanies();
-            //console.log('Component mounted.')
+            console.log(this.$authUser.roles)
         }
     }
 </script>

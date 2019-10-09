@@ -8,7 +8,9 @@ class Vacancy extends Model
 {
     protected $guarded = [];
 
-    public function vacancy(){
+    protected $attributes = ['is_active' => 1];
+
+    /*public function vacancy(){
         return $this->hasMany(Client::class);
-    }
+    }*/
 }
