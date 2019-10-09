@@ -9,7 +9,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
+import vmodal from 'vue-js-modal'
 
+Vue.use(vmodal, { dynamic: true } );
 Vue.use(VueRouter);
 
 /**
@@ -27,6 +29,7 @@ Vue.use(VueRouter);
 //Vue.component('companies', require('./components/Companies.vue').default);
 //Vue.component('vacancies', require('./components/Vacancies.vue').default);
 Vue.component('component-header', require('./components/Header.vue').default);
+
 
 import Companies from './pages/Companies';
 import Vacancies from './pages/Vacancies';

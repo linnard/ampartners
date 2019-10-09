@@ -23,12 +23,6 @@
                 <th scope="col">Viber</th>
                 <th scope="col">Сайт</th>
                 <th scope="col">Посилання на ліцензію</th>
-                <th scope="col">Сторінка компанії на FaceBook</th>
-                <th scope="col">Сторінка компанії в Instagram</th>
-                <th scope="col">Сторінка компанії на іншому ресурсі</th>
-                <th scope="col">Додаткова інформація про компанію</th>
-                <th scope="col">E-mail для повідомлень</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
             </thead>
@@ -42,38 +36,42 @@
                 <td>{{company.name}}</td>
                 <td>{{company.phone}}</td>
                 <td>{{company.viber}}</td>
-                <td>{{company.site}}</td>
-                <td>{{company.license_url}}</td>
-                <td>{{company.facebook_url}}</td>
-                <td>{{company.instagram_url}}</td>
-                <td>{{company.other_url}}</td>
-                <td>{{company.additional_info}}</td>
-                <td>{{company.email}}</td>
-
-                <td>
-                    <button type="button" class="btn btn-success" @click="enable(company.creator.id, index)" v-if="company.creator.status === 0 || company.creator.status === 2">Одобрити</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" @click="disable(company.creator.id, index)" v-if="company.creator.status === 0 || company.creator.status === 1">Відмінити</button>
-                </td>
-            </tr>
+                <td><a :href="company.site" target="_blank">{{company.license_url}}</a></td>
+                <td><a :href="company.license_url" target="_blank">{{company.license_url}}</a></td>
+                <td><button type="button" class="btn btn-info" @click="showDetails(company)">Повна інформація</button></td>
+              </tr>
 
             </tbody>
         </table>
 
+        <modals-container/>
     </div>
 </template>
 
 <script>
+
+    import CompanyDetails from "../modals/CompanyDetails";
+
     export default {
         data() {
             return {
                 companies: {},
+                company: {},
                 status: '',
                 index: '',
             }
         },
         methods: {
+            showDetails(company) {
+                this.$modal.show(CompanyDetails, {
+                    company: company
+                }, {
+                    resizable: true,
+                    scrollable: true,
+                    height: 'auto',
+                    width: 1200
+                })
+            },
             getCompanies(status = '') {
                 axios.get('/api/v1/companies', {
                     params: {
@@ -86,20 +84,7 @@
             filter() {
                 this.getCompanies(this.status);
             },
-            enable(user_id, index) {
-                axios.put('/api/v1/users/' + user_id, {
-                     status: 1
-                }).then((response) => {
-                    this.companies.splice(index, 1)
-                })
-            },
-            disable(user_id, index) {
-                axios.put('/api/v1/users/' + user_id, {
-                    status: 2
-                }).then((response) => {
-                    this.companies.splice(index, 1)
-                })
-            }
+
 
         },
         mounted() {
