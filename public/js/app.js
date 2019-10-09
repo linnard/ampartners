@@ -2147,15 +2147,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default.a,
-      editorConfig: {},
-      name: this.vacancy.name,
-      description: this.vacancy.description,
-      id: this.vacancy.id
+      editorConfig: {}
     };
   },
   methods: {
     save: function save() {
-      if (!this.name.length || !this.description.length) {
+      if (!this.vacancy.name.length || !this.vacancy.description.length) {
         Vue.notify({
           type: 'error',
           title: 'Помилка',
@@ -2164,7 +2161,7 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      if (this.id) {
+      if (this.vacancy.id) {
         this.update();
       } else {
         this.create();
@@ -2174,8 +2171,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/api/v1/vacancies', {
-        name: this.name,
-        description: this.description
+        name: this.vacancy.name,
+        description: this.vacancy.description
       }).then(function (response) {
         _this.$emit('close');
 
@@ -2185,15 +2182,15 @@ __webpack_require__.r(__webpack_exports__);
           text: 'Вакансію успішно створено!'
         });
 
-        _this.vacancies.push(response.data.vacancy);
+        _this.vacancies.unshift(response.data.vacancy);
       });
     },
     update: function update() {
       var _this2 = this;
 
-      axios.put('/api/v1/vacancies/' + this.id, {
-        name: this.name,
-        description: this.description
+      axios.put('/api/v1/vacancies/' + this.vacancy.id, {
+        name: this.vacancy.name,
+        description: this.vacancy.description
       }).then(function (response) {
         _this2.$emit('close');
 
@@ -2206,15 +2203,6 @@ __webpack_require__.r(__webpack_exports__);
         var index = _this2.vacancies.indexOf(_this2.vacancy);
 
         _this2.vacancies.splice(index, 1, response.data.vacancy);
-      });
-    },
-    updateStatus: function updateStatus(status) {
-      var _this3 = this;
-
-      axios.put('/api/v1/users/' + this.company.creator.id, {
-        status: status
-      }).then(function (response) {
-        _this3.company.creator.status = status;
       });
     }
   },
@@ -2463,7 +2451,12 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     create: function create() {
       this.$modal.show(_modals_VacancySave__WEBPACK_IMPORTED_MODULE_0__["default"], {
-        vacancies: this.vacancies
+        vacancies: this.vacancies,
+        vacancy: {
+          id: 0,
+          name: '',
+          description: ''
+        }
       }, {
         height: 500,
         width: 700
@@ -38999,19 +38992,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
+                value: _vm.vacancy.name,
+                expression: "vacancy.name"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text", id: "name" },
-            domProps: { value: _vm.name },
+            domProps: { value: _vm.vacancy.name },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.name = $event.target.value
+                _vm.$set(_vm.vacancy, "name", $event.target.value)
               }
             }
           })
@@ -39030,11 +39023,11 @@ var render = function() {
                 id: "description"
               },
               model: {
-                value: _vm.description,
+                value: _vm.vacancy.description,
                 callback: function($$v) {
-                  _vm.description = $$v
+                  _vm.$set(_vm.vacancy, "description", $$v)
                 },
-                expression: "description"
+                expression: "vacancy.description"
               }
             })
           ],

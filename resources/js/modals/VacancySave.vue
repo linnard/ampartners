@@ -4,11 +4,11 @@
         <form>
             <div class="form-group">
                 <label for="name">Назва:</label>
-                <input type="text" class="form-control" id="name" v-model="name">
+                <input type="text" class="form-control" id="name" v-model="vacancy.name">
             </div>
             <div class="form-group">
                 <label for="description">Опис:</label>
-                <ckeditor :editor="editor" :config="editorConfig" v-model="description" id="description"></ckeditor>
+                <ckeditor :editor="editor" :config="editorConfig" v-model="vacancy.description" id="description"></ckeditor>
             </div>
 
             <button type="button" @click="save()" class="btn btn-success">Зберегти</button>
@@ -35,15 +35,12 @@
             return {
                 editor: ClassicEditor,
                 editorConfig: {},
-                name: this.vacancy.name,
-                description: this.vacancy.description,
-                id: this.vacancy.id
             };
         },
         methods: {
             save() {
 
-                if (!this.name.length || !this.description.length){
+                if (!this.vacancy.name.length || !this.vacancy.description.length){
                     Vue.notify({
                         type: 'error',
                         title: 'Помилка',
@@ -52,7 +49,7 @@
                     return;
                 }
 
-                if (this.id){
+                if (this.vacancy.id){
                     this.update();
                 } else {
                     this.create();
@@ -63,8 +60,8 @@
 
             create(){
                 axios.post('/api/v1/vacancies', {
-                    name: this.name,
-                    description: this.description
+                    name: this.vacancy.name,
+                    description: this.vacancy.description
                 }).then((response) => {
 
                     this.$emit('close');
@@ -75,14 +72,14 @@
                         text: 'Вакансію успішно створено!'
                     });
 
-                    this.vacancies.push(response.data.vacancy);
+                    this.vacancies.unshift(response.data.vacancy);
                 });
             },
 
             update(){
-                axios.put('/api/v1/vacancies/' + this.id, {
-                    name: this.name,
-                    description: this.description
+                axios.put('/api/v1/vacancies/' + this.vacancy.id, {
+                    name: this.vacancy.name,
+                    description: this.vacancy.description
                 }).then((response) => {
 
                     this.$emit('close');
@@ -98,13 +95,6 @@
                 });
             },
 
-            updateStatus(status) {
-                axios.put('/api/v1/users/' + this.company.creator.id, {
-                    status: status
-                }).then((response) => {
-                    this.company.creator.status = status
-                })
-            },
         },
         mounted() {
 

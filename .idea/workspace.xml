@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2a338603-4914-4519-8b08-1d408de64035" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Vacancy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vacancy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sass/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Companies.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Companies.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/Vacancies.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Vacancies.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="25" column="3" selection-start-line="18" selection-end-line="25" selection-end-column="3" />
+            <state relative-caret-position="-892">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#278#312#0" expanded="true" />
                 <element signature="e#1176#1218#0" expanded="true" />
@@ -49,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+            <state relative-caret-position="300">
+              <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -61,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/pages/Vacancies.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="101" column="75" lean-forward="true" selection-start-line="100" selection-start-column="20" selection-end-line="101" selection-end-column="75" />
+            <state relative-caret-position="369">
+              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
               <folding>
                 <element signature="e#148#199#0" expanded="true" />
               </folding>
@@ -73,17 +66,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancyDetails.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+            <state relative-caret-position="120">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancySave.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="96" column="75" selection-start-line="96" selection-start-column="75" selection-end-line="96" selection-end-column="75" />
+            <state relative-caret-position="210">
+              <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
               <folding>
                 <element signature="e#582#628#0" expanded="true" />
               </folding>
@@ -254,9 +247,9 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/resources/js/modals/VacancyDetails.vue" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
         <option value="$PROJECT_DIR$/resources/js/pages/Vacancies.vue" />
         <option value="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
       </list>
     </option>
   </component>
@@ -585,12 +578,12 @@
       <workItem from="1570463347292" duration="16472000" />
       <workItem from="1570517836096" duration="26884000" />
       <workItem from="1570549852086" duration="13098000" />
-      <workItem from="1570609031886" duration="25325000" />
+      <workItem from="1570609031886" duration="27799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116013000" />
+    <option name="totallyTimeSpent" value="118487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -839,17 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="25" column="3" selection-start-line="18" selection-end-line="25" selection-end-column="3" />
-          <folding>
-            <element signature="e#278#312#0" expanded="true" />
-            <element signature="e#1176#1218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -933,24 +915,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        <state relative-caret-position="-892">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+          <folding>
+            <element signature="e#278#312#0" expanded="true" />
+            <element signature="e#1176#1218#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancyDetails.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/pages/Vacancies.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="101" column="75" lean-forward="true" selection-start-line="100" selection-start-column="20" selection-end-line="101" selection-end-column="75" />
+        <state relative-caret-position="369">
+          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
             <element signature="e#148#199#0" expanded="true" />
           </folding>
@@ -959,11 +945,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancySave.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="96" column="75" selection-start-line="96" selection-start-column="75" selection-end-line="96" selection-end-column="75" />
+        <state relative-caret-position="210">
+          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
           <folding>
             <element signature="e#582#628#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
         </state>
       </provider>
     </entry>

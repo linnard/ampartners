@@ -56,7 +56,12 @@
         methods: {
             create() {
                 this.$modal.show(VacancySave, {
-                    vacancies: this.vacancies
+                    vacancies: this.vacancies,
+                    vacancy: {
+                        id: 0,
+                        name: '',
+                        description: ''
+                    },
                 }, {
                     height: 500,
                     width: 700

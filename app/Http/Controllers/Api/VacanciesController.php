@@ -24,7 +24,7 @@ class VacanciesController extends Controller
     public function index(Request $request)
     {
         return response()->json([
-            'vacancies' => Vacancy::all()
+            'vacancies' => Vacancy::orderBy('id', 'desc')->get()
         ]);
     }
 
