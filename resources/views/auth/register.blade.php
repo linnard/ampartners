@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('auth.layouts.app')
 
 @section('title_page')
     AM partners - Закрита партнерська база вакансій | Реєстрація

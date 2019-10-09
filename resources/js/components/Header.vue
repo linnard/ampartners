@@ -8,7 +8,7 @@
                 <ul class="MainMenu_list">
 
                     <li class="MainMenu_item" v-for="item in $router.options.routes" :key="item.path">
-                        <router-link :to="item.path" class="MainMenu_link">{{ item.name }}</router-link>
+                        <router-link :to="item.path" class="MainMenu_link" v-if="item.permittedRoles">{{ item.name }}</router-link>
 
                         <!--<ul v-if="item.path == $router.currentRoute.path">
                             <li class="SecondaryMenu_item" v-for="child in item.children" :key="child.path">

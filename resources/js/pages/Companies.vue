@@ -36,7 +36,7 @@
                 <td>{{company.name}}</td>
                 <td>{{company.phone}}</td>
                 <td>{{company.viber}}</td>
-                <td><a :href="company.site" target="_blank">{{company.license_url}}</a></td>
+                <td><a :href="company.site" target="_blank">{{company.site}}</a></td>
                 <td><a :href="company.license_url" target="_blank">{{company.license_url}}</a></td>
                 <td><button type="button" class="btn btn-info" @click="showDetails(company)">Повна інформація</button></td>
               </tr>
@@ -56,9 +56,7 @@
         data() {
             return {
                 companies: {},
-                company: {},
                 status: '',
-                index: '',
             }
         },
         methods: {

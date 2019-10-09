@@ -17,8 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Adminpanel routes
 Route::group(['prefix' => 'adminpanel', 'namespace' => 'Adminpanel', 'middleware' => ['role:admin'] ], function () {
     Route::get('/{any?}', 'AdminpanelController@index')->name('adminpanel.index');
+
+});
+
+
+//Controlpanel routes
+Route::group(['prefix' => 'controlpanel', 'namespace' => 'Controlpanel', 'middleware' => ['role:partner'] ], function () {
+    Route::get('/{any?}', 'ControlpanelController@index')->name('controlpanel.index');
 
 });
 
