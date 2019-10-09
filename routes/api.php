@@ -17,11 +17,20 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
 
+    //Companies
     Route::get('/companies', 'CompaniesController@index')->name('companies.index');
 
-    Route::put('/users/{user}')
-        ->uses('UsersController@update')
-        ->name('api.user.update')
-        ->where('user', '[0-9]+');
+    //Users
+    Route::put('/users/{user}, UsersController@update')
+        ->where('user', '[0-9]+')
+        ->name('users.update');
+
+    //Vacancies
+    Route::post('/vacancies', 'VacanciesController@store')->name('vacancies.store');
+    Route::get('/vacancies', 'VacanciesController@index')->name('vacancies.index');
+
+    Route::put('/vacancies/{vacancy}', 'VacanciesController@update')
+        ->where('vacancy', '[0-9]+')
+        ->name('vacancies.update');
 });
 

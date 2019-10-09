@@ -16,6 +16,7 @@ Vue.use(vmodal, { dynamic: true } );
 Vue.use(VueRouter);
 Vue.use(Notifications);
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,6 +37,7 @@ Vue.component('component-header', require('./components/Header.vue').default);
 import Companies from './pages/Companies';
 import Vacancies from './pages/Vacancies';
 import Users from './pages/Users';
+import Clients from './pages/Clients';
 
 
 const routes = [
@@ -43,7 +45,7 @@ const routes = [
             path: '/adminpanel/companies',
             name: 'Компанії',
             component: Companies,
-            permittedRoles: ['admin'],
+            role: 'admin',
             children:
                 [{
                     name: 'Заявки',
@@ -69,20 +71,20 @@ const routes = [
             path: '/adminpanel/vacancies',
             name: 'Вакансії',
             component: Vacancies,
-            permittedRoles: ['admin'],
+            role: 'admin',
         },
         {
             path: '/adminpanel/users',
             name:'Користувачі',
             component: Users,
-            permittedRoles: ['admin'],
+            role: 'admin',
         },
 
         {
             path: '/controlpanel/clients',
-            name:'Користувачі',
-            component: Users,
-            permittedRoles: ['partner'],
+            name:'Працевлаштування',
+            component: Clients,
+            role: 'partner',
         },
     ];
 
@@ -91,7 +93,7 @@ const router = new VueRouter({
     routes
 });
 
-
+Vue.prototype.$authUser = window.user;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
