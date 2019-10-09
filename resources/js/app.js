@@ -10,9 +10,11 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
 import vmodal from 'vue-js-modal'
+import Notifications from 'vue-notification'
 
 Vue.use(vmodal, { dynamic: true } );
 Vue.use(VueRouter);
+Vue.use(Notifications);
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,6 +43,7 @@ const routes = [
             path: '/adminpanel/companies',
             name: 'Компанії',
             component: Companies,
+            permittedRoles: ['admin'],
             children:
                 [{
                     name: 'Заявки',
@@ -64,27 +67,31 @@ const routes = [
         },
         {
             path: '/adminpanel/vacancies',
-            name:
-                'Вакансії',
-            component:
-            Vacancies
-        }
-        ,
+            name: 'Вакансії',
+            component: Vacancies,
+            permittedRoles: ['admin'],
+        },
         {
             path: '/adminpanel/users',
-            name:
-                'Користувачі',
-            component:
-            Users
-        }
-        ,
-    ]
-;
+            name:'Користувачі',
+            component: Users,
+            permittedRoles: ['admin'],
+        },
+
+        {
+            path: '/controlpanel/clients',
+            name:'Користувачі',
+            component: Users,
+            permittedRoles: ['partner'],
+        },
+    ];
 
 const router = new VueRouter({
     mode: 'history',
     routes
 });
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

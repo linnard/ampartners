@@ -78,9 +78,13 @@ class LoginController extends Controller
             return redirect()->route('adminpanel.index');
         }
 
-        if ($user->status !== User::STATUS_ENABLED){
-            auth()->logout();
-            return redirect()->route('login')->with('message', __('auth.not_approved'));
+        if ($user->hasRole(User::ROLE_PARTNER)){
+            if ($user->status !== User::STATUS_ENABLED){
+                auth()->logout();
+                return redirect()->route('login')->with('message', __('auth.not_approved'));
+            }
+
+            return redirect()->route('controlpanel.index');
         }
 
     }
