@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title_page')
+    AM partners - Закрита партнерська база вакансій | Вхід
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title_page')
+    AM partners - Закрита партнерська база вакансій | Реєстрація
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -75,6 +79,8 @@
                                                name="password_confirmation" required>
                                     </div>
                                 </div>
+
+                                <hr>
 
 
                                 <div class="form-group required row">
@@ -317,8 +323,7 @@
                                                name="agreement" value="{{ old('agreement') }}" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="agreement" class="form-check-label">{{ __('field.agreement') }}
-                                            :</label>
+                                        <label for="agreement" class="form-check-label">{{ __('field.agreement') }}</label>
                                     </div>
 
                                 </div>
