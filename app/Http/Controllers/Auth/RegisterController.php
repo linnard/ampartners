@@ -52,7 +52,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $url_start = 'https://,http://';
+
+        $rules = [
             'user.login'      => ['required', 'string', 'max:10', 'min:3', 'unique:users,login'],
             'user.firstname'  => ['required', 'alpha', 'max:255', 'min:2'],
             'user.lastname'   => ['required', 'alpha', 'max:255', 'min:2'],
@@ -63,13 +65,15 @@ class RegisterController extends Controller
             'company.phone'   => ['required', 'numeric'],
             'company.viber'   => ['required', 'string', 'min:3'],
 
-            'company.site'          => ['nullable', 'url'],
-            'company.license_url'   => ['nullable', 'url'],
-            'company.facebook_url'  => ['nullable', 'url'],
-            'company.instagram_url' => ['nullable', 'url'],
-            'company.other_url'     => ['nullable', 'url'],
+            'company.site'          => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.license_url'   => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.facebook_url'  => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.instagram_url' => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.other_url'     => ['nullable', 'starts_with:'.$url_start,'url'],
             'company.email'         => ['nullable', 'email'],
-        ]);
+        ];
+
+        return Validator::make($data, $rules);
     }
 
     /**

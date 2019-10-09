@@ -27,7 +27,7 @@ class CompaniesController extends Controller
             });
         }
 
-        $companies = $companies->get();
+        $companies = $companies->orderBy('id', 'desc')->get();
 
         //dd($companies->toArray());
         return response()->json([

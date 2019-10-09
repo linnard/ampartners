@@ -74,11 +74,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ( $user->hasRole(User::ROLE_ADMIN) ) {
+        if ($user->hasRole(User::ROLE_ADMIN) ) {
             return redirect()->route('adminpanel.index');
         }
 
-        return redirect('/home');
+        if ($user->status !== User::STATUS_ENABLED){
+            auth()->logout();
+            return redirect()->route('login')->with('message', __('auth.not_approved'));
+        }
+
     }
 
     public function logout(Request $request)
