@@ -23,8 +23,16 @@ class VacanciesController extends Controller
 
     public function index(Request $request)
     {
+        $vacancies = Vacancy::query();
+
+        if ($request->get('is_active')){
+            $vacancies->where('is_active', Vacancy::STATUS_ENABLED);
+        }
+
+        $vacancies->orderBy('id', 'desc');
+
         return response()->json([
-            'vacancies' => Vacancy::orderBy('id', 'desc')->get()
+            'vacancies' => $vacancies->get()
         ]);
     }
 

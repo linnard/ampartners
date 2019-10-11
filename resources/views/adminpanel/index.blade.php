@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="Wrapper">
-        <component-header firstname="{{Auth::user()->firstname}}"
-                          lastname="{{Auth::user()->lastname}}"></component-header>
+        <component-header></component-header>
 
         <main class="Main">
             <div class="FilterBlock">

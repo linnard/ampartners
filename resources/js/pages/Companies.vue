@@ -87,7 +87,6 @@
         },
         mounted() {
             this.getCompanies();
-            console.log(this.$authUser.roles)
         }
     }
 </script>

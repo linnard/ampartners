@@ -11,10 +11,12 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import vmodal from 'vue-js-modal'
 import Notifications from 'vue-notification'
+import FileUpload from 'v-file-upload'
 
 Vue.use(vmodal, { dynamic: true } );
 Vue.use(VueRouter);
 Vue.use(Notifications);
+Vue.use(FileUpload);
 
 
 /**
@@ -32,7 +34,6 @@ Vue.use(Notifications);
 //Vue.component('companies', require('./components/Companies.vue').default);
 //Vue.component('vacancies', require('./components/Vacancies.vue').default);
 Vue.component('component-header', require('./components/Header.vue').default);
-
 
 import Companies from './pages/Companies';
 import Vacancies from './pages/Vacancies';

@@ -23,6 +23,8 @@
 
 <script>
     window.user = @json([
+            'firstname' => Auth::user()->firstname,
+            'lastname' => Auth::user()->lastname,
             'roles'=>auth()->user()->getRoleNames()
         ]);
 </script>

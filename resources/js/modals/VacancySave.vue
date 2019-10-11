@@ -33,8 +33,7 @@
         },
         data() {
             return {
-                editor: ClassicEditor,
-                editorConfig: {},
+                editor: ClassicEditor
             };
         },
         methods: {

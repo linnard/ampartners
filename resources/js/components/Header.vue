@@ -29,7 +29,7 @@
                         <img src="/img/user.png" alt="Фото">
                     </div>
                     <div class="Welcome_text">
-                        Привіт, <span class="Welcome_userName">{{firstname}} {{lastname}}!</span>
+                        Привіт, <span class="Welcome_userName">{{$authUser.firstname}} {{$authUser.lastname}}!</span>
                     </div>
                 </div>
 
@@ -61,7 +61,7 @@
 
 <script>
     export default {
-        props: ['firstname', 'lastname'],
+        props: [],
         methods: {
             logout(){
                 axios.post('/logout').then(function() {
@@ -72,8 +72,8 @@
         mounted() {
             //children: () => this.$router.currentRoute.children
             //console.log('Component mounted 1.');
-            console.log({router: this.$router.currentRoute.path});
-            console.log(this.firstname);
+            //console.log({router: this.$router.currentRoute.path});
+            //console.log(this.firstname);
         }
     }
 </script>

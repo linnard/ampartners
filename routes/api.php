@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 //'middleware' => ['auth:api', 'role:admin']
 
-Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth'] ], function () {
 
     //Companies
     Route::get('/companies', 'CompaniesController@index')->name('companies.index');
@@ -24,6 +24,23 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
     Route::put('/users/{user}, UsersController@update')
         ->where('user', '[0-9]+')
         ->name('users.update');
+
+    //Clients
+    Route::get('/clients', 'ClientsController@index')->name('clients.index');
+    Route::post('/clients', 'ClientsController@store')->name('clients.store');
+    Route::patch('/clients/{client}', 'ClientsController@patch')
+        ->where('client', '[0-9]+')
+        ->name('clients.patch');
+
+
+    //Property Types
+    Route::get('/properties', 'PropertiesController@index')->name('properties.index');
+    Route::put('/properties/{property}', 'PropertiesController@update')
+        ->where('property', '[0-9]+')
+        ->name('properties.update');
+
+    //Files
+    Route::post('/files', 'FilesController@upload')->name('files.upload');
 
     //Vacancies
     Route::post('/vacancies', 'VacanciesController@store')->name('vacancies.store');
