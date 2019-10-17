@@ -12,9 +12,6 @@
         props: ['vacancy'],
         methods: {
 
-        },
-        mounted() {
-
         }
     }
 </script>

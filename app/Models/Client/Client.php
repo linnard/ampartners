@@ -1,7 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Client;
 
+use App\Models\ClientProperty;
+use App\Models\Company;
+use App\Models\StatusLog;
+use App\Models\User;
+use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -34,4 +39,13 @@ class Client extends Model implements HasMedia
     public function properties(){
         return $this->hasMany(ClientProperty::class);
     }
+
+    public function logs(){
+        return $this->hasMany(StatusLog::class);
+    }
+
+    public function latest_log() {
+        return $this->hasOne(StatusLog::class)->latest();
+    }
+
 }

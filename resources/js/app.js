@@ -12,12 +12,14 @@ import VueRouter from 'vue-router'
 import vmodal from 'vue-js-modal'
 import Notifications from 'vue-notification'
 import FileUpload from 'v-file-upload'
+import Datetime from 'vue-datetime';
+import 'vue-datetime/dist/vue-datetime.css';
 
-Vue.use(vmodal, { dynamic: true } );
+Vue.use(vmodal, {dynamic: true});
 Vue.use(VueRouter);
 Vue.use(Notifications);
 Vue.use(FileUpload);
-
+Vue.use(Datetime);
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,63 +33,69 @@ Vue.use(FileUpload);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-//Vue.component('companies', require('./components/Companies.vue').default);
-//Vue.component('vacancies', require('./components/Vacancies.vue').default);
 Vue.component('component-header', require('./components/Header.vue').default);
+Vue.component('notifications-block', require('./components/NotificationsBlock.vue').default);
 
 import Companies from './pages/Companies';
 import Vacancies from './pages/Vacancies';
 import Users from './pages/Users';
-import Clients from './pages/Clients';
+import ClientCardsEditable from './pages/ClientCardsEditable';
+import ClientCards from './pages/ClientCards';
 
 
 const routes = [
-        {
-            path: '/adminpanel/companies',
-            name: 'Компанії',
-            component: Companies,
-            role: 'admin',
-            children:
-                [{
-                    name: 'Заявки',
-                    path: 'new',
-                    component: {
-                        template: '<div>Заявки</div>'
-                    }
-                }, {
-                    name: 'Активні',
-                    path: 'approved',
-                    component: {
-                        template: '<div>Активні</div>'
-                    }
-                }, {
-                    name: 'Відхилені',
-                    path: 'cancelled',
-                    component: {
-                        template: '<div>Відхилені</div>'
-                    }
-                }]
-        },
-        {
-            path: '/adminpanel/vacancies',
-            name: 'Вакансії',
-            component: Vacancies,
-            role: 'admin',
-        },
-        {
-            path: '/adminpanel/users',
-            name:'Користувачі',
-            component: Users,
-            role: 'admin',
-        },
+    {
+        path: '/adminpanel/companies',
+        name: 'Компанії',
+        component: Companies,
+        role: 'admin',
+        children:
+            [{
+                name: 'Заявки',
+                path: 'new',
+                component: {
+                    template: '<div>Заявки</div>'
+                }
+            }, {
+                name: 'Активні',
+                path: 'approved',
+                component: {
+                    template: '<div>Активні</div>'
+                }
+            }, {
+                name: 'Відхилені',
+                path: 'cancelled',
+                component: {
+                    template: '<div>Відхилені</div>'
+                }
+            }]
+    },
+    {
+        path: '/adminpanel/vacancies',
+        name: 'Вакансії',
+        component: Vacancies,
+        role: 'admin',
+    },
+    {
+        path: '/adminpanel/users',
+        name: 'Користувачі',
+        component: Users,
+        role: 'admin',
+    },
+    {
+        path: '/adminpanel/clients',
+        name: 'Працевлаштування',
+        component: ClientCards,
+        role: 'admin',
+    },
 
-        {
-            path: '/controlpanel/clients',
-            name:'Працевлаштування',
-            component: Clients,
-            role: 'partner',
-        },
-    ];
+    {
+        path: '/controlpanel/clients',
+        name: 'Працевлаштування',
+        component: ClientCardsEditable,
+        role: 'partner',
+    },
+];
 
 const router = new VueRouter({
     mode: 'history',

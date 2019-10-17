@@ -75,7 +75,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->hasRole(User::ROLE_ADMIN) ) {
-            return redirect()->route('adminpanel.index');
+            return redirect('/adminpanel/clients');
         }
 
         if ($user->hasRole(User::ROLE_PARTNER)){
@@ -84,7 +84,7 @@ class LoginController extends Controller
                 return redirect()->route('login')->with('message', __('auth.not_approved'));
             }
 
-            return redirect()->route('controlpanel.index');
+            return redirect('/controlpanel/clients');
         }
 
     }

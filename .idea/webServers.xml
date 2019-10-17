@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="73fe11a0-ce12-4888-9b0d-6c69f4b0b994" name="ampartners SSH" url="http://iv323887.ftp.tools">
-        <fileTransfer host="iv323887.ftp.tools" port="22" rootFolder="/home/iv323887/ampartners.top/www" accessType="SFTP">
+        <fileTransfer host="iv323887.ftp.tools" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

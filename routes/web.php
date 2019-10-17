@@ -27,6 +27,5 @@ Route::group(['prefix' => 'adminpanel', 'namespace' => 'Adminpanel', 'middleware
 //Controlpanel routes
 Route::group(['prefix' => 'controlpanel', 'namespace' => 'Controlpanel', 'middleware' => ['role:partner'] ], function () {
     Route::get('/{any?}', 'ControlpanelController@index')->name('controlpanel.index');
-
 });
 

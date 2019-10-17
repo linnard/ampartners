@@ -19,9 +19,14 @@ class CreateClientsTable extends Migration
             $table->integer('company_id');
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
-            $table->integer('vacancy_id')->default(0);
+            $table->integer('vacancy_id')->nullable();
             $table->text('note')->nullable();
+            $table->tinyInteger('ticket_uploaded')->default(0);
+            $table->enum('status',
+                array_values((new ReflectionClass(\App\Models\Client\Constants\Status::class))->getConstants())
+            )->default(\App\Models\Client\Constants\Status::CREATING);
 
+            $table->timestamp('complete_at')->nullable();
             $table->timestamps();
 
             $table->foreign('vacancy_id')->references('id')->on('vacancies');

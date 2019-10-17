@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Client\Client;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -43,6 +44,18 @@ class User extends Authenticatable
 
     public function companies(){
         return $this->belongsToMany(Company::class);
+    }
+
+    public function logs(){
+        return $this->hasMany(StatusLog::class);
+    }
+
+    public function clients(){
+        return $this->hasMany(Client::class);
+    }
+
+    public function unreadLogs(){
+        return $this->logs()->where('is_read', 0);
     }
 
 
