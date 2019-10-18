@@ -49,6 +49,10 @@ class ClientsController extends Controller
     {
         $clients = Client::with('user', 'company', 'properties', 'media', 'latest_log');
 
+        if ($request->get('status')){
+            $clients->where('status', $request->get('status'));
+        }
+
         $clients = $clients->orderBy('id', 'desc')->get();
 
         //dd($clients->toArray());

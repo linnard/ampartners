@@ -26,18 +26,7 @@ class StatusLog extends Model
 
     public function getStatusDescriptionAttribute()
     {
-
-        $statuses = [
-            Status::CREATING => 'Стадія створення',
-            Status::BOOKING_CONFIRMATION_EXPECTED => 'Очікує підтвердження бронювання',
-            Status::BOOKING_CONFIRMATION_REJECTED => 'Повернення',
-            Status::TICKET_EXPECTED => 'Очікує завантаження квитка',
-            Status::TICKET_CONFIRMATION_EXPECTED => 'Очікує підтвердження квитка',
-            Status::TICKET_CONFIRMATION_REJECTED => 'Повернення',
-            Status::COMPLETED => 'Успішно завершений',
-        ];
-
-        return $statuses[$this->status];
+        return __('statuses.'.$this->status);
     }
 
 }

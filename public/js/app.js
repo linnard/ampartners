@@ -3593,13 +3593,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3611,7 +3604,9 @@ __webpack_require__.r(__webpack_exports__);
       clients: {},
       property_types: {},
       reserved: '',
-      search_query: ''
+      search_query: '',
+      selected_status: 0,
+      statuses: {}
     };
   },
   methods: {
@@ -3655,7 +3650,12 @@ __webpack_require__.r(__webpack_exports__);
     getClients: function getClients() {
       var _this3 = this;
 
-      axios.get('/api/v1/clients').then(function (response) {
+      var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      axios.get('/api/v1/clients', {
+        params: {
+          status: status
+        }
+      }).then(function (response) {
         _this3.clients = response.data.clients;
       });
     },
@@ -3675,6 +3675,13 @@ __webpack_require__.r(__webpack_exports__);
         _this5.property_types = response.data.property_types;
       });
     },
+    getStatuses: function getStatuses() {
+      var _this6 = this;
+
+      axios.get('/api/v1/statuses').then(function (response) {
+        _this6.statuses = response.data.statuses;
+      });
+    },
     createWithReserve: function createWithReserve() {
       this.$modal.show('vacancyReserve', {
         reserved: this.reserved
@@ -3682,9 +3689,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    this.getVacancies();
+    this.getStatuses();
     this.getPropertyTypes();
     this.getClients();
-    this.getVacancies();
   }
 });
 
@@ -52247,6 +52255,55 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "FilterBlock" }, [
+        _c("div", { staticClass: "FilterBlock_left" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected_status,
+                  expression: "selected_status"
+                }
+              ],
+              staticClass: "form-control",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selected_status = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  function($event) {
+                    return _vm.getClients(_vm.selected_status)
+                  }
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "", selected: "" } }, [
+                _vm._v("Всі")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.statuses, function(item, index) {
+                return _c("option", { domProps: { value: index } }, [
+                  _vm._v(_vm._s(item))
+                ])
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "FilterBlock_left" }, [
           _c("div", { staticClass: "Search FilterBlock_search" }, [
             _c("input", {

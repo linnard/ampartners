@@ -1,19 +1,12 @@
 <template>
     <div>
-
         <div class="FilterBlock">
-            <!--<div class="FilterBlock_left">
-                <select id="status" @change="filter($event)" v-model="status" class="form-control">
+            <div class="FilterBlock_left">
+                <select @change="getClients(selected_status)" v-model="selected_status" class="form-control">
                     <option value="" selected>Всі</option>
-                    <option value="0">Стадія створення</option>
-                    <option value="1">Очікує підтвердження бронювання</option>
-                    <option value="2">Повернений для редагування</option>
-                    <option value="3">Очікує завантаження квитка</option>
-                    <option value="4">Очікує підтвердження квитка</option>
-                    <option value="5">Повернено для завантаження квитка</option>
-                    <option value="6">Успішно завершений</option>
+                    <option v-for="(item, index) in statuses" :value="index">{{item}}</option>
                 </select>
-            </div>-->
+            </div>
 
             <div class="FilterBlock_left">
                 <div class="Search FilterBlock_search">
@@ -106,6 +99,8 @@
                 property_types: {},
                 reserved: '',
                 search_query: '',
+                selected_status: 0,
+                statuses: {},
             }
         },
         methods: {
@@ -151,8 +146,12 @@
                 })
             },
 
-            getClients() {
-                axios.get('/api/v1/clients').then((response) => {
+            getClients(status = '') {
+                axios.get('/api/v1/clients', {
+                    params: {
+                        status: status
+                    }
+                }).then((response) => {
                     this.clients = response.data.clients;
                 })
             },
@@ -171,6 +170,12 @@
                 });
             },
 
+            getStatuses() {
+                axios.get('/api/v1/statuses').then((response) => {
+                    this.statuses = response.data.statuses;
+                });
+            },
+
             createWithReserve() {
                 this.$modal.show('vacancyReserve', {
                     reserved: this.reserved
@@ -179,9 +184,10 @@
 
         },
         mounted: function () {
+            this.getVacancies();
+            this.getStatuses();
             this.getPropertyTypes();
             this.getClients();
-            this.getVacancies();
         }
     }
 </script>

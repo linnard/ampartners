@@ -65,5 +65,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth'] ]
     //Logs
     Route::get('/logs', 'LogsController@index')->name('logs.index');
     Route::put('/logs/read', 'LogsController@read')->name('logs.read');
+
+    //Statuses
+    Route::get('/statuses', 'StatusesController@index')->name('statuses.index');
 });
 
