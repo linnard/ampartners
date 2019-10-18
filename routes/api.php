@@ -21,7 +21,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth'] ]
     Route::get('/companies', 'CompaniesController@index')->name('companies.index');
 
     //Users
-    Route::put('/users/{user}, UsersController@update')
+    Route::put('/users/{user}', 'UsersController@update')
         ->where('user', '[0-9]+')
         ->name('users.update');
 

@@ -2043,6 +2043,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   },
+  mounted: function mounted() {//console.log(this.client.complete_at);
+  },
   watch: {
     'client.status': function clientStatus(val) {//this.editable = ['creating', 'booking_confirmation_rejected'].includes(val);
     }
@@ -2219,11 +2221,100 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['client', 'property_types', 'vacancies'],
+  props: {
+    client: {},
+    property_types: {},
+    vacancies: {}
+  },
   components: {
     Documents: _modals_Documents__WEBPACK_IMPORTED_MODULE_0__["default"],
     BookingConfirmation: _modals_BookingConfirmation__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -2267,7 +2358,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       axios.patch('/api/v1/clients/' + this.client.id, _defineProperty({}, event.target.name, event.target.value)).then(function (response) {
-        _this.client = response.data.client;
+        if (['firstname', 'lastname'].includes(event.target.name)) {
+          _this.client.media = response.data.client.media;
+        }
       });
     },
     book: function book() {
@@ -2432,19 +2525,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [],
   data: function data() {
@@ -2457,7 +2537,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {//children: () => this.$router.currentRoute.children
+  mounted: function mounted() {//console.log(this.$router.currentRoute.children);
+    //children: () => this.$router.currentRoute.children
     //console.log('Component mounted 1.');
     //console.log({router: this.$router.currentRoute.path});
     //console.log(this.firstname);
@@ -3001,6 +3082,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     logs: {}
@@ -3009,7 +3095,10 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   methods: {
-    selectClient: function selectClient() {}
+    selectClient: function selectClient(id) {
+      this.$root.$emit('clientSelected', id);
+      this.$emit('close');
+    }
   }
 });
 
@@ -3420,6 +3509,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3456,7 +3555,18 @@ __webpack_require__.r(__webpack_exports__);
     getClients: function getClients() {
       var _this2 = this;
 
-      axios.get('/api/v1/clients').then(function (response) {
+      var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var statuses = ['booking_confirmation_expected', 'ticket_confirmation_expected', 'completed'];
+
+      if (status) {
+        statuses = [status];
+      }
+
+      axios.get('/api/v1/clients', {
+        params: {
+          statuses: statuses
+        }
+      }).then(function (response) {
         _this2.clients = response.data.clients;
       });
     },
@@ -3505,6 +3615,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ClientCardEditable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ClientCardEditable */ "./resources/js/components/ClientCardEditable.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3652,9 +3768,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       axios.get('/api/v1/clients', {
-        params: {
-          status: status
-        }
+        params: _objectSpread({}, status ? {
+          statuses: [status]
+        } : {})
       }).then(function (response) {
         _this3.clients = response.data.clients;
       });
@@ -3689,10 +3805,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this7 = this;
+
     this.getVacancies();
     this.getStatuses();
     this.getPropertyTypes();
     this.getClients();
+    this.$root.$on('clientSelected', function (id) {
+      _this7.search_query = 'ID' + id;
+    });
   }
 });
 
@@ -8445,7 +8566,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nselect.invalid,\ninput.invalid{\n    border-color: #e3342f;\n}\n", ""]);
+exports.push([module.i, "\nselect.invalid,\ninput.invalid {\n    border-color: #e3342f;\n}\n", ""]);
 
 // exports
 
@@ -49522,7 +49643,8 @@ var render = function() {
                   )
                 ]
               )
-            : ["ticket_confirmation_expected"].includes(_vm.client.status)
+            : ["ticket_confirmation_expected"].includes(_vm.client.status) &&
+              _vm.client.complete_at === null
             ? _c(
                 "div",
                 {
@@ -50153,7 +50275,7 @@ var render = function() {
                           "BtnOutline BtnOutline-transfer ReceiptForm_transfer",
                         on: { click: _vm.book }
                       },
-                      [_vm._v("Забронювати")]
+                      [_vm._v("Забронювати\n                ")]
                     )
                   ]
                 )
@@ -50262,6 +50384,7 @@ var render = function() {
                                       "M1.626 13.307L33.22 4.433l11.006 39.185-31.594 8.873z"
                                   }
                                 }),
+                                _vm._v(" "),
                                 _c("path", {
                                   staticClass: "fil0 str0",
                                   attrs: {
@@ -50273,6 +50396,7 @@ var render = function() {
                                       "M41.543 15.696l20.831 3.936-7.776 39.935-30.143-5.856"
                                   }
                                 }),
+                                _vm._v(" "),
                                 _c("path", {
                                   staticClass: "fil0 str0",
                                   attrs: {
@@ -50284,6 +50408,7 @@ var render = function() {
                                       "M9.768 42.383l6.816-9.023 7.007 2.784 5.76-11.04L40.68 30.96"
                                   }
                                 }),
+                                _vm._v(" "),
                                 _c("path", {
                                   staticClass: "fil0 str1",
                                   attrs: {
@@ -50293,6 +50418,7 @@ var render = function() {
                                     "stroke-width": "2.00016"
                                   }
                                 }),
+                                _vm._v(" "),
                                 _c("path", {
                                   staticClass: "fil0 str0",
                                   attrs: {
@@ -50315,7 +50441,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "StatusBlock_text" }, [
                           _vm._v(
-                            "Для отримання маршрутного листа та даних для зв'язку з координатором - завантажте фото квитка на автобус або поїзд"
+                            "Для отримання маршрутного листа та даних для зв'язку з\n                        координатором - завантажте фото квитка на автобус або поїзд\n                    "
                           )
                         ])
                       ]
@@ -50343,7 +50469,11 @@ var render = function() {
                               "BtnOutline BtnOutline-transfer StatusBlock_btn",
                             on: { click: _vm.ticketUploaded }
                           },
-                          [_vm._v("Квиток завантажено")]
+                          [
+                            _vm._v(
+                              "Квиток\n                        завантажено\n                    "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c("div", { staticClass: "StatusBlock_text" }, [
@@ -50380,6 +50510,7 @@ var render = function() {
                               fill: "#263238"
                             }
                           }),
+                          _vm._v(" "),
                           _c("path", {
                             staticClass: "SvgIco_path",
                             attrs: {
@@ -50388,6 +50519,7 @@ var render = function() {
                               fill: "#263238"
                             }
                           }),
+                          _vm._v(" "),
                           _c("path", {
                             staticClass: "SvgIco_path",
                             attrs: {
@@ -50396,6 +50528,7 @@ var render = function() {
                               fill: "#263238"
                             }
                           }),
+                          _vm._v(" "),
                           _c("g", [
                             _c("path", {
                               staticClass: "SvgIco_path",
@@ -50406,6 +50539,7 @@ var render = function() {
                               }
                             })
                           ]),
+                          _vm._v(" "),
                           _c("g", [
                             _c("path", {
                               staticClass: "SvgIco_path",
@@ -50416,6 +50550,7 @@ var render = function() {
                               }
                             })
                           ]),
+                          _vm._v(" "),
                           _c("g", [
                             _c("path", {
                               staticClass: "SvgIco_path",
@@ -50426,6 +50561,7 @@ var render = function() {
                               }
                             })
                           ]),
+                          _vm._v(" "),
                           _c("g", { attrs: { fill: "#263238" } }, [
                             _c("path", {
                               staticClass: "SvgIco_path",
@@ -50434,6 +50570,7 @@ var render = function() {
                                   "M22.364 9.636a.5.5 0 00-.707 0l-5.413 5.413a.975.975 0 01.707.707l5.413-5.413a.499.499 0 000-.707zM15.756 15.049l-6.12-6.12a.5.5 0 00-.707.707l6.12 6.12a.975.975 0 01.707-.707z"
                               }
                             }),
+                            _vm._v(" "),
                             _c("path", {
                               staticClass: "SvgIco_path",
                               attrs: {
@@ -50442,6 +50579,7 @@ var render = function() {
                               }
                             })
                           ]),
+                          _vm._v(" "),
                           _c("g", [
                             _c("path", {
                               staticClass: "SvgIco_path",
@@ -50538,7 +50676,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "StatusBlock_text" }, [
       _vm._v("Квиток завантажено. "),
       _c("br"),
-      _vm._v("Очікується підтвердження від адміністрації")
+      _vm._v("Очікується підтвердження від адміністрації\n                    ")
     ])
   }
 ]
@@ -50656,9 +50794,7 @@ var render = function() {
               }
             },
             [_vm._v("Вийти")]
-          ),
-          _vm._v(" "),
-          _vm._m(1)
+          )
         ]),
         _vm._v(" "),
         _vm.$authUser.roles.includes("partner")
@@ -50676,14 +50812,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "Welcome_userPhoto" }, [
       _c("img", { attrs: { src: "/img/user.png", alt: "Фото" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "SecondaryMenu Top_secondaryMenu" }, [
-      _c("ul", { staticClass: "SecondaryMenu_list" })
     ])
   }
 ]
@@ -51656,9 +51784,13 @@ var render = function() {
                     right: "40px",
                     top: "30px"
                   },
-                  on: { click: _vm.selectClient }
+                  on: {
+                    click: function($event) {
+                      return _vm.selectClient(log.client_id)
+                    }
+                  }
                 },
-                [_vm._v("Перейти до клієнта")]
+                [_vm._v("Перейти до клієнта\n                ")]
               )
             ]
           )
@@ -52206,21 +52338,79 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "div",
-        { staticClass: "Receipts" },
-        _vm._l(_vm.clients, function(client) {
-          return _c("client-card", {
-            key: client.id,
-            attrs: {
-              client: client,
-              property_types: _vm.property_types,
-              vacancies: _vm.vacancies
-            }
-          })
-        }),
-        1
-      ),
+      _c("div", { staticClass: "SecondaryMenu Top_secondaryMenu p-3" }, [
+        _c("ul", { staticClass: "SecondaryMenu_list" }, [
+          _c("li", { staticClass: "SecondaryMenu_item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "SecondaryMenu_link",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    return _vm.getClients("booking_confirmation_expected")
+                  }
+                }
+              },
+              [_vm._v("Заявки на бронювання")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "SecondaryMenu_item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "SecondaryMenu_link",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    return _vm.getClients("ticket_confirmation_expected")
+                  }
+                }
+              },
+              [_vm._v("Контакти з квитком")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "SecondaryMenu_item" }, [
+            _c(
+              "a",
+              {
+                staticClass: "SecondaryMenu_link",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    return _vm.getClients("completed")
+                  }
+                }
+              },
+              [_vm._v("Успішно завершені")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.clients.length
+        ? _c(
+            "div",
+            { staticClass: "Receipts" },
+            _vm._l(_vm.clients, function(client) {
+              return _c("client-card", {
+                key: client.id,
+                attrs: {
+                  client: client,
+                  property_types: _vm.property_types,
+                  vacancies: _vm.vacancies
+                }
+              })
+            }),
+            1
+          )
+        : _c("div", { staticClass: "Receipts" }, [
+            _c("div", { staticClass: "alert alert-info" }, [
+              _vm._v("Клієнтів не знайдено.")
+            ])
+          ]),
       _vm._v(" "),
       _c("notifications"),
       _vm._v(" "),
@@ -69598,7 +69788,26 @@ var routes = [{
   path: '/adminpanel/clients',
   name: 'Працевлаштування',
   component: _pages_ClientCards__WEBPACK_IMPORTED_MODULE_10__["default"],
-  role: 'admin'
+  role: 'admin',
+  children: [{
+    name: 'Заявки на бронювання',
+    path: 'new',
+    component: {
+      template: '<div>Заявки на бронювання</div>'
+    }
+  }, {
+    name: 'Контакти з квитком',
+    path: 'approved',
+    component: {
+      template: '<div>Контакти з квитком</div>'
+    }
+  }, {
+    name: 'Успішно завершені',
+    path: 'cancelled',
+    component: {
+      template: '<div>Успішно завершені</div>'
+    }
+  }]
 }, {
   path: '/controlpanel/clients',
   name: 'Працевлаштування',

@@ -10,7 +10,8 @@
 
             <div class="FilterBlock_left">
                 <div class="Search FilterBlock_search">
-                    <input class="FormText FormText-search Search_text" type="text" @keyup.enter="search" v-model="search_query" placeholder="Введіть пошуковий запит">
+                    <input class="FormText FormText-search Search_text" type="text" @keyup.enter="search"
+                           v-model="search_query" placeholder="Введіть пошуковий запит">
                     <button class="Search_btn" @click="search"></button>
                 </div>
             </div>
@@ -43,13 +44,12 @@
         </div>
 
 
-
         <div class="Receipts" v-if="clients.length">
             <client-card-editable v-for="client in clients"
-                         :key="client.id"
-                         :client="client"
-                         :property_types="property_types"
-                         :vacancies="vacancies"/>
+                                  :key="client.id"
+                                  :client="client"
+                                  :property_types="property_types"
+                                  :vacancies="vacancies"/>
         </div>
 
         <div class="Receipts" v-else>
@@ -106,7 +106,7 @@
         methods: {
 
             search() {
-                if (this.search_query.length < 3){
+                if (this.search_query.length < 3) {
                     Vue.notify({
                         type: 'error',
                         title: 'Помилка',
@@ -138,7 +138,7 @@
                 this.createCard()
             },
 
-            createCard(){
+            createCard() {
                 axios.post('/api/v1/clients', {
                     vacancy_id: this.reserved
                 }).then((response) => {
@@ -149,7 +149,7 @@
             getClients(status = '') {
                 axios.get('/api/v1/clients', {
                     params: {
-                        status: status
+                        ...(status ? { statuses: [status] } : {} )
                     }
                 }).then((response) => {
                     this.clients = response.data.clients;
@@ -188,6 +188,11 @@
             this.getStatuses();
             this.getPropertyTypes();
             this.getClients();
+
+
+            this.$root.$on('clientSelected', (id) => {
+                this.search_query = 'ID'+id;
+            });
         }
     }
 </script>

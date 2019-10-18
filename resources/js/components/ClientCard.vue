@@ -88,7 +88,7 @@
                 <button @click="rejectBook" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
             </div>
 
-            <div class="ReceiptForm_column ReceiptForm_column-buttons" v-else-if="(['ticket_confirmation_expected'].includes(client.status))">
+            <div class="ReceiptForm_column ReceiptForm_column-buttons" v-else-if="(['ticket_confirmation_expected'].includes(client.status) && client.complete_at === null)">
                 <button @click="confirmTicket" class="BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn">Підтвердити квиток</button>
                 <button @click="rejectTicket" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
             </div>
@@ -176,6 +176,9 @@
                 });
             },
 
+        },
+        mounted(){
+            //console.log(this.client.complete_at);
         },
         watch: {
             'client.status': function (val) {

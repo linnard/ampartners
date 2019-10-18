@@ -20,7 +20,7 @@
 
                         <!--<ul v-if="item.path == $router.currentRoute.path">
                             <li class="SecondaryMenu_item" v-for="child in item.children" :key="child.path">
-                                <router-link :to="item.path+'/'+child.path">{{ child.name }}</router-link>
+                                <a :to="item.path+'/'+child.path">{{ child.name }}</a>
                             </li>
                         </ul>-->
 
@@ -43,20 +43,7 @@
 
                 <a class="Link Top_logout" href="javascript:;" @click="logout()">Вийти</a>
 
-                <div class="SecondaryMenu Top_secondaryMenu">
-                    <ul class="SecondaryMenu_list">
 
-                        <!--<li class="SecondaryMenu_item" v-for="child in $router.currentRoute.children" :key="child.path">
-                            <router-link :to="child.path">{{ child.name }}</router-link>
-                        </li>-->
-
-
-                        <!-- <li class="SecondaryMenu_item"><a href="#" class="SecondaryMenu_link">Всі контакти <span class="Number SecondaryMenu_number">4</span></a></li>
-                         <li class="SecondaryMenu_item"><a href="#" class="SecondaryMenu_link">Заявки на бронювання</a></li>
-                         <li class="SecondaryMenu_item"><a href="#" class="SecondaryMenu_link">Контакти з квитком</a></li>
-                         <li class="SecondaryMenu_item"><a href="#" class="SecondaryMenu_link">Успішно завершені</a></li>-->
-                    </ul>
-                </div>
             </div>
 
 
@@ -83,6 +70,8 @@
             },
         },
         mounted() {
+            //console.log(this.$router.currentRoute.children);
+
             //children: () => this.$router.currentRoute.children
             //console.log('Component mounted 1.');
             //console.log({router: this.$router.currentRoute.path});

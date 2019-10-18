@@ -10,6 +10,7 @@ use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Illuminate\Database\Eloquent\Builder;
 
 class Client extends Model implements HasMedia
 {
@@ -23,6 +24,14 @@ class Client extends Model implements HasMedia
         'vacancy_id' => 0,
         'note' => ''
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('id', 'desc');
+        });
+    }
 
     public function vacancy(){
         return $this->hasOne(Vacancy::class);

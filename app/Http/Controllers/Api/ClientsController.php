@@ -40,6 +40,7 @@ class ClientsController extends Controller
         event(new StatusUpdated($client));
 
         $client->load('user', 'company', 'properties', 'media');
+
         return response()->json([
             'client' => $client
         ]);
@@ -47,13 +48,17 @@ class ClientsController extends Controller
 
     public function index(Request $request)
     {
-        $clients = Client::with('user', 'company', 'properties', 'media', 'latest_log');
+        $user = \Auth::user();
 
-        if ($request->get('status')){
-            $clients->where('status', $request->get('status'));
+        $clients = $user->getVisibleClients();
+
+        if ($request->get('statuses')){
+            $clients->whereIn('status', $request->get('statuses'));
         }
 
-        $clients = $clients->orderBy('id', 'desc')->get();
+        $clients = $clients->get();
+
+        $clients->load('user', 'company', 'properties', 'media', 'latest_log');
 
         //dd($clients->toArray());
         return response()->json([
@@ -189,13 +194,20 @@ class ClientsController extends Controller
         $user = \Auth::user();
         $s = $request->input('query');
 
-        $clients = $user->clients()->where(function ($q) use ($s) {
-            $q->where('firstname', 'LIKE', '%' . $s . '%');
-            $q->orWhere('lastname', 'LIKE', '%' . $s . '%');
-            $q->orWhere('note', 'LIKE', '%' . $s . '%');
-        })->orWhereHas('properties', function ($q) use ($s) {
-            $q->where('value', 'LIKE', '%' . $s . '%');
-        })->get();
+        if (strpos($s, 'ID') !== false) {
+            $id = preg_replace("/[^0-9]/", "", $s);
+            $clients = $user->clients()->where('id', $id)->get();
+        } else {
+            $clients = $user->clients()->where(function ($q) use ($s) {
+                $q->where('firstname', 'LIKE', '%' . $s . '%');
+                $q->orWhere('lastname', 'LIKE', '%' . $s . '%');
+                $q->orWhere('note', 'LIKE', '%' . $s . '%');
+            })->orWhereHas('properties', function ($q) use ($s) {
+                $q->where('value', 'LIKE', '%' . $s . '%');
+            })->get();
+        }
+
+
 
         if ($clients->count()){
             $clients->load('user', 'company', 'properties', 'media', 'latest_log');

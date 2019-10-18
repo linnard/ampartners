@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index(Request $request)
     {
-
+        echo 'ok';
     }
 
     public function update(UpdateRequest $request, User $user)

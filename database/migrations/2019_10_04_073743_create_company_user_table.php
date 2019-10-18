@@ -14,14 +14,14 @@ class CreateCompanyUserTable extends Migration
     public function up()
     {
         Schema::create('company_user', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned()->index();
-            $table->integer('user_id')->unsigned()->index();
+            $table->unsignedBigInteger('company_id')->index();
+            $table->unsignedBigInteger('user_id')->index();
 
             $table->foreign('company_id')->references('id')
-                ->on('companies')->onDelete('cascade');
+                ->on('companies');
 
             $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
+                ->on('users');
         });
     }
 

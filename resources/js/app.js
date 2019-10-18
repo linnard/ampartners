@@ -87,6 +87,26 @@ const routes = [
         name: 'Працевлаштування',
         component: ClientCards,
         role: 'admin',
+        children:
+            [{
+                name: 'Заявки на бронювання',
+                path: 'new',
+                component: {
+                    template: '<div>Заявки на бронювання</div>'
+                }
+            }, {
+                name: 'Контакти з квитком',
+                path: 'approved',
+                component: {
+                    template: '<div>Контакти з квитком</div>'
+                }
+            }, {
+                name: 'Успішно завершені',
+                path: 'cancelled',
+                component: {
+                    template: '<div>Успішно завершені</div>'
+                }
+            }]
     },
 
     {

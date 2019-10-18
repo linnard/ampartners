@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->integer('company_id');
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
-            $table->integer('vacancy_id')->nullable();
+            $table->unsignedBigInteger('vacancy_id')->nullable();
             $table->text('note')->nullable();
             $table->tinyInteger('ticket_uploaded')->default(0);
             $table->enum('status',

@@ -58,5 +58,13 @@ class User extends Authenticatable
         return $this->logs()->where('is_read', 0);
     }
 
+    public function getVisibleClients()
+    {
+        if ($this->hasRole(static::ROLE_ADMIN)) {
+            return Client::query();
+        }
+
+        return $this->clients()->getQuery();
+    }
 
 }

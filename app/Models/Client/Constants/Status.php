@@ -11,5 +11,5 @@ interface Status
     const TICKET_CONFIRMATION_EXPECTED  = 'ticket_confirmation_expected'; //Панель админа. Ожидается проверка билета админом
     const TICKET_CONFIRMATION_REJECTED  = 'ticket_confirmation_rejected'; //Панель партнера. Возможность загрузить другой билет
     const COMPLETED = 'completed'; //Успешно завершен
-
 }
+

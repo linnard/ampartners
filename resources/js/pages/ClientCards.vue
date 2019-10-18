@@ -1,8 +1,14 @@
 <template>
     <div>
+        <div class="SecondaryMenu Top_secondaryMenu p-3">
+            <ul class="SecondaryMenu_list">
+                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('booking_confirmation_expected')" class="SecondaryMenu_link">Заявки на бронювання<!--<span class="Number SecondaryMenu_number">4</span>--></a></li>
+                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('ticket_confirmation_expected')" class="SecondaryMenu_link">Контакти з квитком</a></li>
+                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('completed')" class="SecondaryMenu_link">Успішно завершені</a></li>
+            </ul>
+        </div>
 
-        <div class="Receipts">
-
+        <div class="Receipts" v-if="clients.length">
             <client-card v-for="client in clients"
                          :key="client.id"
                          :client="client"
@@ -11,9 +17,13 @@
 
         </div>
 
+        <div class="Receipts" v-else>
+            <div class="alert alert-info">Клієнтів не знайдено.</div>
+
+        </div>
+
         <notifications/>
         <modals-container/>
-
     </div>
 </template>
 
@@ -55,8 +65,23 @@
                 })
             },
 
-            getClients() {
-                axios.get('/api/v1/clients').then((response) => {
+            getClients(status = '') {
+
+                var statuses = [
+                    'booking_confirmation_expected',
+                    'ticket_confirmation_expected',
+                    'completed'
+                ];
+
+                if (status){
+                    statuses = [status];
+                }
+
+                axios.get('/api/v1/clients', {
+                    params: {
+                        statuses: statuses
+                    }
+                }).then((response) => {
                     this.clients = response.data.clients;
                 })
             },
