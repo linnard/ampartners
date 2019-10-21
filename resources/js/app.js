@@ -124,6 +124,12 @@ const router = new VueRouter({
 
 Vue.prototype.$authUser = window.user;
 
+axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'Authorization': 'Bearer ' + window.user.apiToken,
+};
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

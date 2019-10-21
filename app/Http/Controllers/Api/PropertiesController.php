@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClientProperty\UpdateRequest;
 use App\Models\Client;
 use App\Models\ClientProperty;
 use App\Models\PropertyType;
@@ -18,15 +19,14 @@ class PropertiesController extends Controller
         ]);
     }
 
-    public function update(Request $request, ClientProperty $property)
+    public function update(UpdateRequest $request, ClientProperty $property)
     {
-        $property->update([
-            'type_id' => $request->input('type_id'),
-            'value' => $request->input('value')
-        ]);
+        $this->authorize('update', $property);
+
+        $property->update($request->validated());
 
         return response()->json([
-            'vacancy' => $property
+            'property' => $property
         ]);
 
     }

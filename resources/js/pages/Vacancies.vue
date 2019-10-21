@@ -50,7 +50,7 @@
                 vacancies: {},
                 status: '',
                 status_enabled: 1,
-                status_disabled: 0,
+                status_disabled: 0
             }
         },
         methods: {

@@ -14,6 +14,8 @@ class VacanciesController extends Controller
 {
     public function store(StoreRequest $request)
     {
+        $this->authorize('create', Vacancy::class);
+
         $vacancy = Vacancy::create($request->validated());
 
         return response()->json([
@@ -38,6 +40,8 @@ class VacanciesController extends Controller
 
     public function update(UpdateRequest $request, Vacancy $vacancy)
     {
+        $this->authorize('update', $vacancy);
+
         $vacancy->update($request->validated());
 
         return response()->json([

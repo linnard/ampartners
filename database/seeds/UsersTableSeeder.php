@@ -15,7 +15,8 @@ class UsersTableSeeder extends Seeder
         /*@var $user User */
        $user = User::create([
            'login' => 'admin',
-           'password' => bcrypt('1111'),
+           'password' => bcrypt('bbM!4)hjU;7SA75'),
+           'api_token' => \Illuminate\Support\Str::random(60),
            'firstname' => 'Вадим',
            'lastname' => 'Гавриляк',
            'patronymic' => 'Юрьевич',
@@ -23,7 +24,7 @@ class UsersTableSeeder extends Seeder
            'remember_token' => Str::random(10),
        ]);
 
-       $user->assignRole(User::ROLE_ADMIN);
+       $user->assignRole(\App\Constants\User\Role::ADMIN);
     }
 
 

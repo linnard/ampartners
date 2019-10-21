@@ -2934,7 +2934,7 @@ __webpack_require__.r(__webpack_exports__);
     updateStatus: function updateStatus(status) {
       var _this = this;
 
-      axios.put('/api/v1/users/' + this.company.creator.id, {
+      axios.put('/api/v1/users/' + this.company.creator.id + '/status', {
         status: status
       }).then(function (response) {
         _this.company.creator.status = status;
@@ -3000,16 +3000,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       fileTypeLabel: label,
       uploader: {
-        url: '/api/v1/files',
+        url: '/api/v1/clients/' + this.client.id + '/file',
         accept: '.jpg,.png,.pdf',
         headers: {
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          'Authorization': 'Bearer ' + this.$authUser.apiToken
         },
         label: 'Завантажити ' + label,
         uploadingLabel: 'Завантаження',
-        data: {
-          client_id: this.client.id
-        }
+        data: {}
       }
     };
   },
@@ -3416,7 +3415,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default.a
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_1___default.a,
+      editorConfig: {}
     };
   },
   methods: {
@@ -3829,6 +3829,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modals_CompanyDetails__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modals/CompanyDetails */ "./resources/js/modals/CompanyDetails.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3903,15 +3909,12 @@ __webpack_require__.r(__webpack_exports__);
 
       var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       axios.get('/api/v1/companies', {
-        params: {
+        params: _objectSpread({}, status ? {
           status: status
-        }
+        } : {})
       }).then(function (response) {
         _this.companies = response.data.companies;
       });
-    },
-    filter: function filter() {
-      this.getCompanies(this.status);
     }
   },
   mounted: function mounted() {
@@ -51570,7 +51573,11 @@ var render = function() {
                 staticClass: "btn btn-success",
                 attrs: {
                   target: "_blank",
-                  href: "/api/v1/clients/" + _vm.client.id + "/files"
+                  href:
+                    "/api/v1/clients/" +
+                    _vm.client.id +
+                    "/files?api_token=" +
+                    _vm.$authUser.apiToken
                 }
               },
               [
@@ -51634,7 +51641,14 @@ var render = function() {
                   bottom: "5px",
                   right: "5px"
                 },
-                attrs: { target: "_blank", href: "/api/v1/files/" + file.id }
+                attrs: {
+                  target: "_blank",
+                  href:
+                    "/api/v1/files/" +
+                    file.id +
+                    "?api_token=" +
+                    _vm.$authUser.apiToken
+                }
               },
               [_c("i", { staticClass: "fas fa-download" })]
             )
@@ -52784,7 +52798,7 @@ var render = function() {
                     : $$selectedVal[0]
                 },
                 function($event) {
-                  return _vm.filter($event)
+                  return _vm.getCompanies(_vm.status)
                 }
               ]
             }
@@ -69819,6 +69833,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes
 });
 Vue.prototype.$authUser = window.user;
+axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'Authorization': 'Bearer ' + window.user.apiToken
+};
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

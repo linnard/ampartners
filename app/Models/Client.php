@@ -1,12 +1,7 @@
 <?php
 
-namespace App\Models\Client;
+namespace App\Models;
 
-use App\Models\ClientProperty;
-use App\Models\Company;
-use App\Models\StatusLog;
-use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;

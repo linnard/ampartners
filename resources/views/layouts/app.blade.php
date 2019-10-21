@@ -23,11 +23,13 @@
 </div>
 
 <script>
-    window.user = @json([
-            'firstname' => Auth::user()->firstname,
-            'lastname' => Auth::user()->lastname,
-            'roles'=>auth()->user()->getRoleNames()
-        ]);
+    window.user = {!! json_encode([
+        'firstname' => Auth::user()->firstname,
+        'lastname' => Auth::user()->lastname,
+        'roles'=>auth()->user()->getRoleNames(),
+        'apiToken'=>auth()->user()->api_token ?? null,
+   ]) !!};
+
 </script>
 </body>
 </html>

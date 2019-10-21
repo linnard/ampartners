@@ -25,8 +25,8 @@ class UploadRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'mimes:jpeg,png,pdf',
-            'client_id' => 'exists:clients,id',
+            'file' => 'required|mimes:jpeg,png,pdf',
+           // 'client_id' => 'required|exists:clients,id',
         ];
     }
 }

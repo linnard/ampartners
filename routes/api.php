@@ -15,58 +15,45 @@ use Illuminate\Http\Request;
 
 //'middleware' => ['auth:api', 'role:admin']
 
-Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth'] ], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api'] ], function () {
+
+    //Route::get('/clear', 'ClearController@clear');
 
     //Companies
-    Route::get('/companies', 'CompaniesController@index')->name('companies.index');
+    Route::get('/companies', 'CompaniesController@index');
 
     //Users
-    Route::put('/users/{user}', 'UsersController@update')
-        ->where('user', '[0-9]+')
-        ->name('users.update');
+    Route::put('/users/{user}', 'UsersController@update') ->where('user', '[0-9]+');
+    Route::put('/users/{user}/status', 'UsersController@updateStatus')->where('user', '[0-9]+');
 
     //Clients
-    Route::get('/clients', 'ClientsController@index')->name('clients.index');
-    Route::post('/clients', 'ClientsController@store')->name('clients.store');
-    Route::post('/clients/search', 'ClientsController@search')->name('clients.search');
-    Route::post('/clients/{client}/complete', 'ClientsController@complete')
-        ->where('client', '[0-9]+')
-        ->name('clients.complete');
-    Route::get('/clients/{client}/files', 'ClientsController@downloadZip')
-        ->where('client', '[0-9]+')
-        ->name('client.downloadZip');
-    Route::put('/clients/{client}/status', 'ClientsController@updateStatus')
-        ->where('client', '[0-9]+')
-        ->name('clients.status.update');
-    Route::patch('/clients/{client}', 'ClientsController@patch')
-        ->where('client', '[0-9]+')
-        ->name('clients.patch');
-
+    Route::get('/clients', 'ClientsController@index');
+    Route::post('/clients', 'ClientsController@store');
+    Route::post('/clients/search', 'ClientsController@search');
+    Route::post('/clients/{client}/complete', 'ClientsController@complete')->where('client', '[0-9]+');
+    Route::get('/clients/{client}/files', 'ClientsController@downloadZip')->where('client', '[0-9]+');
+    Route::put('/clients/{client}/status', 'ClientsController@updateStatus')->where('client', '[0-9]+');
+    Route::patch('/clients/{client}', 'ClientsController@patch')->where('client', '[0-9]+');
+    Route::post('/clients/{client}/file', 'ClientsController@upload')->where('client', '[0-9]+');
 
     //Property Types
-    Route::get('/properties', 'PropertiesController@index')->name('properties.index');
-    Route::put('/properties/{property}', 'PropertiesController@update')
-        ->where('property', '[0-9]+')
-        ->name('properties.update');
+    Route::get('/properties', 'PropertiesController@index');
+    Route::put('/properties/{property}', 'PropertiesController@update')->where('property', '[0-9]+');
 
     //Files
-    Route::post('/files', 'FilesController@upload')->name('file.upload');
-    Route::get('/files/{file}', 'FilesController@download')->name('file.download');
-    Route::delete('/files/{file}', 'FilesController@delete')->name('file.delete');
+    Route::get('/files/{file}', 'FilesController@download');
+    Route::delete('/files/{file}', 'FilesController@delete');
 
     //Vacancies
-    Route::post('/vacancies', 'VacanciesController@store')->name('vacancies.store');
-    Route::get('/vacancies', 'VacanciesController@index')->name('vacancies.index');
-
-    Route::put('/vacancies/{vacancy}', 'VacanciesController@update')
-        ->where('vacancy', '[0-9]+')
-        ->name('vacancies.update');
+    Route::post('/vacancies', 'VacanciesController@store');
+    Route::get('/vacancies', 'VacanciesController@index');
+    Route::put('/vacancies/{vacancy}', 'VacanciesController@update')->where('vacancy', '[0-9]+');
 
     //Logs
-    Route::get('/logs', 'LogsController@index')->name('logs.index');
-    Route::put('/logs/read', 'LogsController@read')->name('logs.read');
+    Route::get('/logs', 'LogsController@index');
+    Route::put('/logs/read', 'LogsController@read');
 
     //Statuses
-    Route::get('/statuses', 'StatusesController@index')->name('statuses.index');
+    Route::get('/statuses', 'StatusesController@index');
 });
 

@@ -3,40 +3,36 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Company\IndexRequest;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
-    public function index(Request $request)
+    public function index(IndexRequest $request)
     {
 
-        $status = $request->get('status');
-        $statuses = [
-            User::STATUS_ENABLED,
-            User::STATUS_DISABLED,
-            User::STATUS_REJECTED,
-        ];
+        $user   = \Auth::user();
 
-        $companies = Company::with('creator');
+        /* @var $companies Company */
+        $companies = $user->getVisibleCompanies();
 
-        if ($status != null && in_array($status, $statuses)) {
+        if ($request->has('status')) {
+            $status = $request->get('status');
             $companies = $companies->whereHas('creator', function ($q) use ($status) {
                 $q->where('status', $status);
             });
         }
 
         $companies = $companies->orderBy('id', 'desc')->get();
+        $companies->load('creator');
 
         //dd($companies->toArray());
+
         return response()->json([
             'companies' => $companies
         ]);
     }
 
-    /*public function update(UpdateCompanyRequest $request, User $user)
-    {
-
-    }*/
 }

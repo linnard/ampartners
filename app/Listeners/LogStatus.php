@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\Client;
-use App\Models\Client\Constants\Status;
+use App\Constants\Client\Status;
 use App\Models\StatusLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Queue\ShouldQueue;

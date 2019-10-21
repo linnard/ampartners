@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Constants\User\Role;
+use App\Constants\User\Status;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -27,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -74,12 +76,12 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->hasRole(User::ROLE_ADMIN) ) {
+        if ($user->hasRole(Role::ADMIN) ) {
             return redirect('/adminpanel/clients');
         }
 
-        if ($user->hasRole(User::ROLE_PARTNER)){
-            if ($user->status !== User::STATUS_ENABLED){
+        if ($user->hasRole(Role::PARTNER)){
+            if ($user->status !== Status::ENABLED){
                 auth()->logout();
                 return redirect()->route('login')->with('message', __('auth.not_approved'));
             }

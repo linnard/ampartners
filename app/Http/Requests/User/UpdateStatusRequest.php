@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\User;
 
-use App\Constants\Client\Status;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Constants\User\Status;
 use App\Service\Common\ConstantResolverService;
+use Illuminate\Foundation\Http\FormRequest;
+
 
 class UpdateStatusRequest extends FormRequest
 {
@@ -32,10 +33,9 @@ class UpdateStatusRequest extends FormRequest
                     (new ConstantResolverService())
                         ->resolve(Status::class)
                         ->collect()
-                        ->except([Status::COMPLETED])
                         ->implode(',')
                 )
-            ]
+            ],
         ];
     }
 }

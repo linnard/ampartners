@@ -1,6 +1,6 @@
 <?php
 
-use \App\Models\Client\Constants\Status;
+use \App\Constants\Client\Status;
 
 return [
     Status::CREATING => 'Стадія створення',

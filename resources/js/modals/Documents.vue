@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid p-5">
         <div class="text-center">
-            <a class="btn btn-success" target="_blank" :href="'/api/v1/clients/'+client.id+'/files'" v-if="client.media.length">Скачати все <i class="fas fa-download"></i>
+            <a class="btn btn-success" target="_blank" :href="'/api/v1/clients/'+client.id+'/files?api_token='+$authUser.apiToken" v-if="client.media.length">Скачати все <i class="fas fa-download"></i>
             </a>
         </div>
 
@@ -17,7 +17,7 @@
 
                 <button style="position:absolute; bottom:5px; left: 5px" class="btn btn-danger" @click="remove(file.id, index)"  v-if="(['booking_confirmation_rejected','creating'].includes(client.status))"><i
                         class="fas fa-trash"></i></button>
-                <a style="position:absolute; bottom:5px; right: 5px" class="btn btn-success" target="_blank" :href="'/api/v1/files/'+file.id"><i
+                <a style="position:absolute; bottom:5px; right: 5px" class="btn btn-success" target="_blank" :href="'/api/v1/files/'+file.id+'?api_token='+$authUser.apiToken"><i
                         class="fas fa-download"></i></a>
 
             </div>
@@ -44,16 +44,15 @@
             return {
                 fileTypeLabel: label,
                 uploader: {
-                    url: '/api/v1/files',
+                    url: '/api/v1/clients/'+ this.client.id +'/file',
                     accept: '.jpg,.png,.pdf',
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Authorization': 'Bearer ' + this.$authUser.apiToken
                     },
                     label: 'Завантажити ' + label,
                     uploadingLabel: 'Завантаження',
-                    data: {
-                        client_id: this.client.id
-                    }
+                    data: {}
                 }
             };
         },

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Constants\User\Role;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -85,6 +87,7 @@ class RegisterController extends Controller
     protected function create(array $fields)
     {
         $fields['user']['password'] = bcrypt($fields['password']);
+        $fields['user']['api_token'] = Str::random(60);
 
         $user = DB::transaction(function () use ($fields) {
 
@@ -95,7 +98,7 @@ class RegisterController extends Controller
 
             $user->companies()->create($fields['company']);
 
-            $user->assignRole(User::ROLE_PARTNER);
+            $user->assignRole(Role::PARTNER);
 
             return $user;
         });

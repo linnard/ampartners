@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Company;
 
-use App\Constants\Client\Status;
+use App\Constants\User\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Service\Common\ConstantResolverService;
 
-class UpdateStatusRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +27,10 @@ class UpdateStatusRequest extends FormRequest
     {
         return [
             'status' => [
-                'required',
                 sprintf("in:%s",
                     (new ConstantResolverService())
                         ->resolve(Status::class)
                         ->collect()
-                        ->except([Status::COMPLETED])
                         ->implode(',')
                 )
             ]

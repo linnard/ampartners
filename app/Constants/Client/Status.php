@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Client\Constants;
+namespace App\Constants\Client;
 
 interface Status
 {

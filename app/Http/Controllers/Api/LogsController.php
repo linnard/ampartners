@@ -2,16 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\Client\StatusUpdated;
 use App\Http\Controllers\Controller;
-
-use App\Http\Requests\Client\PatchRequest;
-use App\Http\Requests\Client\StoreRequest;
-use App\Http\Requests\Client\UpdateStatusRequest;
-use App\Models\Client\Client;
-use App\Models\Client\Constants\Status;
-use App\Models\StatusLog;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

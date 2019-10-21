@@ -12,8 +12,8 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // this can be done as separate statements
-        $partner  = Role::create(['name' => \App\Models\User::ROLE_PARTNER]);
-        $operator = Role::create(['name' => \App\Models\User::ROLE_ADMIN]);
+        $partner  = Role::create(['name' => \App\Constants\User\Role::PARTNER]);
+        $operator = Role::create(['name' => \App\Constants\User\Role::ADMIN]);
 
 
         // create partner permissions

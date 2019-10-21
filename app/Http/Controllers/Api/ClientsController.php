@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Constants\User\Role;
 use App\Events\Client\StatusUpdated;
 use App\Http\Controllers\Controller;
 
@@ -9,13 +10,13 @@ use App\Http\Requests\Client\CompleteRequest;
 use App\Http\Requests\Client\PatchRequest;
 use App\Http\Requests\Client\StoreRequest;
 use App\Http\Requests\Client\UpdateStatusRequest;
+use App\Http\Requests\File\UploadRequest;
 use App\Jobs\SetClientCompleted;
-use App\Models\Client\Client;
-use App\Models\Client\Constants\Status;
-use App\Models\User;
+use App\Models\Client;
+use App\Constants\Client\Status;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaStream;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -68,6 +69,8 @@ class ClientsController extends Controller
 
     public function patch(PatchRequest $request, Client $client)
     {
+        $this->authorize('update', $client);
+
         $client->update($request->validated());
 
         if ($client->wasChanged(['firstname', 'lastname'])){
@@ -99,6 +102,8 @@ class ClientsController extends Controller
 
     public function updateStatus(UpdateStatusRequest $request, Client $client)
     {
+        $this->authorize('updateStatus', $client);
+
         $status = $request->input('status');
         $comment = $request->input('comment');
         $current_status = $client->status;
@@ -110,21 +115,21 @@ class ClientsController extends Controller
                     Status::CREATING,
                     Status::BOOKING_CONFIRMATION_REJECTED
                 ];
-                $role = User::ROLE_PARTNER;
+                $role = Role::PARTNER;
                 break;
 
             case Status::BOOKING_CONFIRMATION_REJECTED:
                 $previous = [
                     Status::BOOKING_CONFIRMATION_EXPECTED,
                 ];
-                $role = User::ROLE_ADMIN;
+                $role = Role::ADMIN;
                 break;
 
             case Status::TICKET_EXPECTED:
                 $previous = [
                     Status::BOOKING_CONFIRMATION_EXPECTED,
                 ];
-                $role = User::ROLE_ADMIN;
+                $role = Role::ADMIN;
                 break;
 
             case Status::TICKET_CONFIRMATION_EXPECTED:
@@ -132,14 +137,14 @@ class ClientsController extends Controller
                     Status::TICKET_EXPECTED,
                     Status::TICKET_CONFIRMATION_REJECTED,
                 ];
-                $role = User::ROLE_PARTNER;
+                $role = Role::PARTNER;
                 break;
 
             case Status::TICKET_CONFIRMATION_REJECTED:
                 $previous = [
                     Status::TICKET_CONFIRMATION_EXPECTED
                 ];
-                $role = User::ROLE_ADMIN;
+                $role = Role::ADMIN;
                 break;
         }
 
@@ -165,9 +170,7 @@ class ClientsController extends Controller
 
     public function complete(CompleteRequest $request, Client $client)
     {
-        $user = \Auth::user();
-
-        if (!$user->hasRole('admin')) return response()->json([], 403);
+        $this->authorize('complete', $client);
 
         $comment = $request->input('comment');
 
@@ -196,9 +199,9 @@ class ClientsController extends Controller
 
         if (strpos($s, 'ID') !== false) {
             $id = preg_replace("/[^0-9]/", "", $s);
-            $clients = $user->clients()->where('id', $id)->get();
+            $clients = $user->getVisibleClients()->where('id', $id)->get();
         } else {
-            $clients = $user->clients()->where(function ($q) use ($s) {
+            $clients = $user->getVisibleClients()->where(function ($q) use ($s) {
                 $q->where('firstname', 'LIKE', '%' . $s . '%');
                 $q->orWhere('lastname', 'LIKE', '%' . $s . '%');
                 $q->orWhere('note', 'LIKE', '%' . $s . '%');
@@ -206,8 +209,6 @@ class ClientsController extends Controller
                 $q->where('value', 'LIKE', '%' . $s . '%');
             })->get();
         }
-
-
 
         if ($clients->count()){
             $clients->load('user', 'company', 'properties', 'media', 'latest_log');
@@ -220,10 +221,47 @@ class ClientsController extends Controller
 
     public function downloadZip(Client $client)
     {
+        $this->authorize('downloadZip', $client);
+
         $downloads = $client->getMedia('');
         $filename = $client->firstname.' '.$client->lastname.'.zip';
         return MediaStream::create($filename)->addMedia($downloads);
     }
 
+    public function upload(UploadRequest $request, Client $client)
+    {
+        $this->authorize('uploadDocs', $client);
 
+        $user = Auth::user();
+        $file = $request->file('file');
+        $ext  = $file->getClientOriginalExtension();
+        $collection = 'documents';
+        $mediaCount = $client->media->count();
+
+        if ($client->firstname && $client->lastname) {
+            $name = $client->firstname . ' ' . $client->lastname;
+            //$this->renameDocs($client, $date);
+        } else {
+            $name = date('d-m-y') . '-' . str_replace('.', '-', microtime());
+        }
+
+        $file_name = $mediaCount ? $name . $mediaCount : $name;
+
+        if (in_array($client->status, [Status::TICKET_CONFIRMATION_REJECTED, Status::TICKET_EXPECTED])) {
+            $collection = 'tickets';
+            if (!$client->ticket_uploaded) {
+                $client->ticket_uploaded = 1;
+                $client->save();
+            }
+        }
+
+        $media = $client->addMediaFromRequest('file')
+            ->withCustomProperties(['user_id' => $user->id])
+            ->setFileName($file_name.'.'.$ext)
+            ->toMediaCollection($collection);
+
+        return response()->json([
+            'media' => $media,
+        ]);
+    }
 }

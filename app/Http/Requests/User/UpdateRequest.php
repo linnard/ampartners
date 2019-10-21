@@ -25,7 +25,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'nullable|in:1,2',
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',
+            'patronymic' => 'nullable',
         ];
     }
 }

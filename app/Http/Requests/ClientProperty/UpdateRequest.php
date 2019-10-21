@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\ClientProperty;
 
 use App\Constants\Client\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Service\Common\ConstantResolverService;
 
-class UpdateStatusRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +26,12 @@ class UpdateStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => [
+            'value' => [
+                'required'
+            ],
+            'type_id' => [
                 'required',
-                sprintf("in:%s",
-                    (new ConstantResolverService())
-                        ->resolve(Status::class)
-                        ->collect()
-                        ->except([Status::COMPLETED])
-                        ->implode(',')
-                )
+                'exists:property_types,id'
             ]
         ];
     }

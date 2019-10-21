@@ -2,7 +2,7 @@
 
 namespace App\Events\Client;
 
-use App\Models\Client\Client;
+use App\Models\Client;
 use Illuminate\Queue\SerializesModels;
 
 class StatusUpdated

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Client\Client;
+use App\Constants\User\Role;
+use App\Models\Client;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'login', 'password', 'firstname', 'lastname', 'patronymic', 'role', 'status'
+        'login', 'password', 'api_token', 'firstname', 'lastname', 'patronymic', 'role', 'status'
     ];
 
     /**
@@ -32,14 +33,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-
-    const ROLE_PARTNER = 'partner';
-    const ROLE_ADMIN = 'admin';
-
-    const STATUS_DISABLED = 0;
-    const STATUS_ENABLED = 1;
-    const STATUS_REJECTED = 2;
 
 
     public function companies(){
@@ -60,11 +53,20 @@ class User extends Authenticatable
 
     public function getVisibleClients()
     {
-        if ($this->hasRole(static::ROLE_ADMIN)) {
+        if ($this->hasRole(Role::ADMIN)) {
             return Client::query();
         }
 
         return $this->clients()->getQuery();
+    }
+
+    public function getVisibleCompanies()
+    {
+        if ($this->hasRole(Role::ADMIN)) {
+            return Company::query();
+        }
+
+        return $this->companies()->getQuery();
     }
 
 }

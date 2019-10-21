@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Client\Client;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 
 class StatusLog extends Model

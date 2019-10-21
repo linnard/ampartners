@@ -101,7 +101,7 @@
             },
 
             updateStatus(status) {
-                axios.put('/api/v1/users/' + this.company.creator.id, {
+                axios.put('/api/v1/users/' + this.company.creator.id + '/status', {
                     status: status
                 }).then((response) => {
                     this.company.creator.status = status

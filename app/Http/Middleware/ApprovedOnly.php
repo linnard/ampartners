@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
+use App\Constants\User\Status;
 use Closure;
 
 class ApprovedOnly
@@ -16,7 +16,7 @@ class ApprovedOnly
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->status !== User::STATUS_ENABLED) {
+        if (auth()->check() && auth()->user()->status !== Status::ENABLED) {
             auth()->logout();
             return redirect()->route('login')->with('message', __('auth.not_approved'));
         }

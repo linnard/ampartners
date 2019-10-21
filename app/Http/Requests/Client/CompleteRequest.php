@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Client;
 
-use App\Models\Client\Constants\Status;
+use App\Constants\Client\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Service\Common\ConstantResolverService;
 

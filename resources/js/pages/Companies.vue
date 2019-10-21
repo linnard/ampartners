@@ -2,7 +2,7 @@
     <div>
 
         <div class="col-2">
-            <select id="status" @change="filter($event)" v-model="status" class="form-control">
+            <select id="status" @change="getCompanies(status)" v-model="status" class="form-control">
                 <option value="" selected>Всі</option>
                 <option value="0">Заявки</option>
                 <option value="1">Активні</option>
@@ -73,16 +73,12 @@
             getCompanies(status = '') {
                 axios.get('/api/v1/companies', {
                     params: {
-                        status: status
+                        ...(status ? { status: status } : {} )
                     }
                 }).then((response) => {
                     this.companies = response.data.companies;
                 })
             },
-            filter() {
-                this.getCompanies(this.status);
-            },
-
 
         },
         mounted() {
