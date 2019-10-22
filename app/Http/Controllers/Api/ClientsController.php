@@ -205,8 +205,9 @@ class ClientsController extends Controller
                 $q->where('firstname', 'LIKE', '%' . $s . '%');
                 $q->orWhere('lastname', 'LIKE', '%' . $s . '%');
                 $q->orWhere('note', 'LIKE', '%' . $s . '%');
-            })->orWhereHas('properties', function ($q) use ($s) {
-                $q->where('value', 'LIKE', '%' . $s . '%');
+                $q->orWhereHas('properties', function ($q) use ($s) {
+                    $q->where('value', 'LIKE', '%' . $s . '%');
+                });
             })->get();
         }
 

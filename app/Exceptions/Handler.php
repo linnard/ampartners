@@ -7,6 +7,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Arr;
 use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -72,7 +73,14 @@ class Handler extends ExceptionHandler
      */
     protected function invalid($request, ValidationException $exception)
     {
-        return parent::invalidJson($request, $exception); // as soon as this is SPA, we don't need "previous" behaviour
+        if (in_array(request()->segment(1), ['login', 'register'])){
+            return redirect($exception->redirectTo ?? url()->previous())
+                ->withInput(Arr::except($request->input(), $this->dontFlash))
+                ->withErrors($exception->errors(), $exception->errorBag);
+        } else {
+            return parent::invalidJson($request, $exception);
+        }
+
     }
 
     /**

@@ -27,10 +27,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             'value' => [
-                'required'
+                'nullable'
             ],
             'type_id' => [
-                'required',
+                'nullable',
                 'exists:property_types,id'
             ]
         ];
