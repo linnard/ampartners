@@ -5,57 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a338603-4914-4519-8b08-1d408de64035" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ampartners.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ampartners.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/41143f63-2372-4460-b9cb-c150a7000e84.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/41143f63-2372-4460-b9cb-c150a7000e84.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/Client/StatusUpdated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Client/StatusUpdated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ClientsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ClientsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/LogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/LogsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Client/PatchRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Client/PatchRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ClientProperty/UpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ClientProperty/UpdateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/LogStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/LogStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/StatusLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StatusLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/ClientPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/ClientPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_15_074145_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_24_074145_create_clients_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_17_114136_create_status_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_17_114136_create_status_logs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/reset.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sass/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sass/custom.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/custom.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sass/custom.sass" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/custom.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ClientCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ClientCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ClientCardEditable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ClientCardEditable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NotificationsBlock.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NotificationsBlock.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/BookingConfirmation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/BookingConfirmation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/BookingConfirmationAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/BookingConfirmationAdmin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/BookingReject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/BookingReject.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/Logs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/Logs.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/TicketConfirmation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/TicketConfirmation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/TicketConfirmationAdmin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/TicketConfirmationAdmin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/modals/TicketReject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/TicketReject.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/ClientCards.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/ClientCards.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/ClientCardsEditable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/ClientCardsEditable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,12 +83,12 @@
         <entry file="file://$PROJECT_DIR$/public/sass/custom.sass">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
-              <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
+              <caret line="222" column="38" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="233">
@@ -168,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/NotificationsBlock.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1013">
-              <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+            <state relative-caret-position="150">
+              <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -188,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Повернення клієнта</find>
       <find>Підтвердження завантаження квитка</find>
       <find>Підтвердження квитка</find>
       <find>comment</find>
@@ -218,6 +167,7 @@
       <find>getKeyElement</find>
       <find>SecondaryMenu_item</find>
       <find>SecondaryMenu</find>
+      <find>fill</find>
     </findStrings>
     <replaceStrings>
       <replace>lastname</replace>
@@ -491,6 +441,25 @@
               <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
               <item name="ampartners" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="svg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="sass" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -510,6 +479,13 @@
               <item name="ampartners" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
@@ -547,19 +523,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\ampartners\app\Events\Company" />
-      <recent name="C:\wamp64\ampartners\app\Constants\Client" />
-      <recent name="C:\wamp64\ampartners\app\Models" />
-      <recent name="C:\wamp64\ampartners\app\Constants" />
-      <recent name="C:\wamp64\ampartners\app\Models\User" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\ampartners\public\css" />
       <recent name="C:\wamp64\ampartners\app\Events\Client" />
       <recent name="C:\wamp64\ampartners\resources\js\modals" />
       <recent name="C:\wamp64\ampartners\app\Http\Controllers\Api" />
       <recent name="C:\wamp64\ampartners\app\Listeners" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\ampartners\app\Events\Company" />
+      <recent name="C:\wamp64\ampartners\app\Constants\Client" />
+      <recent name="C:\wamp64\ampartners\app\Models" />
+      <recent name="C:\wamp64\ampartners\app\Constants" />
+      <recent name="C:\wamp64\ampartners\app\Models\User" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -626,12 +602,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="424610000" />
+    <option name="totallyTimeSpent" value="424613000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="15" y="29" width="1370" height="724" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.47790506" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.47790506" visible="true" weight="0.259542" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5220949" side_tool="true" weight="0.25718608" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -737,11 +714,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-10-23.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="-450" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-10-23.log" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_10_22_222441_create_notifications_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -971,8 +944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/NotificationsBlock.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1013">
-          <caret line="86" column="64" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+        <state relative-caret-position="150">
+          <caret line="10" column="78" selection-start-line="10" selection-start-column="78" selection-end-line="10" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -1013,7 +986,7 @@
     <entry file="file://$PROJECT_DIR$/public/sass/custom.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="222" column="38" lean-forward="true" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
+          <caret line="222" column="38" selection-start-line="222" selection-start-column="38" selection-end-line="222" selection-end-column="38" />
         </state>
       </provider>
     </entry>
