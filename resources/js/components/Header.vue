@@ -13,10 +13,15 @@
             <div class="MainMenu Header_menu">
                 <ul class="MainMenu_list">
 
-                    <li class="MainMenu_item" v-for="item in $router.options.routes" :key="item.path">
-                        <router-link :to="item.path" class="MainMenu_link" v-if="$authUser.roles.includes(item.role)">{{
-                            item.name }}
-                        </router-link>
+                    <router-link v-for="item in $router.options.routes"
+                                 :key="item.path"
+                                 :to="item.path"
+                                 tag="li"
+                                 class="MainMenu_item"
+                                 v-if="$authUser.roles.includes(item.role)"
+                                 exact>
+                        <a class="MainMenu_link">{{ item.meta.name }}</a>
+                    </router-link>
 
                         <!--<ul v-if="item.path == $router.currentRoute.path">
                             <li class="SecondaryMenu_item" v-for="child in item.children" :key="child.path">
@@ -24,7 +29,6 @@
                             </li>
                         </ul>-->
 
-                    </li>
 
                 </ul>
             </div>

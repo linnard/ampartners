@@ -1145,7 +1145,10 @@ th {
 
 .Receipts_item {
 	padding-top: 5px;
-	background-color: #fff;
+}
+
+.Receipts_item-new {
+	background: #fbfaf7;
 }
 
 .item_group {

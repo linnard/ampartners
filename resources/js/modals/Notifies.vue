@@ -8,19 +8,23 @@
             </svg>
         </label>
         <h2 class="Popup_title">
-            <span>Журнал подій</span>
+            <span>Сповіщення</span>
         </h2>
         <div class="notifications-body">
             <div class="list_notification">
-                <div class="item_notification" style="position: relative;" v-for="log in logs">
+                <div class="item_notification" style="position: relative;" v-for="notification in notifies">
                     <div>
-                        <span>Тип операції: <strong style="color: #a41710">{{log.status_description}}</strong></span>
-                        <span>Дата: <strong>{{log.created_at}}</strong></span>
-                        <span>ПІБ Клієнта: <strong>{{log.client.firstname}} {{log.client.lastname}}</strong></span>
-                        <span>ID клієнта: <strong>{{log.client_id}}</strong></span>
+                        <span>Тип операції: <strong style="color: #a41710">{{notification.event}}</strong></span>
+                        <span>Назва відділу: <strong>Адміністрація AMpartners</strong></span>
+                        <span>Дата: <strong>{{notification.created_at}}</strong></span>
+                        <span>ПІБ Клієнта: <strong>{{notification.client.firstname}} {{notification.client.lastname}}</strong></span>
+                        <span>ID клієнта: <strong>{{notification.client_id}}</strong></span>
+                    </div>
+                    <div>
+                        <span>Детальна інформація: <strong>{{notification.body}}</strong></span>
                     </div>
                     <button class="btn btn-success" style="position: absolute;right: 40px;top: 30px;"
-                            @click="selectClient(log.client_id)">Перейти до клієнта
+                            @click="selectClient(notification.client_id)">Перейти до клієнта
                     </button>
                 </div>
             </div>
@@ -36,7 +40,7 @@
 <script>
     export default {
         props: {
-            logs: {}
+            notifies: {}
         },
         data() {
             return {};
@@ -46,9 +50,10 @@
                 this.$root.$emit('clientSelected', id);
                 this.$emit('close');
             },
-
-
         },
+        mounted() {
+
+        }
 
     }
 </script>

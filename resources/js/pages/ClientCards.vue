@@ -2,9 +2,24 @@
     <div>
         <div class="SecondaryMenu Top_secondaryMenu p-3">
             <ul class="SecondaryMenu_list">
-                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('booking_confirmation_expected')" class="SecondaryMenu_link">Заявки на бронювання<!--<span class="Number SecondaryMenu_number">4</span>--></a></li>
-                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('ticket_confirmation_expected')" class="SecondaryMenu_link">Контакти з квитком</a></li>
-                     <li class="SecondaryMenu_item"><a href="javascript:void(0)" @click="getClients('completed')" class="SecondaryMenu_link">Успішно завершені</a></li>
+                <li class="SecondaryMenu_item">
+                    <a href="javascript:void(0)" @click="filter"
+                       class="SecondaryMenu_link">Усі</a>
+                </li>
+                <li class="SecondaryMenu_item" :class="{'SecondaryMenu_item-active' : selected_status == 'booking_confirmation_expected'}">
+                    <a href="javascript:void(0)" @click="filter('booking_confirmation_expected')"
+                       class="SecondaryMenu_link">Заявки на бронювання</a>
+                      <span class="Number SecondaryMenu_number" v-if="counts['booking_confirmation_expected']">{{counts['booking_confirmation_expected']}}</span>
+                </li>
+                <li class="SecondaryMenu_item" :class="{'SecondaryMenu_item-active' : selected_status == 'ticket_confirmation_expected'}">
+                    <a href="javascript:void(0)" @click="filter('ticket_confirmation_expected')"
+                       class="SecondaryMenu_link">Контакти з квитком</a>
+                      <span class="Number SecondaryMenu_number" v-if="counts['ticket_confirmation_expected']">{{counts['ticket_confirmation_expected']}}</span>
+                </li>
+                <li class="SecondaryMenu_item" :class="{'SecondaryMenu_item-active' : selected_status == 'completed'}">
+                    <a href="javascript:void(0)" @click="filter('completed')" class="SecondaryMenu_link">Успішно
+                        завершені</a>
+                </li>
             </ul>
         </div>
 
@@ -13,8 +28,10 @@
                          :key="client.id"
                          :client="client"
                          :property_types="property_types"
-                         :vacancies="vacancies"/>
-
+                         :vacancies="vacancies"
+                         :visible_statuses="visible_statuses"
+                         :class="{'Receipts_item-new':client.is_updated}"
+                         @update_counts="updateCounts"/>
         </div>
 
         <div class="Receipts" v-else>
@@ -31,6 +48,12 @@
 
     import ClientCard from "../components/ClientCard";
 
+    const DEFAULT_STATUSES = [
+            'booking_confirmation_expected',
+            'ticket_confirmation_expected',
+            'completed'
+        ];
+
     export default {
         components: {ClientCard},
         data() {
@@ -39,51 +62,44 @@
                 clients: {},
                 property_types: {},
                 reserved: null,
+                visible_statuses: DEFAULT_STATUSES,
+                selected_status: '',
+                counts: []
             }
         },
         methods: {
 
-            reserve(id) {
-                this.reserved = id;
+            filter(status = ''){
+                if (DEFAULT_STATUSES.includes(status)){
+                    this.visible_statuses = [status];
+                    this.selected_status = status;
+                } else {
+                    this.visible_statuses = DEFAULT_STATUSES;
+                    this.selected_status = '';
+                }
+            },
 
-                this.$modal.hide('vacancyReserve');
+            getClients() {
+                axios.get('/api/v1/clients').then((response) => {
+                    this.clients = response.data.clients;
+                    this.updateCounts();
+                })
+            },
 
-                Vue.notify({
-                    type: 'success',
-                    title: 'Успіх',
-                    text: 'Вакансію успішно заброньовано!'
+            updateCounts(){
+
+                let counts = [];
+                this.clients.map(function (client) {
+                    if (DEFAULT_STATUSES.includes(client.status) && client.is_updated){
+                        if (counts[client.status]) {
+                            counts[client.status]++;
+                        } else {
+                            counts[client.status] = 1;
+                        }
+                    }
                 });
 
-                this.createCard()
-            },
-
-            createCard(){
-                axios.post('/api/v1/clients', {
-                    vacancy_id: this.reserved
-                }).then((response) => {
-                    this.clients.unshift(response.data.client);
-                })
-            },
-
-            getClients(status = '') {
-
-                var statuses = [
-                    'booking_confirmation_expected',
-                    'ticket_confirmation_expected',
-                    'completed'
-                ];
-
-                if (status){
-                    statuses = [status];
-                }
-
-                axios.get('/api/v1/clients', {
-                    params: {
-                        statuses: statuses
-                    }
-                }).then((response) => {
-                    this.clients = response.data.clients;
-                })
+                this.counts = counts;
             },
 
             getVacancies() {
@@ -100,22 +116,52 @@
                 });
             },
 
-            createWithReserve() {
-                this.$modal.show('vacancyReserve', {
-                    reserved: this.reserved
-                })
-            }
+            getClient(id) {
+                return axios.get('/api/v1/clients/' + id).then((response) => {
+                    return response.data.client;
+                });
+            },
 
+            getKeyElement(key) {
+                var clients = this.clients;
+                for (var client in clients) {
+                    if (clients[client].id == key) {
+                        return client;
+                    }
+                }
+                return false;
+            }
         },
         mounted: function () {
             this.getPropertyTypes();
             this.getClients();
             this.getVacancies();
+
+            Echo.channel('Client')
+                .listen('.StatusUpdated', (e) => {
+
+                    var index = this.getKeyElement(e.client.id);
+                    if (index) {
+
+                        Vue.notify({
+                            type: 'success',
+                            title: 'Статус клієнта змінено',
+                            text: e.status_description
+                        });
+
+                        this.getClient(e.client.id).then(client => {
+                            this.clients[index] = client;
+                            this.updateCounts();
+                        });
+                    } else {
+                        this.getClient(e.client.id).then(client => {
+                            this.clients.unshift(client);
+                            this.updateCounts();
+                        });
+                    }
+
+                });
         },
-        watch: {
-            clients: function (val) {
-                //console.log(val);
-            },
-        }
+
     }
 </script>

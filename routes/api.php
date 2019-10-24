@@ -28,6 +28,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api
 
     //Clients
     Route::get('/clients', 'ClientsController@index');
+    Route::get('/clients/{client}', 'ClientsController@show');
     Route::post('/clients', 'ClientsController@store');
     Route::post('/clients/search', 'ClientsController@search');
     Route::post('/clients/{client}/complete', 'ClientsController@complete')->where('client', '[0-9]+');
@@ -52,6 +53,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api
     //Logs
     Route::get('/logs', 'LogsController@index');
     Route::put('/logs/read', 'LogsController@read');
+
+    //Notifications
+    Route::get('/notifications', 'NotificationsController@index');
+    Route::put('/notifications/read', 'NotificationsController@read');
 
     //Statuses
     Route::get('/statuses', 'StatusesController@index');

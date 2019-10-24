@@ -76,7 +76,7 @@
                                 <select class="Select Select-receiptForm" :disabled="(!editable)"
                                         v-model="client.properties[1].type_id"
                                         @change="updateProps">
-                                    <option value="0" disabled selected>Не вибрано</option>
+                                    <option value="0">Не вибрано</option>
                                     <option v-for="type in property_types" :value="type.id">
                                         {{type.name}}
                                     </option>
@@ -115,6 +115,9 @@
                      v-if="(['creating', 'booking_confirmation_rejected'].includes(client.status))">
                     <button @click="book" class="BtnOutline BtnOutline-transfer ReceiptForm_transfer">Забронювати
                     </button>
+                    <br><br>
+                    <div class="StatusBlock_text">{{client.latest_notification}}</div>
+
                 </div>
 
                 <div class="ReceiptForm_column ReceiptForm_column-statusBlock"
@@ -152,7 +155,7 @@
                                       d="M36.839 50.255l14.207 2.976M42.79 22.32l14.208 2.976"></path>
                             </g>
                         </svg>
-                        <h4 class="StatusBlock_title">{{client.latest_log.comment}}</h4>
+                        <h4 class="StatusBlock_title">{{client.latest_notification}}</h4>
                         <div class="StatusBlock_text">Для отримання маршрутного листа та даних для зв'язку з
                             координатором - завантажте фото квитка на автобус або поїзд
                         </div>
@@ -166,7 +169,7 @@
                         <button @click="ticketUploaded" class="BtnOutline BtnOutline-transfer StatusBlock_btn">Квиток
                             завантажено
                         </button>
-                        <div class="StatusBlock_text">{{client.latest_log.comment}}</div>
+                        <div class="StatusBlock_text">{{client.latest_notification}}</div>
                     </div>
                 </div>
 
@@ -226,7 +229,7 @@
                             </svg>
                             <h4 class="StatusBlock_title StatusBlock_title-titleIcon">Бронювання завершено!</h4>
                         </div>
-                        <div class="StatusBlock_text">{{client.latest_log.comment}}</div>
+                        <div class="StatusBlock_text">{{client.latest_notification}}</div>
                     </div>
                 </div>
 

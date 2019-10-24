@@ -157,6 +157,10 @@ html {
   transform: translate(-50%, 0);
   transition: width 0.3s;
 }
+.MainMenu_link:hover {
+  text-decoration: none;
+  color: #4F4F4F;
+}
 .MainMenu_link:hover:after {
   width: 100%;
 }
@@ -211,6 +215,10 @@ html {
 .SecondaryMenu_item {
   margin-right: 70px;
   font-size: 17px;
+}
+.SecondaryMenu_item-active {
+  color: #1d68a7;
+  text-decoration: underline;
 }
 .SecondaryMenu_item:last-child {
   margin-right: 0;
@@ -270,6 +278,7 @@ html {
 }
 .FilterBlock_search {
   margin-top: 3px;
+  margin-left: 400px;
 }
 .FilterBlock_buttons {
   display: flex;
@@ -425,6 +434,9 @@ html {
   margin-top: 3px;
 }
 
+.Receipts {
+  background: #ffffff;
+}
 .Receipts_item {
   padding-top: 0;
 }

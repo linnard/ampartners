@@ -17,7 +17,7 @@
         </div>
         <div class="Popup_prompt">
             <button type="button" @click="confirm" class="btn btn-success">Повернути клієнта</button>
-            <button type="button" class="btn btn-info" @click="$emit('close')">Закрити вікно</button>
+            <button type="button" class="btn btn-info float-right" @click="$emit('close')">Закрити вікно</button>
         </div>
 
     </div>

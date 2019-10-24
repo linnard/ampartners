@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Events\Client;
+namespace App\Events\Company;
 
-use App\Models\Client;
+use App\Models\Notification;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -10,35 +10,31 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class StatusUpdated implements ShouldBroadcast
+class NotificationCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $client;
-    public $comment;
-    public $status_description;
+    public $notification;
 
     /**
      * Create a new event instance.
      *
-     * @param Client $client
+     * @param Notification $notification
      * @return void
      */
-    public function __construct(Client $client, $comment = '')
+    public function __construct(Notification $notification)
     {
-        $this->client = $client;
-        $this->comment = $comment;
-        $this->status_description = __('statuses.'.$client->status);
+        $this->notification = $notification;
     }
 
     public function broadcastOn()
     {
-        return new Channel('Client');
+        return new Channel('Company.'.$this->notification->company->id);
     }
 
     public function broadcastAs()
     {
-        return 'StatusUpdated';
+        return 'NotificationCreated';
     }
 
 }

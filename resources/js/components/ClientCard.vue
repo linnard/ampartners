@@ -1,11 +1,11 @@
 <template>
-    <div class="wrap-parent-client">
+    <div class="wrap-parent-client" v-if="(visible_statuses.includes(client.status))">
 
         <div class="colors_group"></div>
         <div class="group_controll">
             <div class="Receipt_basicInfoItem Receipt_basicInfoItem-id" style="border-bottom: 0">ID {{client.id}}</div>
         </div>
-        <div class="Receipt Receipts_item" data-id="">
+        <div class="Receipt Receipts_item" @click="removeHighlight">
             <div class="Receipt_basicInfo">
                 <div class="Receipt_basicInfoGroup">
                     <div class="Receipt_basicInfoItem Receipt_basicInfoItem-recipient Receipt_basicInfoItem-noBorder">
@@ -65,7 +65,7 @@
                             <div class="profile-info-name">Вакансія</div>
                             <div class="profile-info-value">
                                 <select name="vacancy_id" v-model="client.vacancy_id" @change="inputChanged">
-                                    <option value="0" disabled selected>Не вибрано</option>
+                                    <option value="0">Не вибрано</option>
                                     <option v-for="vacancy in vacancies" :value="vacancy.id">{{vacancy.name}}</option>
                                 </select>
                             </div>
@@ -109,7 +109,12 @@
     import TicketReject from '../modals/TicketReject'
 
     export default {
-        props: ['client', 'property_types', 'vacancies'],
+        props: {
+            client: {},
+            property_types: {},
+            vacancies: {},
+            visible_statuses: {}
+        },
         components: {
             Documents,
             BookingConfirmationAdmin,
@@ -118,11 +123,20 @@
             TicketReject
         },
         data() {
-            return {
-                //editable: ['creating', 'booking_confirmation_rejected'].includes(this.client.status)
-            }
+            return {  }
         },
         methods: {
+
+            removeHighlight(){
+                if (this.client.is_updated){
+                    axios.patch('/api/v1/clients/' + this.client.id, {
+                        is_updated: 0
+                    }).then((response) => {
+                        this.client.is_updated = 0;
+                        this.$emit('update_counts');
+                    })
+                }
+            },
 
             showDocuments() {
                 this.$modal.show(Documents, {
@@ -177,15 +191,6 @@
             },
 
         },
-        mounted(){
-            //console.log(this.client.complete_at);
-        },
-        watch: {
-            'client.status': function (val) {
-                //this.editable = ['creating', 'booking_confirmation_rejected'].includes(val);
-            },
-
-        }
     }
 </script>
 

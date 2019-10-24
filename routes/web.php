@@ -29,3 +29,7 @@ Route::group(['prefix' => 'controlpanel', 'namespace' => 'Controlpanel', 'middle
     Route::get('/{any?}', 'ControlpanelController@index')->name('controlpanel.index');
 });
 
+Route::get('test', function(){
+    event(new \App\Events\Client\StatusUpdated(\App\Models\Client::find(1), 'mudaaak'));
+});
+

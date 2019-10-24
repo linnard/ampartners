@@ -12,7 +12,7 @@
         </div>
         <div class="Popup_prompt">
             <button type="button" class="btn btn-success" @click="confirm">Підтвердити бронювання</button>
-            <button type="button" class="btn btn-info" @click="$emit('close')">Закрити вікно</button>
+            <button type="button" class="btn btn-info float-right" @click="$emit('close')">Закрити вікно</button>
         </div>
     </div>
 </template>

@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use \App\Constants\Client\Status;
 
-class CreateStatusLogsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +13,13 @@ class CreateStatusLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_logs', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
             $table->integer('client_id');
-            $table->enum('status',
-                array_values((new ReflectionClass(Status::class))->getConstants())
-            )->default(Status::CREATING);
+            $table->integer('company_id');
+            $table->text('body');
+            $table->string('event');
+            $table->integer('is_read')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateStatusLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_logs');
+        Schema::dropIfExists('notifications');
     }
 }

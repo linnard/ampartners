@@ -42,82 +42,74 @@ import Users from './pages/Users';
 import ClientCardsEditable from './pages/ClientCardsEditable';
 import ClientCards from './pages/ClientCards';
 
+const AccessDenied = { template: '<div class="alert alert-danger">Доступ заборонено!</div>' };
 
 const routes = [
+
+    //Admin routes
+
     {
         path: '/adminpanel/companies',
-        name: 'Компанії',
         component: Companies,
         role: 'admin',
-        children:
-            [{
-                name: 'Заявки',
-                path: 'new',
-                component: {
-                    template: '<div>Заявки</div>'
-                }
-            }, {
-                name: 'Активні',
-                path: 'approved',
-                component: {
-                    template: '<div>Активні</div>'
-                }
-            }, {
-                name: 'Відхилені',
-                path: 'cancelled',
-                component: {
-                    template: '<div>Відхилені</div>'
-                }
-            }]
+        meta: { name: 'Компанії'}
     },
     {
         path: '/adminpanel/vacancies',
-        name: 'Вакансії',
         component: Vacancies,
         role: 'admin',
+        meta: { name: 'Вакансії'}
     },
     {
         path: '/adminpanel/users',
-        name: 'Користувачі',
         component: Users,
         role: 'admin',
+        meta: { name: 'Користувачі'}
     },
     {
         path: '/adminpanel/clients',
-        name: 'Працевлаштування',
         component: ClientCards,
         role: 'admin',
-        children:
-            [{
-                name: 'Заявки на бронювання',
-                path: 'new',
-                component: {
-                    template: '<div>Заявки на бронювання</div>'
-                }
-            }, {
-                name: 'Контакти з квитком',
-                path: 'approved',
-                component: {
-                    template: '<div>Контакти з квитком</div>'
-                }
-            }, {
-                name: 'Успішно завершені',
-                path: 'cancelled',
-                component: {
-                    template: '<div>Успішно завершені</div>'
-                }
-            }]
+        meta: { name: 'Працевлаштування'}
     },
 
+    //Partner routes
+
+    {
+        path: '/controlpanel/info',
+        component: AccessDenied,
+        role: 'partner',
+        meta: { name: 'Інформація'}
+    },
+    {
+        path: '/controlpanel/users',
+        component: AccessDenied,
+        role: 'partner',
+        meta: { name: 'Користувачі'}
+    },
+    {
+        path: '/controlpanel/visa-support',
+        component: AccessDenied,
+        role: 'partner',
+        meta: { name: 'Візова підтримка'}
+    },
     {
         path: '/controlpanel/clients',
-        name: 'Працевлаштування',
         component: ClientCardsEditable,
         role: 'partner',
+        meta: { name: 'Працевлаштування'}
     },
+    {
+        path: '/controlpanel/rewards',
+        component: AccessDenied,
+        role: 'partner',
+        meta: { name: 'Отримати винагороду'}
+    },
+
 ];
 
 const router = new VueRouter({
+    linkExactActiveClass: 'MainMenu_item-active',
     mode: 'history',
     routes
 });

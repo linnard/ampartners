@@ -13,6 +13,10 @@ class Company extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function clients(){
+        return $this->hasMany(Client::class);
+    }
+
     public function creator(){
         return $this->hasOne(User::class, 'id', 'creator_id');
     }

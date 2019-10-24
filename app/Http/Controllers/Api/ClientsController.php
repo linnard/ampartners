@@ -14,6 +14,7 @@ use App\Http\Requests\File\UploadRequest;
 use App\Jobs\SetClientCompleted;
 use App\Models\Client;
 use App\Constants\Client\Status;
+use App\Models\Notification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,11 +60,22 @@ class ClientsController extends Controller
 
         $clients = $clients->get();
 
-        $clients->load('user', 'company', 'properties', 'media', 'latest_log');
+        $clients->load('user', 'company', 'properties', 'media');
 
         //dd($clients->toArray());
         return response()->json([
             'clients' => $clients
+        ]);
+    }
+
+    public function show(Client $client)
+    {
+        $this->authorize('control', $client);
+
+        $client->load('user', 'company', 'properties', 'media');
+
+        return response()->json([
+            'client' => $client
         ]);
     }
 
@@ -92,7 +104,7 @@ class ClientsController extends Controller
             }
         }
 
-        $client->load('user', 'company', 'properties', 'media', 'latest_log');
+        $client->load('user', 'company', 'properties', 'media');
 
         return response()->json([
             'client' => $client
@@ -152,7 +164,10 @@ class ClientsController extends Controller
         if ($user->hasRole($role)) {
             if (in_array($current_status, $previous)) {
 
-                $client->update($request->validated());
+                $client->update(array_merge($request->validated(), [
+                    'is_updated' => 1
+                ]));
+
                 event(new StatusUpdated($client, $comment));
 
                 return response()->json([
@@ -212,7 +227,7 @@ class ClientsController extends Controller
         }
 
         if ($clients->count()){
-            $clients->load('user', 'company', 'properties', 'media', 'latest_log');
+            $clients->load('user', 'company', 'properties', 'media');
         }
 
         return response()->json([

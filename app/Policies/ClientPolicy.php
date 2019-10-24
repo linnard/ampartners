@@ -22,14 +22,19 @@ class ClientPolicy
 
     }
 
+    public function control(User $user, Client $client)
+    {
+        return $user->getVisibleClients()->where('id', $client->id)->count() > 0;
+    }
+
     public function update(User $user, Client $client)
     {
-        return  $user->hasRole(Role::ADMIN) || $user->id === $client->user->id;
+        return $this->control($user, $client);
     }
 
     public function updateStatus(User $user, Client $client)
     {
-        return $user->hasRole(Role::ADMIN) || $user->id === $client->user->id;
+        return $this->control($user, $client);
     }
 
     public function complete(User $user, Client $client)
@@ -39,12 +44,12 @@ class ClientPolicy
 
     public function downloadZip(User $user, Client $client)
     {
-        return $user->hasRole(Role::ADMIN) || $user->id === $client->user->id;
+        return $this->control($user, $client);
     }
 
     public function uploadDocs(User $user, Client $client)
     {
-        return $user->hasRole(Role::ADMIN) || $user->id === $client->user->id;
+        return $this->control($user, $client);
     }
 
 }

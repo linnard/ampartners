@@ -35,20 +35,14 @@ class User extends Authenticatable
     ];
 
 
-    public function companies(){
+    public function companies()
+    {
         return $this->belongsToMany(Company::class);
     }
 
-    public function logs(){
-        return $this->hasMany(StatusLog::class);
-    }
-
-    public function clients(){
+    public function clients()
+    {
         return $this->hasMany(Client::class);
-    }
-
-    public function unreadLogs(){
-        return $this->logs()->where('is_read', 0);
     }
 
     public function getVisibleClients()
@@ -68,5 +62,22 @@ class User extends Authenticatable
 
         return $this->companies()->getQuery();
     }
+
+    public function notifications()
+    {
+        return Notification::whereIn('client_id', $this->clientIds());
+    }
+
+    public function logs()
+    {
+        return StatusLog::whereIn('client_id', $this->clientIds());
+    }
+
+    public function clientIds()
+    {
+        return $this->clients()->pluck('id')->toArray();
+    }
+
+
 
 }

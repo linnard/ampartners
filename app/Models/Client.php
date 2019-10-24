@@ -20,6 +20,10 @@ class Client extends Model implements HasMedia
         'note' => ''
     ];
 
+    protected $appends = [
+        'latest_notification'
+    ];
+
     protected static function boot()
     {
         parent::boot();
@@ -48,8 +52,14 @@ class Client extends Model implements HasMedia
         return $this->hasMany(StatusLog::class);
     }
 
-    public function latest_log() {
-        return $this->hasOne(StatusLog::class)->latest();
+    public function notifications(){
+        return $this->hasMany(Notification::class);
+    }
+
+    public function getLatestNotificationAttribute() {
+        $latest = $this->notifications()->latest()->first();
+
+        return ($latest) ?  $latest->body : '';
     }
 
 }

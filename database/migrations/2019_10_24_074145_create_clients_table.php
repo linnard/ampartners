@@ -22,9 +22,10 @@ class CreateClientsTable extends Migration
             $table->unsignedBigInteger('vacancy_id')->nullable();
             $table->text('note')->nullable();
             $table->tinyInteger('ticket_uploaded')->default(0);
+            $table->tinyInteger('is_updated')->default(0);
             $table->enum('status',
-                array_values((new ReflectionClass(\App\Models\Client\Constants\Status::class))->getConstants())
-            )->default(\App\Models\Client\Constants\Status::CREATING);
+                array_values((new ReflectionClass(\App\Constants\Client\Status::class))->getConstants())
+            )->default(\App\Constants\Client\Status::CREATING);
 
             $table->timestamp('complete_at')->nullable();
             $table->timestamps();

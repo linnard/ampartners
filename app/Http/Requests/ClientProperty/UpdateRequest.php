@@ -31,7 +31,7 @@ class UpdateRequest extends FormRequest
             ],
             'type_id' => [
                 'nullable',
-                'exists:property_types,id'
+                //'exists:property_types,id'
             ]
         ];
     }

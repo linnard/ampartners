@@ -28,6 +28,7 @@
         'lastname' => Auth::user()->lastname,
         'roles'=>auth()->user()->getRoleNames(),
         'apiToken'=>auth()->user()->api_token ?? null,
+        'companies'=>auth()->user()->companies()->get(),
    ]) !!};
 
 </script>

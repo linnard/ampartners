@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\Client\StatusUpdated;
+use App\Listeners\CreateNotification;
 use App\Listeners\LogStatus;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,7 +23,8 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         StatusUpdated::class => [
-            LogStatus::class
+            LogStatus::class,
+            CreateNotification::class
         ]
     ];
 

@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class StatusLog extends Model
+class Notification extends Model
 {
+
     protected $guarded = [];
 
-    protected $appends = [
-        'status_description'
-    ];
 
     protected static function boot()
     {
@@ -21,14 +19,17 @@ class StatusLog extends Model
         });
     }
 
-    public function client()
-    {
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+
+    public function client(){
         return $this->belongsTo(Client::class);
     }
 
-    public function getStatusDescriptionAttribute()
-    {
-        return __('statuses.'.$this->status);
+    public function scopeUnread($q){
+        return $q->where('is_read', 0);
     }
+
 
 }

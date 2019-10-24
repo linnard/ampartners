@@ -22,10 +22,8 @@ class LogStatus
     {
         $log = new StatusLog([
             'status' => $event->client->status,
-            'comment' => $event->comment
         ]);
 
-        $log->user()->associate($event->client->user->id);
         $log->client()->associate($event->client);
         $log->save();
     }

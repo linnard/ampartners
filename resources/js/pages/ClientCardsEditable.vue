@@ -3,22 +3,26 @@
         <div class="FilterBlock">
             <div class="FilterBlock_left">
                 <select @change="getClients(selected_status)" v-model="selected_status" class="form-control">
-                    <option value="" selected>Всі</option>
+                    <option value="" selected>Усі</option>
                     <option v-for="(item, index) in statuses" :value="index">{{item}}</option>
                 </select>
             </div>
 
             <div class="FilterBlock_left">
                 <div class="Search FilterBlock_search">
+                    <button class="btn btn-light btn-sm" style="font-size: 1em; color: #ff0000;"
+                            v-if="search_query.length" @click="clearSearchInput">
+                        <i class="fas fa-times"></i>
+                    </button>
                     <input class="FormText FormText-search Search_text" type="text" @keyup.enter="search"
                            v-model="search_query" placeholder="Введіть пошуковий запит">
+
                     <button class="Search_btn" @click="search"></button>
                 </div>
             </div>
             <div class="FilterBlock_right">
                 <div class="FilterBlock_buttons">
-                    <a class="BtnBlue BtnBlue-addContact FilterBlock_quickCreationBtn" href="javascript:void(0)"
-                       @click="createCard()">
+                    <label class="BtnBlue BtnBlue-addContact FilterBlock_quickCreationBtn" @click="createCard()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="SvgIco" viewBox="0 0 16 11.79">
                             <g data-name="Слой 2">
                                 <path class="SvgIco_path"
@@ -27,7 +31,7 @@
                             </g>
                         </svg>
                         Швидке створення
-                    </a>
+                    </label>
                     <label class="BtnGreen BtnGreen-addContact" @click="createWithReserve()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="SvgIco" viewBox="0 0 16 11.79">
                             <g data-name="Слой 2">
@@ -99,11 +103,15 @@
                 property_types: {},
                 reserved: '',
                 search_query: '',
-                selected_status: 0,
+                selected_status: '',
                 statuses: {},
             }
         },
         methods: {
+
+            clearSearchInput() {
+                this.search_query = '';
+            },
 
             search() {
                 if (this.search_query.length < 3) {
@@ -149,7 +157,7 @@
             getClients(status = '') {
                 axios.get('/api/v1/clients', {
                     params: {
-                        ...(status ? { statuses: [status] } : {} )
+                        ...(status ? {statuses: [status]} : {})
                     }
                 }).then((response) => {
                     this.clients = response.data.clients;
@@ -180,6 +188,17 @@
                 this.$modal.show('vacancyReserve', {
                     reserved: this.reserved
                 })
+            },
+
+            getKeyElement(key) {
+                var clients = this.clients;
+                for (var client in clients) {
+                    if (clients[client].id == key) {
+                        return client;
+                    }
+                }
+
+                return false;
             }
 
         },
@@ -190,9 +209,36 @@
             this.getClients();
 
 
+            Echo.channel('Client')
+                .listen('.StatusUpdated', (e) => {
+
+                    var index = this.getKeyElement(e.client.id);
+                    if (index) {
+
+                        Vue.notify({
+                            type: 'success',
+                            title: 'Статус клієнта змінено',
+                            text: e.status_description
+                        });
+
+                        this.clients[index].status = e.client.status;
+                        this.clients[index].latest_notification = e.comment;
+                    }
+
+                });
+
             this.$root.$on('clientSelected', (id) => {
-                this.search_query = 'ID'+id;
+                this.search_query = 'ID' + id;
+                this.search();
             });
+
+        },
+        watch: {
+            search_query: function (val) {
+                if (!val.length) {
+                    this.getClients();
+                }
+            }
         }
     }
 </script>

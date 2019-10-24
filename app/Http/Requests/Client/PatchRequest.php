@@ -29,6 +29,7 @@ class PatchRequest extends FormRequest
             'lastname' => 'nullable|alpha',
             'vacancy_id' => 'nullable|exists:vacancies,id',
             'note' => 'nullable|string',
+            'is_updated' => 'nullable|in:0,1',
         ];
     }
 }
