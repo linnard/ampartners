@@ -2,13 +2,13 @@
     <div class="Top_right">
         <label @click="showNotifications"
                class="NotificationsBlock Top_notificationsBlock" :class="{ 'NotificationsBlock-new': unread_notifications }">
-            <img src="/img/svg/info.svg" alt="" class="NotificationsBlock_icon">
+            <img src="/img/svg/info.svg" class="NotificationsBlock_icon">
             <span class="Number NotificationsBlock_number" v-if="unread_notifications">{{unread_notifications}}</span>
         </label>
 
         <label @click="showHistory"
                class="NotificationsBlock Top_notificationsBlock">
-            <img src="/img/svg/logs.svg" alt="" class="NotificationsBlock_icon">
+            <img src="/img/svg/logs.svg" class="NotificationsBlock_icon" style="height: 32px">
         </label>
     </div>
 </template>

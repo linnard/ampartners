@@ -60888,7 +60888,7 @@ var render = function() {
       [
         _c("img", {
           staticClass: "NotificationsBlock_icon",
-          attrs: { src: "/img/svg/info.svg", alt: "" }
+          attrs: { src: "/img/svg/info.svg" }
         }),
         _vm._v(" "),
         _vm.unread_notifications
@@ -60908,7 +60908,8 @@ var render = function() {
       [
         _c("img", {
           staticClass: "NotificationsBlock_icon",
-          attrs: { src: "/img/svg/logs.svg", alt: "" }
+          staticStyle: { height: "32px" },
+          attrs: { src: "/img/svg/logs.svg" }
         })
       ]
     )
