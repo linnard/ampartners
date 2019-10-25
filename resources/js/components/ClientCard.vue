@@ -83,16 +83,25 @@
                 </div>
             </div>
 
-            <div class="ReceiptForm_column ReceiptForm_column-buttons" v-if="(['booking_confirmation_expected'].includes(client.status))">
-                <button @click="confirmBook" class="BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn">Підтвердити бронь</button>
-                <button @click="rejectBook" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
-            </div>
 
-            <div class="ReceiptForm_column ReceiptForm_column-buttons" v-else-if="(['ticket_confirmation_expected'].includes(client.status) && client.complete_at === null)">
-                <button @click="confirmTicket" class="BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn">Підтвердити квиток</button>
-                <button @click="rejectTicket" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
-            </div>
 
+            <div class="ReceiptForm_column ReceiptForm_column-statusBlock" :class="{'ReceiptForm_column-statusBlockCompleted':client.status == 'completed'}" style="margin-top:0">
+                <div class="StatusBlock">
+                    <div class="StatusBlock_title">
+                        <h4 class="StatusBlock_title StatusBlock_title">{{client.status_description}}</h4>
+                    </div>
+
+                    <div v-if="(['booking_confirmation_expected'].includes(client.status))">
+                        <button @click="confirmBook" class="BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn">Підтвердити бронь</button>
+                        <button @click="rejectBook" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
+                    </div>
+
+                    <div v-else-if="(['ticket_confirmation_expected'].includes(client.status) && client.complete_at === null)">
+                        <button @click="confirmTicket" class="BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn">Підтвердити квиток</button>
+                        <button @click="rejectTicket" class="BtnOutline BtnOutline-transfer BtnOutline-red">Повернути клієнта</button>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

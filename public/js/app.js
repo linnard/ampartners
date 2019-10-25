@@ -1979,6 +1979,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -59655,67 +59664,79 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              ["booking_confirmation_expected"].includes(_vm.client.status)
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "ReceiptForm_column ReceiptForm_column-buttons"
-                    },
-                    [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "ReceiptForm_column ReceiptForm_column-statusBlock",
+                  class: {
+                    "ReceiptForm_column-statusBlockCompleted":
+                      _vm.client.status == "completed"
+                  },
+                  staticStyle: { "margin-top": "0" }
+                },
+                [
+                  _c("div", { staticClass: "StatusBlock" }, [
+                    _c("div", { staticClass: "StatusBlock_title" }, [
                       _c(
-                        "button",
-                        {
-                          staticClass:
-                            "BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn",
-                          on: { click: _vm.confirmBook }
-                        },
-                        [_vm._v("Підтвердити бронь")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "BtnOutline BtnOutline-transfer BtnOutline-red",
-                          on: { click: _vm.rejectBook }
-                        },
-                        [_vm._v("Повернути клієнта")]
+                        "h4",
+                        { staticClass: "StatusBlock_title StatusBlock_title" },
+                        [_vm._v(_vm._s(_vm.client.status_description))]
                       )
-                    ]
-                  )
-                : ["ticket_confirmation_expected"].includes(
-                    _vm.client.status
-                  ) && _vm.client.complete_at === null
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "ReceiptForm_column ReceiptForm_column-buttons"
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn",
-                          on: { click: _vm.confirmTicket }
-                        },
-                        [_vm._v("Підтвердити квиток")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "BtnOutline BtnOutline-transfer BtnOutline-red",
-                          on: { click: _vm.rejectTicket }
-                        },
-                        [_vm._v("Повернути клієнта")]
-                      )
-                    ]
-                  )
-                : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    ["booking_confirmation_expected"].includes(
+                      _vm.client.status
+                    )
+                      ? _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn",
+                              on: { click: _vm.confirmBook }
+                            },
+                            [_vm._v("Підтвердити бронь")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "BtnOutline BtnOutline-transfer BtnOutline-red",
+                              on: { click: _vm.rejectBook }
+                            },
+                            [_vm._v("Повернути клієнта")]
+                          )
+                        ])
+                      : ["ticket_confirmation_expected"].includes(
+                          _vm.client.status
+                        ) && _vm.client.complete_at === null
+                      ? _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "BtnOutline BtnOutline-transfer ReceiptForm_confirmBtn",
+                              on: { click: _vm.confirmTicket }
+                            },
+                            [_vm._v("Підтвердити квиток")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "BtnOutline BtnOutline-transfer BtnOutline-red",
+                              on: { click: _vm.rejectTicket }
+                            },
+                            [_vm._v("Повернути клієнта")]
+                          )
+                        ])
+                      : _vm._e()
+                  ])
+                ]
+              )
             ]
           ),
           _vm._v(" "),

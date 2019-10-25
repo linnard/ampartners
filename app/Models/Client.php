@@ -21,7 +21,8 @@ class Client extends Model implements HasMedia
     ];
 
     protected $appends = [
-        'latest_notification'
+        'latest_notification',
+        'status_description'
     ];
 
     protected static function boot()
@@ -60,6 +61,10 @@ class Client extends Model implements HasMedia
         $latest = $this->notifications()->latest()->first();
 
         return ($latest) ?  $latest->body : '';
+    }
+
+    public function getStatusDescriptionAttribute() {
+        return __('statuses.'.$this->status);
     }
 
 }
