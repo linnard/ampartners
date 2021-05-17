@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 
@@ -24,10 +25,33 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $user = $this->route('user');
+
         return [
-            'firstname' => 'nullable',
-            'lastname' => 'nullable',
-            'patronymic' => 'nullable',
+            'login'      => ['required', 'string', 'min:3', 'unique:users,login,'.$user->id],
+            'firstname'  => ['required', 'alpha', 'max:255', 'min:2'],
+            'lastname'   => ['required', 'alpha', 'max:255', 'min:2'],
+            'patronymic' => ['required', 'alpha', 'max:255', 'min:4'],
+            'password'   => ['nullable', 'string', 'min:3'],
+
+            'roles'   => [
+                'required',
+                'array'
+            ],
+            'roles.*'   => [
+                'required',
+                'exists:roles,id'
+            ],
+
+            'permissions'   => [
+                'nullable',
+                'array'
+            ],
+            'permissions.*'   => [
+                'required',
+                'exists:permissions,id'
+            ],
+
         ];
     }
 }

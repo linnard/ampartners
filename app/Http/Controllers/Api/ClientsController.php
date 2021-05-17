@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Constants\User\Role;
+use App\Events\Client\CountsUpdated;
 use App\Events\Client\StatusUpdated;
 use App\Http\Controllers\Controller;
 
@@ -102,6 +103,19 @@ class ClientsController extends Controller
                     $i++;
                 }
             }
+        }
+
+        if ($client->wasChanged('is_updated')){
+            $new = \App\Models\Client::whereIn('status', [
+                Status::TICKET_CONFIRMATION_EXPECTED,
+                Status::BOOKING_CONFIRMATION_EXPECTED
+            ])->where('is_updated', 1)->count();
+
+            $counts = [
+                'new_clients' => $new
+            ];
+
+            broadcast(new CountsUpdated($counts));
         }
 
         $client->load('user', 'company', 'properties', 'media');

@@ -103,7 +103,7 @@
             },
 
             getVacancies() {
-                axios.get('/api/v1/vacancies', {
+                axios.get('/api/v1/client-vacancies', {
                     is_active: 1
                 }).then((response) => {
                     this.vacancies = response.data.vacancies;

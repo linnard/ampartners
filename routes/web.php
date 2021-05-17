@@ -17,10 +17,34 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//onesignal
+Route::post('onesignal/subscribe', 'OnesignalController@subscribe')->name('onesignal.subscribe')->middleware('auth');
+
+/*Route::get('add-permissions', function (){
+    \Spatie\Permission\Models\Permission::create(['name' => \App\Constants\User\Permission::ControlVacancies]);
+    \Spatie\Permission\Models\Permission::create(['name' => \App\Constants\User\Permission::ViewVacancies]);
+});*/
+
+Route::get('vb', function (){
+    return redirect('viber://pa?chatURI=ampartners');
+});
+
+Route::get('viber', function (){
+    return redirect('viber://pa?chatURI=ampartners');
+});
+
+Route::get('tg', function (){
+    return redirect('tg://resolve?domain=ampartnersbot');
+});
+
+Route::get('telegram', function (){
+    return redirect('tg://resolve?domain=ampartnersbot');
+});
+
+
 //Adminpanel routes
 Route::group(['prefix' => 'adminpanel', 'namespace' => 'Adminpanel', 'middleware' => ['role:admin'] ], function () {
     Route::get('/{any?}', 'AdminpanelController@index')->name('adminpanel.index');
-
 });
 
 

@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
         return [
             'firstname' => 'nullable',
             'lastname' => 'nullable',
-            'vacancy_id' => 'nullable|exists:vacancies,id',
+            'vacancy_id' => 'nullable|exists:client_vacancies,id',
         ];
     }
 }

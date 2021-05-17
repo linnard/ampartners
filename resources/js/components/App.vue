@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="Wrapper">
         <header class="Header">
 
             <a href="/" title="AMpartners" class="Logo Header_logo" v-if="$authUser.roles.includes('partner')">
@@ -11,6 +11,7 @@
             </a>
 
             <div class="MainMenu Header_menu">
+
                 <ul class="MainMenu_list">
 
                     <router-link v-for="item in $router.options.routes"
@@ -18,16 +19,19 @@
                                  :to="item.path"
                                  tag="li"
                                  class="MainMenu_item"
-                                 v-if="$authUser.roles.includes(item.role)"
+                                 v-if="$authUser.roles.includes(item.role) && (!item.permission.length || $authUser.permissions.includes(item.permission))"
                                  exact>
                         <a class="MainMenu_link">{{ item.meta.name }}</a>
+                        <span class="Number SecondaryMenu_number" :ref="item.meta.counter_id" v-if="item.meta.counter_id"></span>
                     </router-link>
 
-                        <!--<ul v-if="item.path == $router.currentRoute.path">
-                            <li class="SecondaryMenu_item" v-for="child in item.children" :key="child.path">
-                                <a :to="item.path+'/'+child.path">{{ child.name }}</a>
-                            </li>
-                        </ul>-->
+
+
+                    <!--<ul v-if="item.path == $router.currentRoute.path">
+                        <li class="SecondaryMenu_item" v-for="child in item.children" :key="child.path">
+                            <a :to="item.path+'/'+child.path">{{ child.name }}</a>
+                        </li>
+                    </ul>-->
 
 
                 </ul>
@@ -49,18 +53,21 @@
 
 
             </div>
-
-
             <notifications-block v-if="$authUser.roles.includes('partner')"></notifications-block>
 
         </section>
+
+        <main class="Main">
+            <router-view></router-view>
+        </main>
+
     </div>
 </template>
 
 <script>
 
     export default {
-        props: [],
+        props: {},
         data() {
             return {
 
@@ -72,14 +79,25 @@
                     document.location.href = "/login";
                 })
             },
-        },
-        mounted() {
-            //console.log(this.$router.currentRoute.children);
 
-            //children: () => this.$router.currentRoute.children
-            //console.log('Component mounted 1.');
-            //console.log({router: this.$router.currentRoute.path});
-            //console.log(this.firstname);
-        }
+            updateCounts(){
+                axios.get('/api/v1/counts').then((response) => {
+
+                    this.$refs.new_clients_count[0].innerHTML = (response.data.counts.new_clients) ? response.data.counts.new_clients : '';
+                });
+            }
+        },
+        mounted: function () {
+
+            if (this.$authUser.roles.includes('admin')){
+                this.updateCounts();
+
+                Echo.channel('Client')
+                    .listen('.CountsUpdated', (e) => {
+                        this.$refs.new_clients_count[0].innerHTML = (e.counts.new_clients) ? e.counts.new_clients : '';
+                    });
+            }
+
+        },
     }
 </script>

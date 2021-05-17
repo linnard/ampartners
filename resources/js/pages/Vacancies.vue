@@ -1,117 +1,149 @@
 <template>
     <div>
-        <button class="btn btn-info" @click="create()">Створити вакансію</button>
+        <div class="row m-2">
+            <div class="col-2">
+                <button class="btn btn-info" @click="create()">Створити вакансію</button>
+            </div>
 
-        <div class="row">
-            <div class="col-6">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Назва</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="vacancy in vacancies" :class="[(vacancy.is_active) ? 'table-success':'table-danger']">
-                        <th scope="row">{{vacancy.id}}</th>
-                        <td>{{vacancy.name}}</td>
-
-                        <td>
-                            <button type="button" class="btn btn-warning" @click="edit(vacancy)">Редагувати</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-info" @click="showDetails(vacancy)">Повна інформація</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success" @click="updateStatus(vacancy, status_enabled)" v-if="!vacancy.is_active">Активувати</button>
-                            <button type="button" class="btn btn-danger" @click="updateStatus(vacancy, status_disabled)" v-if="vacancy.is_active">Деактивувати</button>
-                        </td>
-                    </tr>
-
-                    </tbody>
-                </table>
+            <div class="col-2">
+                <select id="status" @change="getVacancies(status)" v-model="status" class="form-control">
+                    <option value="">Всі</option>
+                    <option v-for="(status, key) in vacancyStatuses" :value="key">{{status}}</option>
+                </select>
             </div>
         </div>
 
-        <notifications/>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Назва</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr v-for="vacancy in vacancies">
+                <td>{{vacancy.id}}</td>
+                <td>{{vacancy.title.ru}} / {{vacancy.title.uk}}</td>
+                <td>
+                <td>
+                    <button type="button" class="btn btn-warning" @click="edit(vacancy)">Редагувати</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" @click="destroy(vacancy)">Видалити</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
         <modals-container/>
     </div>
 </template>
 
 <script>
     import VacancySave from '../modals/VacancySave'
-    import VacancyDetails from '../modals/VacancyDetails'
 
     export default {
         data() {
             return {
                 vacancies: {},
+                filters: {},
                 status: '',
-                status_enabled: 1,
-                status_disabled: 0
+                config: [],
+                vacancyStatuses: [],
             }
         },
+
         methods: {
             create() {
                 this.$modal.show(VacancySave, {
                     vacancies: this.vacancies,
+                    filters: this.filters,
+                    vacancyStatuses: this.vacancyStatuses,
+                    config: this.config,
                     vacancy: {
                         id: 0,
-                        name: '',
-                        description: ''
+                        title: {
+                            ru: '',
+                            uk: '',
+                        },
+                        content: {
+                            ru: '',
+                            uk: '',
+                        },
+                        changes: '',
+                        status: '',
                     },
                 }, {
-                    height: 500,
-                    width: 700
+                    scrollable: true,
+                    height: 'auto',
+                    width: 800
                 })
+            },
+
+            destroy(vacancy) {
+                if (confirm('Ви дійсно хочете видалити цю вакансію?')) {
+                    axios.delete('/api/v1/vacancies/' + vacancy.id).then((response) => {
+                        this.getVacancies();
+                        Vue.notify({
+                            type: 'success',
+                            title: 'Успіх',
+                            text: 'Вакансію успішно видалено!'
+                        });
+                    });
+                }
             },
 
             edit(vacancy) {
                 this.$modal.show(VacancySave, {
                     vacancies: this.vacancies,
+                    filters: this.filters,
+                    vacancyStatuses: this.vacancyStatuses,
+                    config: this.config,
                     vacancy: vacancy
                 }, {
-                    height: 500,
-                    width: 700
-                })
-            },
-
-            showDetails(vacancy) {
-                this.$modal.show(VacancyDetails, {
-                    vacancy: vacancy
-                }, {
-                    resizable: true,
                     scrollable: true,
-                    height: 500,
-                    width: 700
+                    height: 'auto',
+                    width: 800
                 })
             },
-
-            getVacancies(is_active = '') {
+            getVacancies(status = '') {
                 axios.get('/api/v1/vacancies', {
                     params: {
-                        is_active: is_active
+                        ...(status ? {status: status} : {})
                     }
                 }).then((response) => {
                     this.vacancies = response.data.vacancies;
                 })
             },
 
-            updateStatus(vacancy, status) {
-                axios.put('/api/v1/vacancies/' + vacancy.id, {
-                    is_active: status
-                }).then((response) => {
-                    var index = this.vacancies.indexOf(vacancy);
-                    this.vacancies.splice(index, 1, response.data.vacancy);
-                })
+            loadFilters() {
+                axios.get('/api/v1/filters').then((response) => {
+                    this.filters = response.data.filters;
+                });
             },
 
+            loadFiltersConfig() {
+                axios.get('/api/v1/config/filters').then((response) => {
+                    this.config = response.data.config;
+                });
+            },
+
+            loadVacancyStatuses() {
+                axios.get('/api/v1/vacancy-statuses').then((response) => {
+                    this.vacancyStatuses = response.data.statuses;
+                });
+            },
 
         },
         mounted() {
             this.getVacancies();
+            this.loadFilters();
+            this.loadFiltersConfig();
+            this.loadVacancyStatuses();
         }
     }
 </script>

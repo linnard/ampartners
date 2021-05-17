@@ -34,7 +34,7 @@ class Client extends Model implements HasMedia
     }
 
     public function vacancy(){
-        return $this->hasOne(Vacancy::class);
+        return $this->hasOne(ClientVacancy::class);
     }
 
     public function user(){

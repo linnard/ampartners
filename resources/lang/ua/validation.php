@@ -162,6 +162,14 @@ return [
         'company.other_url'     => 'Сторінка компанії на іншому ресурсі',
         'company.email'         => 'E-mail для повідомлень',
 
+        'login'            => 'Логін',
+        'firstname'        => 'Ім\'я',
+        'lastname'         => 'Прізвище',
+        'patronymic'       => 'По батькові',
+
+        'roles'             => 'Ролі',
+        'permissions'       => 'Права',
+
         'email'                 => 'E-Mail адреса',
         'city'                  => 'Місто',
         'country'               => 'Країна',

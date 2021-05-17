@@ -21,6 +21,16 @@ class UserPolicy
 
     }
 
+    public function index(User $currentUser)
+    {
+        return  $currentUser->hasRole(Role::ADMIN);
+    }
+
+    public function create(User $currentUser)
+    {
+        return  $currentUser->hasRole(Role::ADMIN);
+    }
+
     public function update(User $currentUser, User $user)
     {
         return  $currentUser->hasRole(Role::ADMIN) || $currentUser->id === $user->id;

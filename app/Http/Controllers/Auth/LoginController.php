@@ -86,7 +86,7 @@ class LoginController extends Controller
                 return redirect()->route('login')->with('message', __('auth.not_approved'));
             }
 
-            return redirect('/controlpanel/clients');
+            return redirect('/controlpanel/vacancies');
         }
 
     }

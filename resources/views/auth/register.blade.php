@@ -141,7 +141,7 @@
                                 <!-- Company fields -->
                                 <hr>
 
-                                <div class="form-group required row">
+                                <div class="form-group row">
                                     <label for="company[name]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.name') }}
                                         :</label>
@@ -149,7 +149,7 @@
                                     <div class="col-md-6">
                                         <input id="company[name]" type="text"
                                                class="form-control @error('company.name') is-invalid @enderror"
-                                               name="company[name]" value="{{ old('company.name') }}" required>
+                                               name="company[name]" value="{{ old('company.name') }}">
 
                                         @error('company.name')
                                         <span class="invalid-feedback" role="alert">
@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group required row">
+                                <div class="form-group row">
                                     <label for="company[phone]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.phone') }}
                                         :</label>
@@ -167,7 +167,7 @@
                                     <div class="col-md-6">
                                         <input id="company[phone]" type="text"
                                                class="form-control @error('company.phone') is-invalid @enderror"
-                                               name="company[phone]" value="{{ old('company.phone') }}" required>
+                                               name="company[phone]" value="{{ old('company.phone') }}">
 
                                         @error('company.phone')
                                         <span class="invalid-feedback" role="alert">
@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group required row">
+                                <div class="form-group row">
                                     <label for="company[viber]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.viber') }}
                                         :</label>
@@ -185,7 +185,7 @@
                                     <div class="col-md-6">
                                         <input id="company[viber]" type="text"
                                                class="form-control @error('company.viber') is-invalid @enderror"
-                                               name="company[viber]" value="{{ old('company.viber') }}" required>
+                                               name="company[viber]" value="{{ old('company.viber') }}">
                                         @error('company.viber')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -213,7 +213,7 @@
                                 </div>
 
 
-                                <div class="form-group row">
+                                {{--<div class="form-group row">
                                     <label for="company[license_url]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.license_url') }}
                                         :</label>
@@ -229,7 +229,7 @@
                                     </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div>--}}
 
                                 <div class="form-group row">
                                     <label for="company[facebook_url]"
@@ -249,7 +249,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                {{--<div class="form-group row">
                                     <label for="company[instagram_url]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.instagram_url') }}
                                         :</label>
@@ -265,9 +265,9 @@
                                     </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div>--}}
 
-                                <div class="form-group row">
+                                {{--<div class="form-group row">
                                     <label for="company[other_url]"
                                            class="col-md-4 col-form-label text-md-right">{{ __('field.company.other_url') }}
                                         :</label>
@@ -283,7 +283,7 @@
                                     </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div>--}}
 
                                 <div class="form-group row">
                                     <label for="company[additional_info]"

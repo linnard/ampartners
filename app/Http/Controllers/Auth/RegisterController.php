@@ -63,16 +63,17 @@ class RegisterController extends Controller
             'user.patronymic' => ['required', 'alpha', 'max:255', 'min:4'],
             'password'        => ['required', 'string', 'min:3', 'confirmed'],
 
-            'company.name'    => ['required', 'string', 'min:2', 'max:255'],
-            'company.phone'   => ['required', 'numeric'],
-            'company.viber'   => ['required', 'string', 'min:3'],
+            'company.name'    => ['nullable', 'string', 'min:2', 'max:255'],
+            'company.phone'   => ['nullable', 'numeric'],
+            'company.viber'   => ['nullable', 'string', 'min:3'],
 
-            'company.site'          => ['nullable', 'starts_with:'.$url_start,'url'],
-            'company.license_url'   => ['nullable', 'starts_with:'.$url_start,'url'],
-            'company.facebook_url'  => ['nullable', 'starts_with:'.$url_start,'url'],
-            'company.instagram_url' => ['nullable', 'starts_with:'.$url_start,'url'],
-            'company.other_url'     => ['nullable', 'starts_with:'.$url_start,'url'],
-            'company.email'         => ['nullable', 'email'],
+            'company.site'           => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.license_url'    => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.facebook_url'   => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.instagram_url'  => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.other_url'      => ['nullable', 'starts_with:'.$url_start,'url'],
+            'company.additional_info'=> ['nullable', 'string'],
+            'company.email'          => ['nullable', 'email'],
         ];
 
         return Validator::make($data, $rules);

@@ -30,7 +30,7 @@ class CreateClientsTable extends Migration
             $table->timestamp('complete_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('vacancy_id')->references('id')->on('vacancies');
+            $table->foreign('vacancy_id')->references('id')->on('client_vacancies');
         });
     }
 

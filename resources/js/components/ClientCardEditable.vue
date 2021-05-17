@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="ReceiptForm_item">
-                        <label class="FormLabel ReceiptForm_label">Замітка</label>
+                        <label class="FormLabel ReceiptForm_label">Замітка (вказуємо дату після якої готові їхати)</label>
                         <textarea class="FormTextarea" :disabled="(!editable)" name="note" @change="inputChanged">{{client.note}}</textarea>
                     </div>
 

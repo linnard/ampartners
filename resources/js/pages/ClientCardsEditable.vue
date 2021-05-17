@@ -30,7 +30,7 @@
                                       fill="#fff" data-name="Capa 1"></path>
                             </g>
                         </svg>
-                        Швидке створення
+                        Швидке бронювання
                     </label>
                     <label class="BtnGreen BtnGreen-addContact" @click="createWithReserve()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="SvgIco" viewBox="0 0 16 11.79">
@@ -40,7 +40,7 @@
                                       fill="#fff" data-name="Capa 1"></path>
                             </g>
                         </svg>
-                        Створити новий контакт
+                        Переглянути вакансії
                     </label>
                 </div>
 
@@ -165,8 +165,10 @@
             },
 
             getVacancies() {
-                axios.get('/api/v1/vacancies', {
-                    is_active: 1
+                axios.get('/api/v1/client-vacancies', {
+                    params: {
+                        is_active: 1
+                    }
                 }).then((response) => {
                     this.vacancies = response.data.vacancies;
                 });

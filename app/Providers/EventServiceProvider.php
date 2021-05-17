@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\Client\StatusUpdated;
 use App\Listeners\CreateNotification;
 use App\Listeners\LogStatus;
+use App\Listeners\UpdateCounts;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -24,8 +25,13 @@ class EventServiceProvider extends ServiceProvider
 
         StatusUpdated::class => [
             LogStatus::class,
-            CreateNotification::class
+            CreateNotification::class,
+            UpdateCounts::class
         ]
+    ];
+
+    protected $subscribe = [
+        'App\Listeners\VacancyEventListener',
     ];
 
     /**

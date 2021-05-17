@@ -18,6 +18,14 @@
           <option name="port" value="44422" />
         </fileTransfer>
       </webServer>
+      <webServer id="1cf0afd8-5816-426c-baa1-5b505a1ca247" name="ampartners PROD" url="http://185.25.116.196">
+        <fileTransfer host="185.25.116.196" port="21" rootFolder="/web/ampartners.top/public_html">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

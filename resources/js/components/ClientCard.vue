@@ -37,6 +37,7 @@
                                     </svg>
                                     Документи
                                 </a>
+                                <span class="doc_count">{{client.media.length}}</span>
                             </div>
                         </div>
                         <div class="profile-info-row">

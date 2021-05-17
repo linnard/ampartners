@@ -27,7 +27,7 @@ class PatchRequest extends FormRequest
         return [
             'firstname' => 'nullable|alpha',
             'lastname' => 'nullable|alpha',
-            'vacancy_id' => 'nullable|exists:vacancies,id',
+            'vacancy_id' => 'nullable|exists:client_vacancies,id',
             'note' => 'nullable|string',
             'is_updated' => 'nullable|in:0,1',
         ];

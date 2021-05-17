@@ -4,7 +4,6 @@ namespace App\Http\Requests\Vacancy;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class UpdateRequest extends FormRequest
 {
     /**
@@ -14,6 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
+
         return true;
     }
 
@@ -25,9 +25,50 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string',
-            'description' => 'string',
-            'is_active' => 'in:0,1',
+            'title' => [
+                'required',
+                'array'
+            ],
+            'title.*' => [
+                'required',
+                'string',
+            ],
+            'changes' => [
+                'nullable',
+                'string',
+            ],
+            'content' => [
+                'required',
+                'array'
+            ],
+            'content.*' => [
+                'required',
+                'string',
+            ],
+            'is_urgently' => [
+                'nullable'
+            ],
+            'is_individual_coordination' => [
+                'nullable'
+            ],
+            'age_from' => [
+                'integer'
+            ],
+            'age_to' => [
+                'integer'
+            ],
+            'status' => [
+                'required',
+                'integer'
+            ],
+            'filter_items' => [
+                'sometimes',
+            ],
+            'filter_items.*' => [
+                'nullable',
+                'exists:filter_items,id',
+            ]
         ];
     }
+
 }

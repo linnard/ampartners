@@ -2,33 +2,33 @@
 
 namespace App\Policies;
 
-use App\Constants\User\Role;
+use App\Constants\User\Permission;
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class VacancyPolicy
 {
     use HandlesAuthorization;
 
-    private $currentUser;
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
 
+    /*public function before(User $user)
+    {
+        if($user->hasRole(\App\Constants\User\Role::Admin)){
+            return true;
+        }
+
+    }*/
+
+    public function control(User $user)
+    {
+        return $user->hasPermissionTo(Permission::ControlVacancies);
     }
 
-    public function update(User $user, Vacancy $vacancy)
+    public function view(User $user)
     {
-        return  $user->hasRole(Role::ADMIN);
+        return $user->hasAnyPermission([Permission::ControlVacancies, Permission::ViewVacancies]);
     }
 
-    public function create(User $user)
-    {
-        return  $user->hasRole(Role::ADMIN);
-    }
+
 }

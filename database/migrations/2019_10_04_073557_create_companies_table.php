@@ -16,9 +16,9 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('creator_id');
-            $table->string('name');
-            $table->string('phone');
-            $table->string('viber');
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('viber')->nullable();
             $table->string('email')->nullable();
             $table->string('site')->nullable();
             $table->text('license_url')->nullable();
