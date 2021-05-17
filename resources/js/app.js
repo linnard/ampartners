@@ -71,6 +71,15 @@ const AccessDenied = {template: '<div class="alert alert-danger">Доступ з
 
 const routes = [
 
+    //Guest routes
+    {
+        path: '/vacancies',
+        component: VacanciesIndex,
+        role: 'guest',
+        permission: '',
+        meta: {name: 'Вакансії'}
+    },
+
     //Admin routes
 
     {
@@ -127,7 +136,7 @@ const routes = [
 
     //Partner routes
 
-    {
+    /*{
         path: '/controlpanel/info',
         component: AccessDenied,
         role: 'partner',
@@ -147,7 +156,7 @@ const routes = [
         role: 'partner',
         permission: '',
         meta: {name: 'Візова підтримка'}
-    },
+    },*/
     /*{
         path: '/controlpanel/clients',
         component: ClientCardsEditable,
@@ -155,18 +164,18 @@ const routes = [
         permission: '',
         meta: {name: 'Працевлаштування'}
     },*/
-    {
+    /*{
         path: '/controlpanel/rewards',
         component: AccessDenied,
         role: 'partner',
         permission: '',
         meta: {name: 'Отримати винагороду'}
-    },
+    },*/
     {
         path: '/controlpanel/vacancies',
         component: VacanciesIndex,
         role: 'partner',
-        permission: 'view_vacancies',
+        permission: '',
         meta: {name: 'Вакансії'}
     },
 

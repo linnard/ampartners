@@ -137,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="JobList_items" v-if="vacancies.length">
+                <div class="JobList_items">
                     <div v-for="vacancy in vacancies" class="Job JobList_item"
                          :class="[vacancy.is_urgently ? 'Job-burning':'', vacancy.is_individual_coordination ? 'Job-quote':'']">
 
@@ -158,10 +158,6 @@
                         </div>
                     </div>
                 </div>
-
-                д
-
-
             </div>
         </div>
 

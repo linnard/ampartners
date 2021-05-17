@@ -15,6 +15,19 @@ use Illuminate\Http\Request;
 
 //'middleware' => ['auth:api', 'role:admin']
 
+
+//Config
+Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
+    Route::get('config/filters', 'ConfigController@getFilters');
+
+    //Filters
+    Route::get('filters', 'FiltersController@index');
+
+    //Vacancies
+    Route::resource('vacancies', 'VacanciesController');
+});
+
+
 Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api'] ], function () {
 
     //Route::get('/clear', 'ClearController@clear');
@@ -31,15 +44,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api
     //Companies
     Route::get('companies', 'CompaniesController@index');
 
-    //Vacancies
-    Route::resource('vacancies', 'VacanciesController');
+
     Route::get('vacancy-statuses', 'VacanciesController@getStatuses');
 
-    //Config
-    Route::get('config/filters', 'ConfigController@getFilters');
-
-    //Filters
-    Route::get('filters', 'FiltersController@index');
 
     //Users
     Route::get('users', 'UsersController@index');

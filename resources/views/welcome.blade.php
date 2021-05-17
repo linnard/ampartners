@@ -20,17 +20,20 @@
 					</li>
 					@auth
 					@if (auth()->user()->hasRole('admin'))
-					<li class="MainMenu_item"><a href="{{ url('/adminpanel/clients') }}" class="MainMenu_link">Адмін панель</a> </li>
+						<li class="MainMenu_item"><a href="{{ url('/adminpanel/clients') }}" class="MainMenu_link">Адмін панель</a> </li>
 					@else
-					<li class="MainMenu_item"><a href="{{ url('/controlpanel/clients') }}" class="MainMenu_link">Кабінет</a> </li>
+					{{-- <li class="MainMenu_item"><a href="{{ url('/controlpanel/clients') }}" class="MainMenu_link">Кабінет</a> </li> --}}
+					<li class="MainMenu_item"><a href="{{ url('/vacancies') }}" class="MainMenu_link">Вакансії</a> </li>
 					@endif
 					@else
-					<li class="MainMenu_item"><a href="{{ route('login') }}" class="MainMenu_link">Вхід в систему</a>
+					<li class="MainMenu_item"><a href="{{ url('/vacancies') }}" class="MainMenu_link">Вакансії</a>
 					</li>
+					{{-- <li class="MainMenu_item"><a href="{{ route('login') }}" class="MainMenu_link">Вхід в систему</a>
+					</li> --}}
 
 					@if (Route::has('register'))
-					<li class="MainMenu_item"><a href="{{ route('register') }}" class="MainMenu_link">Реєстрація</a>
-					</li>
+					{{-- <li class="MainMenu_item"><a href="{{ route('register') }}" class="MainMenu_link">Реєстрація</a>
+					</li> --}}
 					@endif
 					@endauth
 
@@ -46,84 +49,82 @@
 						<p>У 2014 році, я заснував власну компанію і почав безкоштовно допомагати українцям влаштовуватись на роботу в інші країни. На сьогодні компанія «Робота за кордоном від Андрія Марисюка» є найбільшою та найвідомішою компанією в Україні в сфері працевлаштування. Детальніше про мене та про компанію можна прочитати на офіційному сайті.</p>
 						<h2 class="BorderedTitle About_title">Особисто перевіряю кожну вакансію</h2>
 						<p>Абсолютно кожну вакансію, на яку я працевлаштовую - я перевірив особисто! Я дуже ретельно і відповідально підходжу до вибору вакансій, тому завжди уважно перевіряю умови, стан, темп і кожен робочий процес. Крім цього я спілкуюся з українцями, які там працюють, дивлюся умови, в яких вони проживають, і на основі побаченого приймаю рішення. Тому, працевлаштовуючи своїх клієнтів на мої вакансії ви завжди можете бути впевнені як в абсолютній легальності працевлаштування так і в тому, що на яку б вакансію від мене ваші клієнти не поїхали б – вони гарантовано будуть працювати в нормальних умовах!</p>
-						<div class="swiper-container">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_1.png" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_3.png" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_4.png" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_5.png" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_5.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_6.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_7.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_8.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_9.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_10.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_12.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_13.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_14.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_15.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_17.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_18.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_19.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_20.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_21.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_22.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_23.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_24.jpg" />
-								</div>
-								<div class="swiper-slide">
-									<img src="/img/guarantees-slider/guarantee21_2.png" />
+						<div class="Swiper Swiper-guarantee">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_1.png" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_3.png" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_4.png" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_5.png" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_5.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_6.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_7.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_8.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_9.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_10.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_12.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_13.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_14.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_15.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_17.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_18.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_19.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_20.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_21.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_22.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_23.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_24.jpg" />
+									</div>
+									<div class="swiper-slide">
+										<img src="/img/guarantees-slider/guarantee21_2.png" />
+									</div>
 								</div>
 							</div>
-							<button class="swiper-button-prev">
-								<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z" class="path-arrow"/><path d="M0-.25h48v48H0z" fill="none"/></svg>
-							</button>
-							<button class="swiper-button-next">
-								<svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z" class="path-arrow"/><path d="M0-.25h48v48H0z" fill="none"/></svg>
-							</button>
+							<button class="swiper-button-prev"></button>
+							<button class="swiper-button-next"></button>
 						</div>
 					</div>
 					<h2 class="BorderedTitle Article_subTitle">Коротко про співпрацю</h2>
@@ -158,9 +159,9 @@
 						<p>Таким чином, кожен партнер, використовуючи нашу систему, зможе абсолютно безкоштовно отримати доступ до загальної бази тільки надійних партнерів і пропонувати всі вакансії своїм клієнтам, при цьому знаючи та будучи впевненими, що всі навіть незначні нюанси гарантовано будуть дотримані, і в разі виникнення додаткових запитань чи побажань зі сторони клієнта, вони не будуть проігноровані.</p>
 					</div>
 					<h2 class="BorderedTitle Article_subTitle">Як все працює</h2>
-					<div class="Article_text">
-						<img src="img/article_img.png" alt="Як все працює" class="Article_img Article_img-right Article_img-outside">
-						<p>Кожен охочий зможе подати заявку на доступ до єдиної бази вакансій. Користування базою повністю безкоштовне. Для того, щоб подати заявку необхідно <a href="/register">зареєструватись</a>. <br>у відповідь ви отримаєте посилання-анкету, яку потрібно заповнити. Звичайно, ми в першу чергу надаємо перевагу великим компаніям, які працюють за ліцензією Міністерства <br>соціальної політики України, проте якщо ви тільки хочете спробувати себе в сфері працевлаштування, і у вас немає навіть сайту - ми розглянемо вашу заявку індивідуально. Іноді, бажання працювати, старатись та розвиватись для нас грає набагато більшу роль ніж наявність ліцензії, сайту та великого офісу.</p>
+					<div class="Article_text" style="padding-bottom: 70px;">
+						<img src="img/article_img.png" alt="Як все працює" class="Article_img Article_img-right Article_img-outside" style="margin-top: -100px;">
+						<p hidden>Кожен охочий зможе подати заявку на доступ до єдиної бази вакансій. Користування базою повністю безкоштовне. Для того, щоб подати заявку необхідно <a href="/register">зареєструватись</a>. <br>у відповідь ви отримаєте посилання-анкету, яку потрібно заповнити. Звичайно, ми в першу чергу надаємо перевагу великим компаніям, які працюють за ліцензією Міністерства <br>соціальної політики України, проте якщо ви тільки хочете спробувати себе в сфері працевлаштування, і у вас немає навіть сайту - ми розглянемо вашу заявку індивідуально. Іноді, бажання працювати, старатись та розвиватись для нас грає набагато більшу роль ніж наявність ліцензії, сайту та великого офісу.</p>
 						<p>Після схвалення заявки ви отримаєте унікальні дані для входу. Всі вакансії завжди оновлюються в режимі реального часу та мають детальний опис, в якому завжди прописані майже всі нюанси, які стосуються цієї роботи.</p>
 						<p>Окремої уваги заслуговує система бронювання та контролю клієнтів. Це наша особиста розробка, яка вже отримала найвищі оцінки та позитивні відгуки від існуючих партнерів.</p>
 						<p>Навіть якщо ви раніше нічим подібним не займались - всього за 15 хвилин ви повністю у всьому розберетесь, тому що крім максимально інтуїтивного інтерфейсу, над яким понад рік працювали наші спеціалісти, ви також отримаєте доступ до інструкцій, де буде детально описано як саме працює наша закрита партнерська база вакансій.</p>
@@ -182,6 +183,10 @@
 						<p>Над цим проектом команда компанії «Робота за кордоном від Андрія Марисюка» працювала із середини 2017 року і ми раді, що нарешті можемо представити вам нашу інноваційну розробку, яка об’єднає всі агенції, посередників та просто новачків в єдину команду, яка на найвищому рівні буде надавати послуги з працевлаштування та виготовлення документів, а всіх іноземних партнерів змусить пропонувати справедливі умови, на які українські заробітчани дійсно заслуговують. Таким чином, завдяки використанню нашої розробки ми значно зменшимо рівень обману та кількість недобросовісних агенцій, а також дамо можливість тисячам українців, які завжди мріяли мати власну справу, відкрити свій бізнес!</p>
 						<p><a href="/register">Приєднуйтесь</a> до єдиної закритої партнерської системи!</p>
 						<p>З повагою, Андрій Марисюк та команда компанії «Робота за кордоном від Андрія Марисюка».</p>
+					</div>
+					<h2 class="BorderedTitle Article_subTitle">З радістю відповімо <br>на ваші запитання!</h2>
+					<div class="Article_text">
+						<p>Для зв'язку з нашими спеціалістами, напишіть нам у <a title="Viber" class="hidden-xxs" href="viber://chat?number=+380974303916"><strong><u>Viber</u></strong></a> <a title="Viber" class="hidden-xxsPlus" href="viber://add?number=380974303916"><strong><u>Viber</u></strong></a> або <a title="Telegram" href="tg://resolve?domain=ampartners"><strong><u>Telegram</u></strong></a></p>
 					</div>
 				</div>
 				<div class="PageTop">

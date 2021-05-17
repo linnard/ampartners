@@ -24,7 +24,7 @@ class VacanciesController extends Controller
 
     public function index(Request $request)
     {
-       $this->authorize('view', Vacancy::class);
+       //$this->authorize('view', Vacancy::class);
 
         if($request->has('lang')){
             app()->setlocale($request->lang);
@@ -157,7 +157,7 @@ class VacanciesController extends Controller
 
     public function getStatuses(Request $request)
     {
-        $this->authorize('view', Vacancy::class);
+        //$this->authorize('view', Vacancy::class);
 
         $statuses = config('constants.vacancy_statuses');
 

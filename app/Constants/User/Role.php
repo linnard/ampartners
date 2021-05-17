@@ -6,5 +6,6 @@ interface Role
 {
     const PARTNER = 'partner';
     const ADMIN = 'admin';
+    const GUEST = 'guest';
 }
 

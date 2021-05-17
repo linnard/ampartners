@@ -1,17 +1,7 @@
 <template>
     <div>
-        <div class="row m-2">
-            <div class="col-2">
-                <button class="btn btn-info" @click="create()">Створити вакансію</button>
-            </div>
+        <button class="btn btn-info" @click="create()">Створити вакансію</button>
 
-            <div class="col-2">
-                <select id="status" @change="getVacancies(status)" v-model="status" class="form-control">
-                    <option value="">Всі</option>
-                    <option v-for="(status, key) in vacancyStatuses" :value="key">{{status}}</option>
-                </select>
-            </div>
-        </div>
 
 
         <table class="table table-striped">
@@ -28,12 +18,8 @@
                 <td>{{vacancy.id}}</td>
                 <td>{{vacancy.title.ru}} / {{vacancy.title.uk}}</td>
                 <td>
-                <td>
-                    <button type="button" class="btn btn-warning" @click="edit(vacancy)">Редагувати</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" @click="destroy(vacancy)">Видалити</button>
-                </td>
+                <td><button type="button" class="btn btn-warning" @click="edit(vacancy)">Редагувати</button></td>
+                <td><button type="button" class="btn btn-danger" @click="destroy(vacancy)">Видалити</button></td>
             </tr>
 
             </tbody>
@@ -85,16 +71,16 @@
             },
 
             destroy(vacancy) {
-                if (confirm('Ви дійсно хочете видалити цю вакансію?')) {
-                    axios.delete('/api/v1/vacancies/' + vacancy.id).then((response) => {
-                        this.getVacancies();
-                        Vue.notify({
-                            type: 'success',
-                            title: 'Успіх',
-                            text: 'Вакансію успішно видалено!'
-                        });
-                    });
-                }
+               if(confirm('Ви дійсно хочете видалити цю вакансію?')){
+                   axios.delete('/api/v1/vacancies/'+vacancy.id).then((response) => {
+                       this.getVacancies();
+                       Vue.notify({
+                           type: 'success',
+                           title: 'Успіх',
+                           text: 'Вакансію успішно видалено!'
+                       });
+                   });
+               }
             },
 
             edit(vacancy) {
