@@ -2,7 +2,7 @@
     <div class="Wrapper">
         <header class="Header">
 
-            <a href="/" title="AMpartners" class="Logo Header_logo" v-if="$authUser.roles.includes('partner')">
+            <a href="/" title="AMpartners" class="Logo Header_logo">
                 <img src="/img/small_logo.png" alt="Логотип" class="Logo_img">
             </a>
 

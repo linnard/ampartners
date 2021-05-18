@@ -60560,21 +60560,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Wrapper" }, [
     _c("header", { staticClass: "Header" }, [
-      _vm.$authUser.roles.includes("partner")
-        ? _c(
-            "a",
-            {
-              staticClass: "Logo Header_logo",
-              attrs: { href: "/", title: "AMpartners" }
-            },
-            [
-              _c("img", {
-                staticClass: "Logo_img",
-                attrs: { src: "/img/small_logo.png", alt: "Логотип" }
-              })
-            ]
-          )
-        : _vm._e(),
+      _vm._m(0),
       _vm._v(" "),
       _vm.$authUser.roles.includes("admin")
         ? _c(
@@ -60632,7 +60618,7 @@ var render = function() {
       [
         _c("div", { staticClass: "Top_left" }, [
           _c("div", { staticClass: "Welcome Top_welcome" }, [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "Welcome_text" }, [
               _vm._v("\n                    Привіт, "),
@@ -60673,6 +60659,24 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "Logo Header_logo",
+        attrs: { href: "/", title: "AMpartners" }
+      },
+      [
+        _c("img", {
+          staticClass: "Logo_img",
+          attrs: { src: "/img/small_logo.png", alt: "Логотип" }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
