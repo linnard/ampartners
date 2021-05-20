@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3be809a7-92d8-476f-9fec-5ceee6c173c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper/" />
@@ -170,7 +169,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="1020">
               <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
             </state>
           </provider>
@@ -185,7 +184,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -195,15 +194,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Policies/VacancyPolicy.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#32#66#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="145" column="28" lean-forward="true" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
+            <state relative-caret-position="2790">
+              <caret line="200" column="25" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
               <folding>
                 <element signature="e#44#78#0#PHP" expanded="true" />
-                <element signature="e#6157#6866#0#PHP" />
-                <element signature="e#6872#7784#0#PHP" />
-                <element signature="e#7790#8010#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -213,10 +242,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ваканс</find>
-      <find>'order'</find>
-      <find>filters[{{filter.id}}][]</find>
-      <find>appends</find>
       <find>selectedFilter</find>
       <find>throttle:</find>
       <find>https://</find>
@@ -243,6 +268,10 @@
       <find>filtere</find>
       <find>authorize('view'</find>
       <find>в систе</find>
+      <find>alt=&quot;Copy&quot;</find>
+      <find>Job_copyIcon</find>
+      <find>CopyIcon</find>
+      <find>йовано</find>
     </findStrings>
   </component>
   <component name="FrameworkCommandLineHistory">
@@ -267,6 +296,7 @@
       <command text="artisan make:migration add_is_hidden_to_filters --table=filters" />
       <command text="artisan migratei" />
       <command text="artisan migrate" />
+      <command text="npm -v" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -309,7 +339,6 @@
         <option value="$PROJECT_DIR$/app/Notifications/Vacancy/VacancyCreatedNotification.php" />
         <option value="$PROJECT_DIR$/resources/js/pages/Vacancies.vue" />
         <option value="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/Policies/VacancyPolicy.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/User/UpdateRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/User/StoreRequest.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_03_02_142423_add_is_hidden_to_filters.php" />
@@ -319,13 +348,14 @@
         <option value="$PROJECT_DIR$/app/Constants/User/Role.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Controlpanel/ControlpanelController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
+        <option value="$PROJECT_DIR$/app/Policies/VacancyPolicy.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
       </list>
     </option>
   </component>
@@ -490,6 +520,24 @@
             <path>
               <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
               <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Policies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Providers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -531,7 +579,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../andriym" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -610,18 +658,23 @@
       <workItem from="1618267782751" duration="369000" />
       <workItem from="1621019298838" duration="422000" />
       <workItem from="1621247166632" duration="5135000" />
+      <workItem from="1621355960588" duration="1316000" />
+      <workItem from="1621409679091" duration="1947000" />
+      <workItem from="1621426863435" duration="97000" />
+      <workItem from="1621508588465" duration="234000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115560000" />
+    <option name="totallyTimeSpent" value="119154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48772505" visible="true" weight="0.25189108" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4844517" visible="true" weight="0.26701966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.512275" side_tool="true" weight="0.20121029" />
+      <window_info id="npm" order="2" sideWeight="0.5155483" side_tool="true" weight="0.25945538" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5752961" />
@@ -861,16 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Policies/VacancyPolicy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding>
-            <element signature="e#32#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Notifications/Vacancy/VacancyUpdatedNotification.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -903,16 +946,6 @@
         <state relative-caret-position="-765" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="161" column="14" lean-forward="true" selection-start-line="161" selection-start-column="14" selection-end-line="161" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -940,13 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="4" column="2" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-277">
@@ -961,19 +987,6 @@
           <folding>
             <element signature="e#279#314#0" expanded="true" />
             <element signature="e#1738#1780#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="8" />
-          <folding>
-            <element signature="e#44#78#0#PHP" expanded="true" />
-            <element signature="e#6157#6866#0#PHP" />
-            <element signature="e#6872#7784#0#PHP" />
-            <element signature="e#7790#8010#0#PHP" />
           </folding>
         </state>
       </provider>
@@ -1019,7 +1032,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="1020">
           <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
         </state>
       </provider>
@@ -1035,6 +1048,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="67" selection-start-line="4" selection-start-column="67" selection-end-line="4" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Policies/VacancyPolicy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#32#66#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2790">
+          <caret line="200" column="25" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
+          <folding>
+            <element signature="e#44#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="145" column="28" lean-forward="true" selection-start-line="145" selection-start-column="28" selection-end-line="145" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
