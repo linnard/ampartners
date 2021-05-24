@@ -152,11 +152,11 @@
                 </div>
 
                 <div class="Job_text">
-                    <div class="Popup_changes" v-if="vacancy.changes">{{vacancy.changes}}</div>
-                    <br>
                     <!-- <div class="Message Job_message">
                         Винагорода 100 zl за кандидата, за відпрацьований місяць
                     </div> -->
+                    <div class="Popup_changes" v-if="vacancy.changes">{{vacancy.changes}}</div>
+                    <br>
                     <div class="Job_textInner" v-html="vacancy.translated_content"></div>
                     <div class="JobReservation Job_reservation">
                         <a href="javascript:;" class="BtnGreen BtnGreen-fullJob BtnGreen-fullJobDescription JobReservation_btn">
