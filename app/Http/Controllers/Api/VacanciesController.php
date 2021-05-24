@@ -137,6 +137,12 @@ class VacanciesController extends Controller
 
             Cache::forever('vacancy_order_for_'.auth()->id(), $request->order);
             switch ($request->order){
+                case 'sort_desc':
+                    $vacancies->orderBy('sort','desc');
+                    break;
+                case 'sort_asc':
+                    $vacancies->orderBy('sort','asc');
+                    break;
                 case 'date_desc':
                     $vacancies->orderBy('updated_at','desc');
                     break;

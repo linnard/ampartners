@@ -90,6 +90,7 @@
 
                 <a class="Link Top_logout" href="javascript:;" @click="logout()">Вийти</a>
 
+                <a class="btn btn-info ml-3" href="/adminpanel/vacancies" v-if="$authUser.roles.includes('admin')">Вакансії</a>
 
             </div>
             <notifications-block v-if="$authUser.roles.includes('partner')"></notifications-block>

@@ -1975,6 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -4000,6 +4001,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5344,6 +5355,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5370,6 +5400,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       }, {
         label: 'По датi',
         code: 'date_desc'
+      }, {
+        label: 'Винагорода (по зростанню)',
+        code: 'sort_asc'
+      }, {
+        label: 'Винагорода (по спаданню)',
+        code: 'sort_desc'
       }]
     };
   },
@@ -60747,7 +60783,18 @@ var render = function() {
               }
             },
             [_vm._v("Вийти")]
-          )
+          ),
+          _vm._v(" "),
+          _vm.$authUser.roles.includes("admin")
+            ? _c(
+                "a",
+                {
+                  staticClass: "btn btn-info ml-3",
+                  attrs: { href: "/adminpanel/vacancies" }
+                },
+                [_vm._v("Вакансії")]
+              )
+            : _vm._e()
         ]),
         _vm._v(" "),
         _vm.$authUser.roles.includes("partner")
@@ -64279,6 +64326,58 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Опис для клієнтів:")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.vacancy.description,
+                    expression: "vacancy.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { name: "description", rows: "6" },
+                domProps: { value: _vm.vacancy.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.vacancy, "description", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Значення для сортування:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.vacancy.sort,
+                    expression: "vacancy.sort"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "number", name: "sort" },
+                domProps: { value: _vm.vacancy.sort },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.vacancy, "sort", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Зміни:")]),
               _vm._v(" "),
               _c("textarea", {
@@ -66629,13 +66728,23 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                    НАБІР НЕ ЗДІЙСНЮЄТЬСЯ!\n                "
+                            "\n                        НАБІР НЕ ЗДІЙСНЮЄТЬСЯ!\n                    "
                           )
                         ]
                       )
                     : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "Job_text" }, [
+                    vacancy.description
+                      ? _c("div", { staticClass: "Message Job_message" }, [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(vacancy.description) +
+                              "\n                        "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     vacancy.changes
                       ? _c("div", { staticClass: "Popup_changes" }, [
                           _vm._v(_vm._s(vacancy.changes))
@@ -66889,7 +66998,9 @@ var render = function() {
               _vm._v(" "),
               _vm.vacancy.status === 2
                 ? _c("div", { staticClass: "Popup_closedStatus" }, [
-                    _vm._v("\n                Набір закритий.\n            ")
+                    _vm._v(
+                      "\n                    Набір закритий.\n                "
+                    )
                   ])
                 : _vm._e()
             ]),
@@ -66929,7 +67040,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Закрити вікно\n            ")]
+                [_vm._v("Закрити вікно\n                ")]
               )
             ])
           ])
@@ -66981,7 +67092,7 @@ var staticRenderFns = [
       },
       [
         _c("span", { staticClass: "BtnGreen_text BtnGreen_text-large" }, [
-          _vm._v("\n                            Безкоштовно")
+          _vm._v("\n                        Безкоштовно")
         ]),
         _c("span", { staticClass: "BtnGreen_text" }, [
           _vm._v("забронювати вакансію")
@@ -66999,7 +67110,7 @@ var staticRenderFns = [
       [
         _c("strong", [_vm._v("Для безкоштовного бронювання вакансії")]),
         _vm._v(
-          " зв'яжіться з нами зручним для вас способом:\n                            "
+          " зв'яжіться з нами зручним\n                                    для вас способом:\n                                "
         )
       ]
     )
@@ -83998,8 +84109,8 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "f39d1b297694732dbc2d",
+  cluster: "eu",
   encrypted: true
 });
 
@@ -85820,8 +85931,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\ampartners\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\ampartners\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\ampartners\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\ampartners\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
