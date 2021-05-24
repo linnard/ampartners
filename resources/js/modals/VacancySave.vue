@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Опис для клієнтів:</label>
+                        <label>Інформація про винагороду для партнерів:</label>
                         <textarea class="form-control" name="description" v-model="vacancy.description" rows="6"></textarea>
                     </div>
 
