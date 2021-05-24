@@ -23,14 +23,16 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api' ], function () {
     //Filters
     Route::get('filters', 'FiltersController@index');
 
-    //Vacancies
-    Route::resource('vacancies', 'VacanciesController');
+    Route::get('vacancies', 'VacanciesController@index');
+
 });
 
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api'] ], function () {
 
     //Route::get('/clear', 'ClearController@clear');
+
+
 
     //Info
     Route::get('counts', 'InfoController@counts');
@@ -43,6 +45,12 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => ['auth:api
 
     //Companies
     Route::get('companies', 'CompaniesController@index');
+
+    //Vacancies
+    Route::post('vacancies', 'VacanciesController@store')->name('vacancies.store');
+    Route::put('vacancies/{vacancy}', 'VacanciesController@update')->name('vacancies.update');
+    Route::delete('vacancies/{vacancy}', 'VacanciesController@destroy')->name('vacancies.destroy');
+    Route::get('vacancies/{vacancy}', 'VacanciesController@show')->name('vacancies.show');
 
 
     Route::get('vacancy-statuses', 'VacanciesController@getStatuses');
