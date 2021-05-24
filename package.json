@@ -26,6 +26,8 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^12.4.0",
         "@ckeditor/ckeditor5-vue": "^1.0.0",
+        "gulp": "^4.0.2",
+        "gulp-sass": "^4.1.0",
         "laravel-echo": "^1.5.4",
         "luxon": "^1.19.3",
         "pusher-js": "^5.0.2",

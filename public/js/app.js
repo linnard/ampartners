@@ -1936,6 +1936,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -5242,6 +5281,69 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5272,6 +5374,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     };
   },
   methods: {
+    copyInputText: function copyInputText(targetElem) {
+      targetElem.select();
+      targetElem.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+    },
     clearFilter: function clearFilter() {
       window.location = window.location.href.split("?")[0];
     },
@@ -5379,16 +5486,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         }
       }
     },
-    copyText: function copyText(text) {
-      var div = document.createElement("div");
-      div.innerHTML = text; //return  || div.innerText || "";
+    copyText: function copyText(text, event) {
+      // var div = document.createElement("div");
+      // div.innerHTML = text;
+      //return  || div.innerText || "";
+      // this.$clipboard(div.textContent);
+      // Vue.notify({
+      //     type: 'success',
+      //     title: '',
+      //     text: 'Скопійовано!'
+      // });
+      var copyIcon = event.target.closest('.CopyIcon');
+      if (!copyIcon) return;
+      var job = copyIcon.closest('.Job');
 
-      this.$clipboard(div.textContent);
-      Vue.notify({
-        type: 'success',
-        title: '',
-        text: 'Скопійовано!'
-      });
+      if (job) {
+        var copyTextarea = document.createElement('textarea');
+        copyTextarea.value = job.querySelector('.Job_textInner').textContent;
+        copyIcon.append(copyTextarea);
+        this.copyInputText(copyTextarea);
+        copyTextarea.remove();
+      }
+
+      var tooltip = copyIcon.querySelector('.Tooltip');
+
+      if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.className = 'Tooltip Tooltip-vacancy';
+        tooltip.textContent = 'Скопійовано!';
+        copyIcon.append(tooltip);
+      }
+
+      setTimeout(function () {
+        tooltip.remove();
+      }, 2000);
     }
   },
   mounted: function mounted() {
@@ -60576,40 +60707,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "MainMenu Header_menu" }, [
-        _c(
-          "ul",
-          { staticClass: "MainMenu_list" },
-          _vm._l(_vm.$router.options.routes, function(item) {
-            return _vm.$authUser.roles.includes(item.role) &&
-              (!item.permission.length ||
-                _vm.$authUser.permissions.includes(item.permission))
-              ? _c(
-                  "router-link",
-                  {
-                    key: item.path,
-                    staticClass: "MainMenu_item",
-                    attrs: { to: item.path, tag: "li", exact: "" }
-                  },
-                  [
-                    _c("a", { staticClass: "MainMenu_link" }, [
-                      _vm._v(_vm._s(item.meta.name))
-                    ]),
-                    _vm._v(" "),
-                    item.meta.counter_id
-                      ? _c("span", {
-                          ref: item.meta.counter_id,
-                          refInFor: true,
-                          staticClass: "Number SecondaryMenu_number"
-                        })
-                      : _vm._e()
-                  ]
-                )
-              : _vm._e()
-          }),
-          1
-        )
-      ])
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3)
     ]),
     _vm._v(" "),
     _c(
@@ -60618,7 +60720,7 @@ var render = function() {
       [
         _c("div", { staticClass: "Top_left" }, [
           _c("div", { staticClass: "Welcome Top_welcome" }, [
-            _vm._m(1),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "Welcome_text" }, [
               _vm._v("\n                    Привіт, "),
@@ -60676,6 +60778,104 @@ var staticRenderFns = [
         })
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "Consult Header_consult" }, [
+      _c("div", { staticClass: "Consult_iconWrapper" }, [
+        _c("img", {
+          attrs: { src: "/img/header/sup.png", alt: "Консультація" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "Consult_text" }, [
+        _vm._v("\n                Виникли запитання?"),
+        _c("br"),
+        _vm._v("\n                З радістю проконсультуємо!\n            ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "Phones Header_phones" }, [
+      _c("ul", { staticClass: "Phones_list" }, [
+        _c("li", { staticClass: "Phones_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "Phone Phone-ua",
+              attrs: { href: "tel:+380972313469" }
+            },
+            [_vm._v("+380972313469")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "Phones_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "Phone Phone-pl",
+              attrs: { href: "tel:+48732082227" }
+            },
+            [_vm._v("+48732082227")]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "Buttons Header_buttons" }, [
+      _c("ul", { staticClass: "Buttons_list" }, [
+        _c("li", { staticClass: "Buttons_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "ContactBtn ContactBtn-viber hidden-xxs",
+              attrs: { href: "viber://chat?number=+380974303916" }
+            },
+            [_vm._v("Написати у Viber")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "ContactBtn ContactBtn-viber hidden-xxsPlus",
+              attrs: { href: "viber://add?number=380974303916" }
+            },
+            [_vm._v("Написати у Viber")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "Buttons_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "ContactBtn ContactBtn-telegram",
+              attrs: { href: "tg://resolve?domain=ampartners" }
+            },
+            [_vm._v("Написати у Telegram")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "Buttons_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "ContactBtn ContactBtn-call",
+              attrs: { href: "javascript:;" }
+            },
+            [_vm._v("Зателефонувати вам?")]
+          )
+        ])
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -66396,7 +66596,10 @@ var render = function() {
                       attrs: { href: "javascript:;" },
                       on: {
                         click: function($event) {
-                          return _vm.copyText(vacancy.translated_content)
+                          return _vm.copyText(
+                            vacancy.translated_content,
+                            $event
+                          )
                         }
                       }
                     },
@@ -66426,7 +66629,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        НАБІР НЕ ЗДІЙСНЮЄТЬСЯ!\n                    "
+                            "\n                    НАБІР НЕ ЗДІЙСНЮЄТЬСЯ!\n                "
                           )
                         ]
                       )
@@ -66446,7 +66649,214 @@ var render = function() {
                       domProps: {
                         innerHTML: _vm._s(vacancy.translated_content)
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "JobReservation Job_reservation" },
+                      [
+                        _vm._m(3, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "JobReservation_detailed JobReservation_detailed-noBorder JobReservation_detailed-textCenter"
+                          },
+                          [
+                            _c("button", {
+                              staticClass: "JobReservation_closeBtn",
+                              attrs: { type: "button" }
+                            }),
+                            _vm._v(" "),
+                            _vm._m(4, true),
+                            _vm._v(" "),
+                            _vm._m(5, true),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "Messengers Messengers-jobReservation JobReservation_messengers"
+                              },
+                              [
+                                _c("ul", { staticClass: "Messengers_list" }, [
+                                  _c("li", { staticClass: "Messengers_item" }, [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "MessengerBtn MessengerBtn-small MessengerBtn-vbOutline hidden-xxs",
+                                        attrs: {
+                                          href:
+                                            "viber://chat?number=+380974303916"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "MessengerBtn_icon" },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass: "SvgIco",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  viewBox: "0 0 28.99 30.01"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "g",
+                                                  {
+                                                    attrs: {
+                                                      "data-name": "Слой 2"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("path", {
+                                                      staticClass:
+                                                        "SvgIco_path",
+                                                      attrs: {
+                                                        d:
+                                                          "M28.34 7.21A10 10 0 0 0 21.58.68 37.62 37.62 0 0 0 7.44.67 10 10 0 0 0 .66 7.18a27.55 27.55 0 0 0 0 11.92A10 10 0 0 0 7 25.57v3.16a1.27 1.27 0 0 0 2.19.88l3.19-3.32c.7 0 1.39.06 2.08.06a38.19 38.19 0 0 0 7.06-.67 10 10 0 0 0 6.75-6.5 27.86 27.86 0 0 0 .07-11.97zm-2.53 11.35a7.58 7.58 0 0 1-4.76 4.57 35.15 35.15 0 0 1-7.51.6.16.16 0 0 0-.13.06l-2.34 2.4-2.48 2.55a.29.29 0 0 1-.5-.2V23.3a.17.17 0 0 0-.15-.17 7.58 7.58 0 0 1-4.76-4.57 25.08 25.08 0 0 1 0-10.77 7.56 7.56 0 0 1 4.76-4.57 34.82 34.82 0 0 1 13.11 0 7.56 7.56 0 0 1 4.76 4.57 25.08 25.08 0 0 1 0 10.77zm-6.2-1.85c-.42-.31-.85-.61-1.29-.88a1.13 1.13 0 0 0-1.37.06c-.42.34-.61 1-1.21 1.06a1.94 1.94 0 0 1-1-.24A6.77 6.77 0 0 1 11 12.5a.86.86 0 0 1 .06-.75 1.3 1.3 0 0 1 .3-.32c.12-.1.25-.21.39-.31a1.22 1.22 0 0 0 .34-1.64 15.76 15.76 0 0 0-1.82-2.55 1 1 0 0 0-1.18-.28 4.39 4.39 0 0 0-1.5 1.11A1.88 1.88 0 0 0 7 9.62c.3.73.59 1.47.94 2.18A18.53 18.53 0 0 0 10.7 16a18.7 18.7 0 0 0 7.1 4.76c.26.11.54.17.83.26a4.12 4.12 0 0 0 .75-.24 4.06 4.06 0 0 0 1.73-1.91 1 1 0 0 0-.28-1.2 13.43 13.43 0 0 0-1.22-.96zm-5.11-11zm0 0h-.2a.42.42 0 0 0-.42.48c0 .32.38.33.63.36.4 0 .8.06 1.19.13a6.28 6.28 0 0 1 5.05 5.24c.06.5.09 1 .13 1.5 0 .25.14.49.42.49a.43.43 0 0 0 .4-.5c-.05-.6-.09-1.21-.19-1.8a7.14 7.14 0 0 0-7.01-5.88zM19 12.6a1 1 0 0 0 0 .34.4.4 0 0 0 .75 0 1.39 1.39 0 0 0 0-.24v-.61-.22a4.64 4.64 0 0 0-2.53-3.61 5.38 5.38 0 0 0-2.3-.6.37.37 0 0 0-.42.37.38.38 0 0 0 .37.43l.6.08a4.61 4.61 0 0 1 1.32.41 4.05 4.05 0 0 1 1.67 1.56A4.42 4.42 0 0 1 19 12.6zm-1-.32a1 1 0 0 0 0-.34 2.41 2.41 0 0 0-2.5-2.41.44.44 0 0 0-.45.34.41.41 0 0 0 .33.47c.21.05.44 0 .65.09a1.77 1.77 0 0 1 .48.23 1.61 1.61 0 0 1 .58.92 5 5 0 0 1 .08.56.43.43 0 0 0 .46.42c-.07 0-.16 0 0 0a.34.34 0 0 0 .37-.28z",
+                                                        fill: "#fff",
+                                                        "data-name": "Слой 1"
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(6, true)
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "MessengerBtn MessengerBtn-small MessengerBtn-vbOutline hidden-xxsPlus",
+                                        attrs: {
+                                          href:
+                                            "viber://add?number=380974303916"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "MessengerBtn_icon" },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass: "SvgIco",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  viewBox: "0 0 28.99 30.01"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "g",
+                                                  {
+                                                    attrs: {
+                                                      "data-name": "Слой 2"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("path", {
+                                                      staticClass:
+                                                        "SvgIco_path",
+                                                      attrs: {
+                                                        d:
+                                                          "M28.34 7.21A10 10 0 0 0 21.58.68 37.62 37.62 0 0 0 7.44.67 10 10 0 0 0 .66 7.18a27.55 27.55 0 0 0 0 11.92A10 10 0 0 0 7 25.57v3.16a1.27 1.27 0 0 0 2.19.88l3.19-3.32c.7 0 1.39.06 2.08.06a38.19 38.19 0 0 0 7.06-.67 10 10 0 0 0 6.75-6.5 27.86 27.86 0 0 0 .07-11.97zm-2.53 11.35a7.58 7.58 0 0 1-4.76 4.57 35.15 35.15 0 0 1-7.51.6.16.16 0 0 0-.13.06l-2.34 2.4-2.48 2.55a.29.29 0 0 1-.5-.2V23.3a.17.17 0 0 0-.15-.17 7.58 7.58 0 0 1-4.76-4.57 25.08 25.08 0 0 1 0-10.77 7.56 7.56 0 0 1 4.76-4.57 34.82 34.82 0 0 1 13.11 0 7.56 7.56 0 0 1 4.76 4.57 25.08 25.08 0 0 1 0 10.77zm-6.2-1.85c-.42-.31-.85-.61-1.29-.88a1.13 1.13 0 0 0-1.37.06c-.42.34-.61 1-1.21 1.06a1.94 1.94 0 0 1-1-.24A6.77 6.77 0 0 1 11 12.5a.86.86 0 0 1 .06-.75 1.3 1.3 0 0 1 .3-.32c.12-.1.25-.21.39-.31a1.22 1.22 0 0 0 .34-1.64 15.76 15.76 0 0 0-1.82-2.55 1 1 0 0 0-1.18-.28 4.39 4.39 0 0 0-1.5 1.11A1.88 1.88 0 0 0 7 9.62c.3.73.59 1.47.94 2.18A18.53 18.53 0 0 0 10.7 16a18.7 18.7 0 0 0 7.1 4.76c.26.11.54.17.83.26a4.12 4.12 0 0 0 .75-.24 4.06 4.06 0 0 0 1.73-1.91 1 1 0 0 0-.28-1.2 13.43 13.43 0 0 0-1.22-.96zm-5.11-11zm0 0h-.2a.42.42 0 0 0-.42.48c0 .32.38.33.63.36.4 0 .8.06 1.19.13a6.28 6.28 0 0 1 5.05 5.24c.06.5.09 1 .13 1.5 0 .25.14.49.42.49a.43.43 0 0 0 .4-.5c-.05-.6-.09-1.21-.19-1.8a7.14 7.14 0 0 0-7.01-5.88zM19 12.6a1 1 0 0 0 0 .34.4.4 0 0 0 .75 0 1.39 1.39 0 0 0 0-.24v-.61-.22a4.64 4.64 0 0 0-2.53-3.61 5.38 5.38 0 0 0-2.3-.6.37.37 0 0 0-.42.37.38.38 0 0 0 .37.43l.6.08a4.61 4.61 0 0 1 1.32.41 4.05 4.05 0 0 1 1.67 1.56A4.42 4.42 0 0 1 19 12.6zm-1-.32a1 1 0 0 0 0-.34 2.41 2.41 0 0 0-2.5-2.41.44.44 0 0 0-.45.34.41.41 0 0 0 .33.47c.21.05.44 0 .65.09a1.77 1.77 0 0 1 .48.23 1.61 1.61 0 0 1 .58.92 5 5 0 0 1 .08.56.43.43 0 0 0 .46.42c-.07 0-.16 0 0 0a.34.34 0 0 0 .37-.28z",
+                                                        fill: "#fff",
+                                                        "data-name": "Слой 1"
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(7, true)
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("li", { staticClass: "Messengers_item" }, [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "MessengerBtn MessengerBtn-telegram MessengerBtn-small MessengerBtn-tgOutline",
+                                        attrs: {
+                                          href: "tg://resolve?domain=ampartners"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "MessengerBtn_icon" },
+                                          [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass: "SvgIco",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  viewBox: "0 0 29.99 25.03"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "g",
+                                                  {
+                                                    attrs: {
+                                                      "data-name": "Слой 2"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("path", {
+                                                      staticClass:
+                                                        "SvgIco_path",
+                                                      attrs: {
+                                                        d:
+                                                          "M28.07.1L.64 10.69a1 1 0 0 0 .08 1.87l7 2 2.6 8.18a1.2 1.2 0 0 0 2 .47l3.6-3.64L23 24.75a1.48 1.48 0 0 0 2.32-.88L30 1.69A1.4 1.4 0 0 0 28.07.1zM24.63 5L11.89 16.18a.68.68 0 0 0-.23.43l-.49 4.32a.13.13 0 0 1-.26 0l-2-6.44a.68.68 0 0 1 .3-.78l15-9.25a.33.33 0 0 1 .42.54z",
+                                                        fill: "#fff",
+                                                        "data-name": "Слой 1"
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(8, true)
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(9, true)
+                          ]
+                        )
+                      ]
+                    )
                   ])
                 ]
               )
@@ -66479,9 +66889,7 @@ var render = function() {
               _vm._v(" "),
               _vm.vacancy.status === 2
                 ? _c("div", { staticClass: "Popup_closedStatus" }, [
-                    _vm._v(
-                      "\n                    Набір закритий.\n                "
-                    )
+                    _vm._v("\n                Набір закритий.\n            ")
                   ])
                 : _vm._e()
             ]),
@@ -66521,7 +66929,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Закрити вікно\n                ")]
+                [_vm._v("Закрити вікно\n            ")]
               )
             ])
           ])
@@ -66558,6 +66966,126 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ChoiceBlock_header" }, [
       _c("h4", { staticClass: "ChoiceBlock_title" }, [_vm._v("Ви вибрали:")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "BtnGreen BtnGreen-fullJob BtnGreen-fullJobDescription JobReservation_btn",
+        attrs: { href: "javascript:;" }
+      },
+      [
+        _c("span", { staticClass: "BtnGreen_text BtnGreen_text-large" }, [
+          _vm._v("\n                            Безкоштовно")
+        ]),
+        _c("span", { staticClass: "BtnGreen_text" }, [
+          _vm._v("забронювати вакансію")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "JobReservation_text JobReservation_text-large" },
+      [
+        _c("strong", [_vm._v("Для безкоштовного бронювання вакансії")]),
+        _vm._v(
+          " зв'яжіться з нами зручним для вас способом:\n                            "
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass:
+          "BtnGreen BtnGreen-callOrder JobReservation_callOrderBtn JobReservation_callOrderBtn-largeIndent",
+        attrs: { href: "javascript:;" }
+      },
+      [
+        _c("span", { staticClass: "BtnGreen_text" }, [
+          _vm._v("Замовити дзвінок")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "MessengerBtn_textWrap" }, [
+      _c("span", { staticClass: "MessengerBtn_text MessengerBtn_text-small" }, [
+        _vm._v("Написати у")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "MessengerBtn_text" }, [_vm._v("Viber")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "MessengerBtn_textWrap" }, [
+      _c("span", { staticClass: "MessengerBtn_text MessengerBtn_text-small" }, [
+        _vm._v("Написати у")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "MessengerBtn_text" }, [_vm._v("Viber")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "MessengerBtn_textWrap" }, [
+      _c("span", { staticClass: "MessengerBtn_text MessengerBtn_text-small" }, [
+        _vm._v("Написати у")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "MessengerBtn_text" }, [_vm._v("Telegram")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "Phones Phones-inline Job_phones" }, [
+      _c("ul", { staticClass: "Phones_list" }, [
+        _c("li", { staticClass: "Phones_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "Phone Phone-ua",
+              attrs: { href: "tel:+380972313469" }
+            },
+            [_vm._v("+380972313469")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "Phones_item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "Phone Phone-pl",
+              attrs: { href: "tel:+48732082227" }
+            },
+            [_vm._v("+48732082227")]
+          )
+        ])
+      ])
     ])
   }
 ]
@@ -83470,8 +83998,8 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "f39d1b297694732dbc2d",
-  cluster: "eu",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
@@ -85292,8 +85820,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\ampartners\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\ampartners\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\ampartners\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\ampartners\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

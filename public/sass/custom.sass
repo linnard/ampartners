@@ -1,5 +1,13 @@
 @import mixins
 
+.hidden-xxs
+	@media (max-width: 575px)
+		display: none !important
+		
+.hidden-xxsPlus
+	@media (min-width: 576px)
+		display: none !important
+
 html
 	scroll-behavior: smooth
 
@@ -7,7 +15,9 @@ html
 	display: inline-block
 	vertical-align: middle
 
-	&_path, &_line, &_g
+	&_path,
+	&_line,
+	&_g
 		fill: currentColor
 
 	&_stroke
@@ -21,7 +31,7 @@ html
 	width: 1900px
 
 	&-infoPage
-		width: auto
+		max-width: 100%
 
 .Main
 	background: #FAFAFA
@@ -106,13 +116,23 @@ html
 .Header
 	display: flex
 	align-items: center
-	padding: 18px 13px 18px 26px
+	// padding: 18px 13px 18px 26px
+	padding: 11px 13px 8px 26px
 	border-bottom: 1px solid rgba(0, 0, 0, 0.4)
 	background: #FAFAFA
 
 	&_menu
 		flex-grow: 1
 		margin-right: 100px
+	
+	&_consult
+		margin-left: 127px
+	
+	&_phones
+		margin-left: 63px
+	
+	&_buttons
+		margin-left: 52px
 
 	&-infoPage
 		flex-direction: column
@@ -131,10 +151,18 @@ html
 	&_list
 		display: flex
 		justify-content: center
+		
+		@media (max-width: 575px)
+			flex-direction: column
+			align-items: center
 
 	&_item
 		margin: 0 16px
 		font-size: 18px
+		
+		@media (max-width: 575px)
+			margin: 0 15px 15px
+			font-size: 20px
 
 		&-active
 			.MainMenu_link:after
@@ -167,6 +195,9 @@ html
 	&-infoPage
 		.MainMenu_item
 			margin: 0 24px
+			
+			@media (max-width: 575px)
+				margin: 0 15px 15px
 
 // Top
 .Top
@@ -260,7 +291,6 @@ html
 	padding-left: 7px
 	background: #fff url("../img/svg/select_arrow.svg") calc(100% - 9px) center / 5px auto no-repeat
 	font-size: 17px
-	// color: #CECECE
 
 	&:focus
 		outline-color: #c0de8f
@@ -285,7 +315,6 @@ html
 
 	&_search
 		margin-top: 3px
-		// margin-left: 110px
 		margin-left: 400px
 
 	&_buttons
@@ -366,13 +395,241 @@ html
 		opacity: .8
 
 // Green button
-.BtnGreen, .BtnBlue
+.BtnGreen,
+.BtnBlue
 	&-addContact
 		padding: 12px 9px 11px 13px
 		font-size: 13.6px
 
 		& > .SvgIco
 			width: 16px
+
+.BtnGreen
+	&_text
+		&-large
+			margin-bottom: 1px
+			font-size: 19px
+			
+	&-callOrder
+		display: inline-flex
+		align-items: center
+		padding: .8125em 1.333em .8125em
+		font-size: 17px
+		line-height: 1.25
+		
+		&::before
+			content: ""
+			width: 20px
+			height: 20px
+			margin-right: 11px
+			background: url("data:image/svg+xml,%3Csvg class='SvgIco BtnGreen_icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg data-name='Слой 2'%3E%3Cpath class='SvgIco_path' d='M19.44 15.06l-2.51-1.67-1.41-.92a1.12 1.12 0 00-.64-.19 1.87 1.87 0 00-1 .26l-1.74 1a.09.09 0 01-.12 0c-.47-.34-.91-.71-1.34-1.09A34.74 34.74 0 017.9 9.66 18.73 18.73 0 016.5 8v-.13l.89-1.56a2.85 2.85 0 00.32-.79 1.32 1.32 0 00-.15-1c-.88-1.33-1.76-2.65-2.63-4a1.11 1.11 0 00-.7-.47 1.58 1.58 0 00-1.34.29 16.4 16.4 0 00-1.43 1.19 6.73 6.73 0 00-1.1 1.23 2.82 2.82 0 00-.27.48 1.44 1.44 0 000 .87A7.62 7.62 0 00.49 6a14.81 14.81 0 001.63 3 30.78 30.78 0 003 3.72c.92 1 1.88 1.92 2.88 2.81A28.78 28.78 0 0011.1 18a15.38 15.38 0 002.71 1.46 7.85 7.85 0 002.42.58 1.15 1.15 0 00.63-.12 4.43 4.43 0 001.14-.86 14.64 14.64 0 001.67-1.93 1.61 1.61 0 00.34-.78 1.2 1.2 0 00-.57-1.29zm-6.77-9.41l.68.61a.43.43 0 00.49.08.45.45 0 00.16-.76L12.18 4l-.37-.33h3.62a3.25 3.25 0 01.69.08 2.48 2.48 0 011.66 1.16 2.77 2.77 0 01.41 1.51v4.07h.9V6.42a3.81 3.81 0 00-.09-.81 3.59 3.59 0 00-3.51-2.88h-3.7l1.32-1.19.89-.75a.43.43 0 00.11-.51.44.44 0 00-.48-.28.51.51 0 00-.35.17l-2.95 2.67-.33.35.07.06z' fill='%23fff' data-name='Слой 1'/%3E%3C/g%3E%3C/svg%3E") 0 0 no-repeat
+		
+		&:hover
+			background: #6DA218
+			color: #fff
+			text-decoration: none
+			opacity: 1
+	
+	&-fullJob
+		display: flex
+		flex-direction: column
+		width: 247px
+		max-width: 100%
+		padding: .533em 1.333em .6em
+		font-size: 16px
+		line-height: 19px
+		text-align: center
+		
+		&:hover
+			background: #6DA218
+			color: #fff
+			text-decoration: none
+			opacity: 1
+
+// Messenger Button
+.MessengerBtn
+	box-sizing: border-box
+	display: inline-flex
+	align-items: center
+	width: 157px
+	padding: 5px 5px 5px 9px
+	-webkit-border-radius: 4px
+	border-radius: 4px
+	background-color: #7d3daf
+	color: #FFF
+	transition: all .2s ease-in-out
+	
+	@media screen and (max-width: 480px)
+		width: 115px
+		min-height: 40px
+		padding: 6px 5px 3px 9px
+	
+	&_icon
+		flex-basis: 28px
+		flex-shrink: 0
+		margin-right: 12px
+		
+		@media screen and (max-width: 480px)
+			margin-right: 6px
+	
+	&_textWrap
+		text-align: left
+		
+		@media screen and (max-width: 480px)
+			margin-top: -5px
+	
+	&_text
+		display: block
+		font-size: 18px
+		line-height: 20px
+		
+		@media screen and (max-width: 480px)
+			font-size: 14px
+			line-height: 15px
+		
+		&-small
+			font-size: 14px
+			
+			@media screen and (max-width: 480px)
+				font-size: 11px
+	
+	// &-telegram
+	// 	background: #61A8DE
+	
+	// &-skype
+	// 	background: #15ACE5
+	
+	// &-fb
+	// 	background: #3A559F
+	
+	&-small
+		width: 114px
+
+		.MessengerBtn_icon
+			flex-basis: 25px
+			margin-right: 7px
+
+		.MessengerBtn_text
+			font-size: 15px
+			line-height: 16px
+
+			&-small
+				font-size: 12px
+
+	&-vbOutline
+		border: 1px solid #7d3daf
+		background-color: transparent
+		color: #7d3daf
+
+		&:hover
+			background: #7d3daf
+			color: #FFF
+			text-decoration: none
+
+	&-tgOutline
+		border: 1px solid #61a8de
+		background-color: transparent
+		color: #61a8de
+
+		&:hover
+			background: #61a8de
+			color: #FFF
+			text-decoration: none
+
+// Messengers
+.Messengers
+	display: flex
+	justify-content: center
+	
+	&_list
+		display: flex
+		flex-wrap: wrap
+		width: 335px
+		
+		@media screen and (max-width: 480px)
+			width: 245px
+	
+	&_item
+		margin-bottom: 20px
+		
+		&:nth-child(2n+1)
+			margin-right: 17px
+			
+			@media screen and (max-width: 480px)
+				margin-right: 11px
+		
+		&:last-child,
+		&:nth-last-child(2)
+			margin-bottom: 0
+	
+	&-jobReservation
+		.Messengers_list
+			width: auto
+
+.JobReservation
+	&_detailed
+		position: relative
+		display: none
+		padding-top: 23px
+		border-top: 2px solid #f2f2f2
+
+		&-noBorder
+			padding-top: 8px
+			border-top: none
+
+		&-textCenter
+			text-align: center
+	
+	&_closeBtn
+		position: absolute
+		top: 0
+		right: 0
+		width: 40px
+		height: 40px
+		border: none
+		outline: none
+		background: url('../img/close.png') center center no-repeat
+		
+		&:focus
+			outline: none
+
+	&_text
+		margin-bottom: 28px
+		color: #3c3c3c
+		font-size: 17px
+		line-height: normal
+
+		&-large
+			max-width: 420px
+			margin-right: auto
+			margin-left: auto
+			font-size: 20px
+
+			@media (max-width: 1023px)
+				font-size: 18px
+				line-height: 1.25
+
+			@media (max-width: 640px)
+				font-size: 16px
+
+	&_callOrderBtn
+		margin-bottom: 20px
+
+		&-largeIndent
+			margin-bottom: 30px
+
+		&-aside
+			width: 100%
+
+	&_messengers
+		margin-bottom: 30px
+
+	&_hideBtn
+		margin-top: 25px
+
+	&_backBtn
+		@media (max-width: 640px)
+			margin-bottom: 3px
 
 // Receipt
 .Receipt
@@ -708,6 +965,17 @@ html
 .Popup
 	&_form
 		margin-bottom: 5px
+	
+	&_changes
+		padding: 5px 15px
+		background: #FBF67E
+		white-space: pre-wrap
+	
+	&_closedStatus
+		padding: 5px 15px
+		background: rgb(255, 142, 142)
+		font-size: 22px
+		visibility: hidden
 
 	&-left
 		.Popup_wrap
@@ -839,37 +1107,60 @@ html
 // Article
 .Article
 	padding: 52px 70px 34px 32px
+	
+	@media (max-width: 991px)
+		padding-right: 40px
+		padding-left: 40px
+	
+	@media (max-width: 767px)
+		padding: 30px 20px
 
-	&_text, p, ul, ol
+	&_text,
+	p,
+	ul,
+	ol
 		font-size: 17px
 		line-height: 21px
 
-	p, li, ul, ol
+	p,
+	li,
+	ul,
+	ol
 		margin-bottom: 20px
 
 		&:last-child
 			margin-bottom: 0
 
-	ul, ol
+	ul,
+	ol
 		list-style-position: inside
 
 	a
 		color: #3389bb
 
 	&_subTitle
-		margin-top: 47px
-		margin-bottom: 50px
+		margin-top: 1.88em
+		margin-bottom: 2em
 
 		&:first-child
 			margin-top: 0
-			margin-bottom: 56px
+			margin-bottom: 2.24em
 
 	&_img
 		&-right
 			float: right
+			
+			@media (max-width: 991px)
+				float: none
+				display: block
+				margin-right: auto
+				margin-left: auto
 
 		&-outside
 			margin-right: -65px
+			
+			@media (max-width: 991px)
+				margin-right: auto
 
 .PageTop
 	padding: 35px 0
@@ -899,3 +1190,658 @@ html
 	&:after
 		content: "*"
 		color: #ff0000
+
+// Vacancies
+.Jobs
+	display: flex
+	align-items: flex-start
+	padding: 22px 15px
+	background: #FAFAFA
+	
+	&_heading
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 13px 10px 14px
+		background: #FFF
+		border-bottom: 1px solid #f2f2f2
+	
+	&_title
+		margin-right: 25px
+		font-size: 16px
+		line-height: 1.25
+	
+	&_filterBtn
+		flex-shrink: 0
+	
+	&_filter
+		flex-shrink: 0
+		margin-right: 25px
+	
+	&_list
+		flex-grow: 1
+		
+// Job filter
+.JobFilter
+	box-sizing: border-box
+	width: 310px
+	max-width: 100%
+	border: 1px solid #f2f2f2
+	background: #FFF
+	transition: all .35s ease-in-out
+	
+	&_header
+		padding: 18px 28px 19px 30px
+	
+	&_title
+		font-weight: bold
+		font-size: 22px
+		line-height: 1.64
+		color: #3C3C3C
+	
+	&_clearAll
+		margin-top: 3px
+	
+	&_close
+		position: fixed
+		top: 2%
+		left: -83.6vw
+	
+	&_content
+		padding-bottom: 30px
+	
+	&_item
+		padding: 8px 22px
+		border-bottom: 1px solid #f2f2f2
+		
+		&:last-child
+			border-bottom: none
+		
+		&-checkboxList
+			padding-right: 0
+			padding-left: 0
+	
+	.JobFilter_viewResultsBtn
+		position: absolute
+		bottom: 0
+		width: 100%
+	
+	&-open
+		left: 0
+		
+		.JobFilter_close
+			left: 83.6vw
+
+// Radio button
+.RadioBtn
+	position: relative
+	display: block
+	
+	&_input
+		position: absolute
+		clip: rect(0, 0, 0, 0)
+		
+		&:checked ~ .RadioBtn_label:before
+			border-color: #81BE1F
+			background-color: #81be1f
+	
+	&_label
+		position: relative
+		display: flex
+		align-items: center
+		margin-bottom: 0
+		font-size: 14px
+		cursor: pointer
+		
+		&:before
+			content: ""
+			-webkit-box-sizing: border-box
+			-moz-box-sizing: border-box
+			box-sizing: border-box
+			flex-shrink: 0
+			width: 17px
+			height: 17px
+			margin-right: 12px
+			border: 1px solid #9e9e9e
+			border-radius: 50%
+			background-color: #fffcf9
+			transition: all .15s ease-in-out
+	
+	&-noCircle
+		.RadioBtn_input
+			&:checked ~ .RadioBtn_label
+				color: #81BE1F
+				
+		.RadioBtn_label
+			transition: all .15s ease-in-out
+			
+			&:before
+				display: none
+
+// Filter element
+.FilterElement
+	position: relative
+	
+	.selectize-control
+		width: 70px
+	
+	&_header
+		display: flex
+		align-items: center
+		
+		&-spaceBetween
+			justify-content: space-between
+		
+		&-padding
+			padding-right: 22px
+			padding-left: 22px
+		
+	&_arrow
+		display: inline-flex
+		width: 24px
+		height: 24px
+		margin-top: 2px
+		margin-right: -6px
+		background: url('../../img/arrow_down.png') center center no-repeat
+		cursor: pointer
+		transition: all .3s ease-in-out
+		
+		&-open
+			transform: rotate(180deg)
+		
+	&_title
+		font-size: 18px
+		line-height: 30px
+	
+	&_searchResults
+		margin-top: 4px
+		margin-bottom: -1px
+	
+	&_note
+		position: absolute
+		z-index: 10
+		top: 125px
+		right: -182px
+	
+	&_content
+		padding-top: 7px
+		padding-bottom: 7px
+	
+	&_viewResults
+		margin: 25px -11px 0 -10px
+	
+	&_currency
+		margin-left: 18px
+	
+	&_range, &_rangeItem
+		display: flex
+		-webkit-align-items: center
+		align-items: center
+	
+	&_rangeItem
+		margin-right: 20px
+		
+		&:last-child
+			margin-right: 0
+	
+	&_formLabel, &_formText
+		font-size: 14px
+		line-height: 1.29
+	
+	&_formLabel
+		margin-right: 20px
+	
+	&_formText
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+		width: 78px
+		height: 40px
+		padding-right: 10px
+		padding-left: 10px
+		border: 1px solid #f2f2f2
+		border-radius: 3px
+		text-align: center
+		transition: all .15s ease-in-out
+		
+		&:focus
+			outline: none
+			border-color: #CDE5A5
+	
+	&_selects,
+	&_selectItem
+		display: flex
+	
+	&_selectItem
+		align-items: center
+		margin-right: 25px
+		
+		&:last-child
+			margin-right: 0
+	
+	&_selectLabel
+		margin-right: 8px
+		margin-bottom: 4px
+	
+	&-large
+		.selectize-control
+			width: 100%
+
+// Checkbox list
+.CheckboxList
+	&_title
+		margin-bottom: 19px
+		font-weight: bold
+		font-size: 17px
+		color: #81BE1F
+	
+	&_content
+		position: relative
+		margin-bottom: 5px
+		
+		&:last-child
+			margin-bottom: 0
+		
+		&-flex
+			display: flex
+			flex-wrap: wrap
+			
+			.CheckboxList_item
+				flex-basis: 50%
+				
+				&:nth-last-child(2)
+					margin-bottom: 0
+		
+		&-ps
+			max-height: 171px
+			
+			.CheckboxList_item
+				&:nth-last-child(3)
+					margin-bottom: 0
+	
+	&_item
+		margin-bottom: 10px
+		
+		&:last-child
+			margin-bottom: 0
+	
+	&_more
+		border-bottom: 1px dashed #9d9d9d
+		font-size: 14px
+		line-height: 1.2857
+		color: #9D9D9D
+		transition: all .2s ease-in-out
+		
+		&:hover
+			border-bottom-color: transparent
+	
+	&-padding
+		padding-right: 22px
+		padding-left: 22px
+
+// Radio buttons list
+.RadioBtnsList
+	position: relative
+	max-height: 190px
+	
+	&_item
+		margin-bottom: 8px
+		
+		&:last-child
+			margin-bottom: 0
+
+	&-flex
+		display: flex
+		flex-wrap: wrap
+		
+		.RadioBtnsList_item
+			flex-basis: 50%
+			
+			&:nth-last-child(2)
+				margin-bottom: 0
+	
+	&.ps
+		.RadioBtnsList_item:nth-last-child(3)
+			margin-bottom: 0
+
+// Checkbox lists
+.CheckboxLists
+	&_item
+		margin-bottom: 17px
+		padding-bottom: 16px
+		border-bottom: 1px solid #f2f2f2
+		
+		&:last-child
+			margin-bottom: 0
+			padding-bottom: 0
+			border-bottom: none
+
+// Choice block
+.ChoiceBlock
+	padding: 8px 20px
+	background: #F0EFE2
+	color: #3C3C3C
+	
+	&_header
+		display: flex
+		justify-content: center
+	
+	&_title
+		font-size: 18px
+	
+	&_close
+		font-size: 12px
+		line-height: 1.5
+		cursor: pointer
+	
+	&_item
+		margin-bottom: 10px
+		
+		&:last-child
+			margin-bottom: 0
+	
+	&-inline
+		display: flex
+		align-items: center
+		padding: 8px 25px 13px 26px
+		
+		.ChoiceBlock_header
+			margin-right: 11px
+		
+		.ChoiceBlock_items
+			margin-top: 2px
+		
+		.ChoiceBlock_item
+			margin-right: 17px
+			margin-bottom: 0
+			
+			&:last-child
+				margin-right: 0
+
+// Selected Item
+.SelectedItem
+	display: inline-flex
+	align-items: center
+	padding: 2px 5px 4px 8px
+	border-radius: 3px
+	font-size: 14px
+	background: #AEAEAC
+	
+	&_name
+		color: #EFEFEE
+	
+	&_value
+		margin-left: 4px
+		font-weight: bold
+		color: #FFF
+	
+	&_close
+		margin-left: 6px
+		cursor: pointer
+
+// Job Results
+.JobResults
+	&_choiceBlock
+		margin-bottom: 5px
+
+// Job list
+.JobList
+	&_items
+		display: flex
+		flex-wrap: wrap
+	
+	&_item
+		margin-right: 27px
+		margin-bottom: 27px
+
+.CopyIcon
+	position: relative
+
+.Job
+	position: relative
+	width: 730px
+	padding: 29px 20px 24px
+	background: #fff
+	border: 1px solid #f2f2f2
+	
+	.Tooltip
+		z-index: 1
+	
+	&_copyIcon
+		position: absolute
+		top: 20px
+		right: 27px
+	
+	&_title
+		margin-bottom: 18px
+		padding-right: 50px
+		padding-bottom: 14px
+		border-bottom: 1px solid #f2f2f2
+		font-size: 19px
+	
+	&_message
+		margin-bottom: 25px
+	
+	&_text
+		color: #201E1E
+		font-size: 17px
+		line-height: 20px
+		letter-spacing: 0.0015em
+	
+	&_reservation
+		margin-top: 20px
+		padding-top: 20px
+		border-top: 1px solid #f2f2f2
+	
+	&-burning
+		.Job_title
+			padding-left: 32px
+			
+			&:before
+				content: ""
+				position: absolute
+				top: 25px
+				left: 20px
+				width: 20px
+				height: 25px
+				background: url('../../img/fire.png') 0 0 no-repeat
+	
+	&-quote
+		.Job_title
+			padding-left: 32px
+			
+			&:after
+				content: ""
+				position: absolute
+				top: 27px
+				left: 20px
+				width: 24px
+				height: 24px
+				background: url('../../img/quote.png') 0 0 no-repeat
+				
+		&.Job-burning
+			.Job_title
+				padding-left: 64px
+				
+				&:after
+					left: 46px
+
+.About
+	text-align: center
+	font-size: 17px
+	
+	p, img
+		margin-bottom: 20px
+	
+	&_title
+		margin-top: 30px
+		margin-bottom: 40px
+
+.Swiper
+	position: relative
+	
+	&-guarantee
+		.swiper-container
+			width: 920px
+			max-width: calc(100% - 90px)
+			margin-right: auto
+			margin-left: auto
+
+.swiper-button-prev,.swiper-button-next
+	position: absolute
+	z-index: 10
+	top: calc(50% - 40px)
+	display: flex
+	justify-content: center
+	align-items: center
+	border: none
+	outline: none
+	background: transparent
+	
+	&::after
+		content: ""
+		width: 60px
+		height: 60px
+		background: url("data:image/svg+xml,%3Csvg viewBox='0 0 48 48' width='48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z' class='path-arrow' fill='%23acdd80'/%3E%3Cpath d='M0-.25h48v48H0z' fill='none'/%3E%3C/svg%3E") center center no-repeat
+		transition: all .3s
+	
+	&:hover
+		&::after
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 48 48' width='48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z' class='path-arrow' fill='%237ecb39'/%3E%3Cpath d='M0-.25h48v48H0z' fill='none'/%3E%3C/svg%3E")
+
+.swiper-button-prev
+	left: -15px
+	transform: rotate(180deg)
+
+.swiper-button-next
+	right: -15px
+
+
+.Consult
+	display: flex
+	align-items: center
+	
+	&_iconWrapper
+		flex 42px 0 0
+		margin-right: 10px
+	
+	&_text
+		font-size: 18px
+		line-height: 1.2
+
+.Phone
+	display: flex
+	align-items: center
+	font-size: 18px
+	line-height: 1.8
+	
+	&::before
+		content: ""
+		width: 23px
+		height: 23px
+		margin-right: 8px
+		background: url('../img/header/tube.png') 0 0 no-repeat
+		
+	&::after
+		content: ""
+		width: 19px
+		height: 12px
+		margin-left: 6px
+	
+	&:hover
+		text-decoration: none
+	
+	&-ua
+		&::after
+			background: url('../img/header/flag_ua.png') 0 0 no-repeat
+			
+	&-pl
+		&::after
+			background: url('../img/header/flag_pl.png') 0 0 no-repeat
+
+.Phones
+	&-inline
+		.Phones_list
+			display: flex
+			justify-content: center
+			align-items: center
+		
+		.Phones_item
+			margin-right: 35px
+			
+			&:last-child
+				margin-right: 0
+
+.ContactBtn
+	display: flex
+	align-items: center
+	padding: 8px 15px 8px 11px
+	border-width: 1px
+	border-style: solid
+	border-radius: 4px
+	font-size: 18px
+	line-height: normal
+	white-space: nowrap
+	
+	&::before
+		content: ""
+		width: 33px
+		height: 33px
+		margin-right: 9px
+		background-position: 0 0
+		background-size: cover
+		background-repeat: no-repeat
+	
+	&:hover
+		text-decoration: none
+	
+	&-viber
+		border-color: #7B519D
+		
+		&::before
+			background-image: url('../img/header/viber1.png')
+	
+	&-telegram
+		border-color: #64a9dc
+		
+		&::before
+			background-image: url('../img/header/tg1.png')
+	
+	&-call
+		border-color: #63c22c
+		
+		&::before
+			background-image: url('../img/header/call.png')
+
+.Buttons
+	&_list
+		display: flex
+		align-items: center
+	
+	&_item
+		margin-right: 18px
+		
+		&:last-child
+			margin-right: 0
+
+.Tooltip
+	position: absolute
+	margin-top: calc(-100% - 10px)
+	margin-left: calc(100% + 50px)
+	padding: 10px 16px
+	border: 1px solid #81be1f
+	color: #81BE1F
+	font-weight: bold
+	font-size: 15px
+	cursor: text
+	
+	&-vacancy
+		margin-left: -85px
+		background: #FFF
+
+
+.Message
+	padding: 13px 15px 12px 64px
+	background: #ecf5de url('../img/dollars.png') 11px 10px no-repeat
+	color: #5A8F04
+	font-size: 17px

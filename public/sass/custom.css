@@ -216,10 +216,6 @@ html {
   margin-right: 70px;
   font-size: 17px;
 }
-.SecondaryMenu_item-active {
-  color: #1d68a7;
-  text-decoration: underline;
-}
 .SecondaryMenu_item:last-child {
   margin-right: 0;
 }

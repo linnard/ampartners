@@ -10,7 +10,46 @@
                 <span class="SiteName_first">AM</span>partners
             </a>
 
-            <div class="MainMenu Header_menu">
+            <div class="Consult Header_consult">
+                <div class="Consult_iconWrapper">
+                    <img src="/img/header/sup.png" alt="Консультація">
+                </div>
+                <div class="Consult_text">
+                    Виникли запитання?<br>
+                    З радістю проконсультуємо!
+                </div>
+            </div>
+
+            <div class="Phones Header_phones">
+                <ul class="Phones_list">
+                    <!-- <li class="Phones_item">
+                        <a href="tel:+380974303916" class="Phone Phone-ua">+380974303916</a>
+                    </li> -->
+                    <li class="Phones_item">
+                        <a href="tel:+380972313469" class="Phone Phone-ua">+380972313469</a>
+                    </li>
+                    <li class="Phones_item">
+                        <a href="tel:+48732082227" class="Phone Phone-pl">+48732082227</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="Buttons Header_buttons">
+                <ul class="Buttons_list">
+                    <li class="Buttons_item">
+                        <a href="viber://chat?number=+380974303916" class="ContactBtn ContactBtn-viber hidden-xxs">Написати у Viber</a>
+                        <a href="viber://add?number=380974303916" class="ContactBtn ContactBtn-viber hidden-xxsPlus">Написати у Viber</a>
+                    </li>
+                    <li class="Buttons_item">
+                        <a href="tg://resolve?domain=ampartners" class="ContactBtn ContactBtn-telegram">Написати у Telegram</a>
+                    </li>
+                    <li class="Buttons_item">
+                        <a href="javascript:;" class="ContactBtn ContactBtn-call">Зателефонувати вам?</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="MainMenu Header_menu" hidden>
 
                 <ul class="MainMenu_list">
 
@@ -23,7 +62,7 @@
                                  exact>
                         <a class="MainMenu_link">{{ item.meta.name }}</a>
                         <span class="Number SecondaryMenu_number" :ref="item.meta.counter_id" v-if="item.meta.counter_id"></span>
-                    </router-link>
+                    </router-link> -->
 
 
 
@@ -34,8 +73,8 @@
                     </ul>-->
 
 
-                </ul>
-            </div>
+                <!-- </ul>
+            </div> -->
         </header>
 
         <section class="Top">

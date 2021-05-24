@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js?v='.rand(1, 9999)) }}" defer></script>
     <script src="{{ asset('js/main.js?v='.rand(1, 9999)) }}"></script>
@@ -80,5 +82,13 @@
    ]) !!};
 
 </script>
+<template id="tmpl-script">
+    <script data-b24-form="click/26/tq8hec" data-skip-moving="true">
+        (function(w,d,u){
+            var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
+            var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.ua/b14740879/crm/form/loader_26.js');
+    </script>
+</template>
 </body>
 </html>
