@@ -209,7 +209,7 @@
                             <div class="Phones Phones-inline Job_phones">
                                 <ul class="Phones_list">
                                     <li class="Phones_item">
-                                        <a href="tel:+380972313469" class="Phone Phone-ua">+380972313469</a>
+                                        <a href="tel:+380972584376" class="Phone Phone-ua">+380972584376</a>
                                     </li>
                                     <li class="Phones_item">
                                         <a href="tel:+48732082227" class="Phone Phone-pl">+48732082227</a>

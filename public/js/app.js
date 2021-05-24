@@ -1975,6 +1975,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -60808,9 +60811,9 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "Phone Phone-ua",
-              attrs: { href: "tel:+380972313469" }
+              attrs: { href: "tel:+380972584376" }
             },
-            [_vm._v("+380972313469")]
+            [_vm._v("+380972584376")]
           )
         ]),
         _vm._v(" "),
@@ -67069,9 +67072,9 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "Phone Phone-ua",
-              attrs: { href: "tel:+380972313469" }
+              attrs: { href: "tel:+380972584376" }
             },
-            [_vm._v("+380972313469")]
+            [_vm._v("+380972584376")]
           )
         ]),
         _vm._v(" "),
