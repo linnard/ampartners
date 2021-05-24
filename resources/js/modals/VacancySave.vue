@@ -18,6 +18,16 @@
                         <input type="text" class="form-control" name="title[ru]" v-model="vacancy.title.ru">
                     </div>
 
+                    <div class="form-group">
+                        <label>Опис для клієнтів:</label>
+                        <textarea class="form-control" name="description" v-model="vacancy.description" rows="6"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Значення для сортування:</label>
+                        <input type="number" class="form-control" name="sort" v-model="vacancy.sort">
+                    </div>
+
 
                     <div class="form-group">
                         <label>Зміни:</label>

@@ -37,6 +37,14 @@ class UpdateRequest extends FormRequest
                 'nullable',
                 'string',
             ],
+            'description' => [
+                'nullable',
+                'string',
+            ],
+            'sort' => [
+                'min:0',
+                'integer',
+            ],
             'content' => [
                 'required',
                 'array'
