@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3be809a7-92d8-476f-9fec-5ceee6c173c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper/" />
@@ -157,11 +163,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2355">
-              <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
+            <state relative-caret-position="332">
+              <caret line="144" column="66" selection-start-line="144" selection-start-column="66" selection-end-line="144" selection-end-column="66" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -172,31 +178,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancySave.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+            <state relative-caret-position="107">
+              <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/robots.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/robots.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
-              <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+            <state relative-caret-position="227">
+              <caret line="209" column="73" selection-start-line="209" selection-start-column="73" selection-end-line="209" selection-end-column="73" />
               <folding>
                 <element signature="e#44#78#0#PHP" expanded="true" />
               </folding>
@@ -207,8 +199,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            <state relative-caret-position="272">
+              <caret line="62" column="14" selection-start-line="60" selection-start-column="12" selection-end-line="62" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -216,8 +208,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+            <state relative-caret-position="257">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -226,8 +218,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onesig</find>
-      <find>vacancyReserve</find>
       <find>Popup_closedStatus</find>
       <find>https</find>
       <find>v1/vacancies</find>
@@ -256,6 +246,8 @@
       <find>Сортування</find>
       <find>Ритет</find>
       <find>priority</find>
+      <find>is_individual_coordination</find>
+      <find>burn</find>
     </findStrings>
   </component>
   <component name="FrameworkCommandLineHistory">
@@ -283,16 +275,18 @@
       <command text="npm -v" />
       <command text="artisan make:migration add_sort_and_description_fields --table=vacancies" />
       <command text="artisan migrate" />
+      <command text="artisan make:migration add_field_is_increased_pay --table=vacancies" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/Filter.php" />
-        <option value="$PROJECT_DIR$/app/Models/FilterItem.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_01_04_191159_create_vacancies_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2021_01_07_013040_create_filter_items_table.php" />
         <option value="$PROJECT_DIR$/config/constants.php" />
@@ -336,12 +330,14 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/resources/js/components/App.vue" />
         <option value="$PROJECT_DIR$/database/migrations/2021_05_24_113439_add_sort_and_description_fields.php" />
-        <option value="$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
+        <option value="$PROJECT_DIR$/public/robots.txt" />
+        <option value="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php" />
-        <option value="$PROJECT_DIR$/resources/js/modals/VacancySave.vue" />
-        <option value="$PROJECT_DIR$/public/robots.txt" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2021_06_19_124104_add_field_is_increased_pay.php" />
+        <option value="$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue" />
+        <option value="$PROJECT_DIR$/public/css/custom.css" />
       </list>
     </option>
   </component>
@@ -475,8 +471,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-5" />
-    <option name="y" value="5" />
+    <option name="x" value="139" />
+    <option name="y" value="18" />
     <option name="width" value="1369" />
     <option name="height" value="724" />
   </component>
@@ -485,6 +481,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -495,7 +492,24 @@
             <path>
               <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
               <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ampartners" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ampartners" type="b2602c69:ProjectViewProjectNode" />
@@ -507,7 +521,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -518,10 +531,13 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mcrm" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\ampartners\public\img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\ampartners" />
       <recent name="C:\wamp64\ampartners\app\Policies" />
@@ -575,8 +591,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.watch" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.prod" />
       </list>
     </recent_temporary>
@@ -616,18 +632,20 @@
       <workItem from="1621839451587" duration="3049000" />
       <workItem from="1621847857782" duration="594000" />
       <workItem from="1622017133082" duration="123000" />
+      <workItem from="1624095057737" duration="2455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123946000" />
+    <option name="totallyTimeSpent" value="126401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4811784" visible="true" weight="0.28366113" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.47954175" visible="true" weight="0.2881997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.5188216" side_tool="true" weight="0.27912253" />
+      <window_info id="npm" order="2" sideWeight="0.5204583" side_tool="true" weight="0.2881997" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5752961" />
@@ -641,9 +659,9 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.58919805" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.33878887" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.3289689" />
-      <window_info anchor="bottom" id="File Transfer" order="14" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="File Transfer" order="14" weight="0.31751227" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -665,23 +683,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/Vacancy/Created.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding>
-            <element signature="e#38#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -996,46 +997,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="157" column="34" selection-start-line="157" selection-start-column="34" selection-end-line="157" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
-          <folding>
-            <element signature="e#44#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancySave.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/robots.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/robots.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1044,8 +1007,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robots.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2021_06_19_124104_add_field_is_increased_pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/VacanciesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="209" column="73" selection-start-line="209" selection-start-column="73" selection-end-line="209" selection-end-column="73" />
+          <folding>
+            <element signature="e#44#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/CreateRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="62" column="14" selection-start-line="60" selection-start-column="12" selection-end-line="62" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Vacancy/UpdateRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/modals/VacancySave.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="77" column="26" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="1335" column="60" lean-forward="true" selection-start-line="1335" selection-start-column="60" selection-end-line="1335" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/pages/VacanciesIndex.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="144" column="66" selection-start-line="144" selection-start-column="66" selection-end-line="144" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

@@ -138,8 +138,11 @@
                     </div>
                 </div>
                 <div class="JobList_items">
-                    <div v-for="vacancy in vacancies" class="Job JobList_item"
-                         :class="[vacancy.is_urgently ? 'Job-burning':'', vacancy.is_individual_coordination ? 'Job-quote':'']">
+                    <div v-for="vacancy in vacancies" class="Job JobList_item">
+
+                        <img src="/img/fire.png" v-if="vacancy.is_urgently">
+                        <img src="/img/quote.png" v-if="vacancy.is_individual_coordination">
+                        <img src="/img/money.png" v-if="vacancy.is_increased_pay">
 
                         <a href="javascript:;" class="CopyIcon Job_copyIcon"
                            @click="copyText(vacancy.translated_content, $event)">

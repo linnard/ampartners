@@ -209,6 +209,7 @@ class VacanciesController extends Controller
         $validated = $request->validated();
         $validated['is_urgently'] = ($request->has('is_urgently')) ? 1:0;
         $validated['is_individual_coordination'] = ($request->has('is_individual_coordination')) ? 1:0;
+        $validated['is_increased_pay'] = ($request->has('is_increased_pay')) ? 1:0;
 
         unset($validated['filter_items']);
 

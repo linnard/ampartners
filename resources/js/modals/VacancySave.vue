@@ -76,6 +76,17 @@
                             <label class="form-check-label">Індивідуальне погодження</label>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" name="is_increased_pay"
+                                   v-model="vacancy.is_increased_pay" type="checkbox"
+                                   value="1">
+                            <label class="form-check-label">Збільшена оплата (+25 грн)</label>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="col-6">

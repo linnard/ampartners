@@ -59,6 +59,9 @@ class UpdateRequest extends FormRequest
             'is_individual_coordination' => [
                 'nullable'
             ],
+            'is_increased_pay' => [
+                'nullable'
+            ],
             'age_from' => [
                 'integer'
             ],
