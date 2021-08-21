@@ -946,6 +946,17 @@ html {
     .Article_subTitle:first-child {
       margin-top: 0;
       margin-bottom: 2.24em; }
+  .Article_aboutImgWrap {
+    margin-right: -70px;
+    margin-left: -32px; }
+    @media (max-width: 991px) {
+      .Article_aboutImgWrap {
+        margin-right: -41px;
+        margin-left: -40px; } }
+    @media (max-width: 767px) {
+      .Article_aboutImgWrap {
+        margin-right: -21px;
+        margin-left: -20px; } }
   .Article_img-right {
     float: right; }
     @media (max-width: 991px) {
